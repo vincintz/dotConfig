@@ -48,13 +48,13 @@ set softtabstop=4
 set expandtab
 
 " show line numbers
-set number
 set relativenumber
+set number
 set numberwidth=2
 
 " show invisble characters
 set list
-" set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ ,eol:¬
 
 " search options
 set showmatch
