@@ -36,13 +36,3 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
-JAVA_HOME=$HOME/Programs/jdk1.8.0_45
-SBT_HOME=$HOME/Programs/sbt
-MAVEN_HOME=$HOME/Programs/apache-maven-3.3.3
-MONGO_HOME=$HOME/Programs/mongodb-linux-i686-3.0.5
-
-PATH=$JAVA_HOME/bin:$PATH
-PATH=$PATH:$HOME/bin:$SBT_HOME/bin
-PATH=$PATH:$HOME/algs4/bin
-PATH=$PATH:$MAVEN_HOME/bin:$MONGO_HOME/bin
-
