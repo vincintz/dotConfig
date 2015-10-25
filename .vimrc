@@ -22,14 +22,17 @@ Plugin 'rking/ag.vim'
 " Hardmode on
 " Plugin 'wikitopian/hardmode'
 
+" Solarized theme
+Plugin 'altercation/vim-colors-solarized'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-colorscheme koehler
-
 " enable syntax
 syntax enable
+" set background=dark
+" colorscheme solarized
 
 " modelines off to prevent modelines exploints
 set modelines=0
@@ -72,7 +75,7 @@ map <up> <nop>
 map <down> <nop>
 map <left> <nop>
 map <right> <nop>
-imap <up> <nop>
-imap <down> <nop>
-imap <left> <nop>
-imap <right> <nop>
+" imap <up> <nop>
+" imap <down> <nop>
+" imap <left> <nop>
+" imap <right> <nop>
