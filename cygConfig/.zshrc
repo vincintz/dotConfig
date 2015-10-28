@@ -38,6 +38,9 @@ export TIME_STYLE="long-iso"
 autoload -Uz compinit
 compinit
 
+PS1="%B%~%b %* "
+# RPS1="%B[%*]%b"
+
 # Hostname completion
 zstyle ':completion:*' hosts $( cat $HOME/.ssh/known_hosts )
 

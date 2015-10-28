@@ -7,6 +7,8 @@ export ANT_HOME=/datalex/ant/ant
 export CVSROOT=":pserver:vincintz.reyes@10.160.254.238:/src/cvs"
 export CVS_HOME="cygdrive/c/Program Files (x86)/cvsnt"
 
+export JBOSS_HOME=/datalex/jboss
+
 typeset -U path
 path=($JAVA_HOME/bin $ANT_HOME/bin $path)
 export PATH
