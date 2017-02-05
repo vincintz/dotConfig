@@ -1,12 +1,14 @@
-JAVA_HOME=$HOME/Programs/jdk1.8.0_45
-SBT_HOME=$HOME/Programs/sbt
-MAVEN_HOME=$HOME/Programs/apache-maven-3.3.3
-MONGO_HOME=$HOME/Programs/mongodb-linux-i686-3.0.5
+JAVA_HOME=/opt/java/jdk1.6.0_45
+ANT_HOME=/opt/Builder/apache-ant-1.8.4
+GRADLE_HOME=/opt/Builder/gradle-3.1
 
 typeset -U path
 path=($JAVA_HOME/bin
-  $HOME/bin
-  $SBT_HOME/bin
-  $MONGO_HOME/bin
+  $GRADLE_HOME/bin
+  $ANT_HOME/bin
   $path)
+
+# Alias
+alias edit="/c/Program\ Files\ \(x86\)/Notepad++/notepad++.exe"
+alias grep="grep --color=auto"
 

@@ -43,4 +43,8 @@ precmd () { vcs_info }
 
 # Set up the prompt
 autoload -Uz promptinit && promptinit
-PS1='%F{white}%* %~${vcs_info_msg_0_} %# %f'
+PS1='%F{green}%* %~%F{cyan}${vcs_info_msg_0_} %F{green}%# %f'
+
+# start tmux
+[[ $TMUX == '' ]] && tmux
+
