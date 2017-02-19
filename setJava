@@ -1,0 +1,4 @@
+if [[ -d $1 ]]; then
+  JAVA_HOME=$1
+  path[${path[(i)/opt/java/**]}]=$JAVA_HOME/bin
+fi
