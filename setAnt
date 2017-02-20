@@ -1,0 +1,4 @@
+if [[ -d $1 ]]; then
+  ANT_HOME=$1
+  path[${path[(i)/opt/ant/**]}]=$ANT_HOME/bin
+fi
