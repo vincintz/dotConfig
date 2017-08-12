@@ -1,11 +1,12 @@
-JAVA_HOME=/opt/java/jdk1.6.0_45
-ANT_HOME=/opt/ant/apache-ant-1.8.4
-GRADLE_HOME=/opt/Builder/gradle-3.1
+# JAVA_HOME=/opt/java/jdk1.6.0_45
+# ANT_HOME=/opt/ant/apache-ant-1.8.4
+# GRADLE_HOME=/opt/Builder/gradle-3.1
 
 typeset -U path
-path=($JAVA_HOME/bin
-  $GRADLE_HOME/bin
-  $ANT_HOME/bin
+path=(
+  #$JAVA_HOME/bin
+  #$GRADLE_HOME/bin
+  #$ANT_HOME/bin
   $path)
 
 # Alias
