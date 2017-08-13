@@ -16,3 +16,10 @@
     d:/opt /opt none bind 0 0
     d:/tmp /tmp none bind 0 0
 ```
+
+## Install a Package Manager
+```
+mkdir /opt/tools && cd /opt/tools
+curl https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg > apt-cyg
+chmod +x apt-cyg
+```
