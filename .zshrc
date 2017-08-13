@@ -49,5 +49,5 @@ autoload -Uz promptinit && promptinit
 PS1='%F{green}%* %~%F{cyan}${vcs_info_msg_0_} %F{green}%# %f'
 
 # start tmux
-[[ $TMUX == '' ]] && tmux
+# [[ $TMUX == '' ]] && tmux
 
