@@ -91,7 +91,10 @@ set smartcase
 
 " colors for non-visible chars
 highlight NonText ctermfg=DarkGrey
-highlight LineNr  ctermfg=DarkGrey
+highlight LineNr  ctermfg=Grey
+
+set background=dark
+colorscheme solarized
 
 " disable arrow 
 map <up> <nop>

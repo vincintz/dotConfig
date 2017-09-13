@@ -1,8 +1,8 @@
 BoldAsFont=no
-BackspaceSendsBS=yes
-Transparency=low
+BackspaceSendsBS=no
+Transparency=off
 Scrollbar=none
-OpaqueWhenFocused=no
+OpaqueWhenFocused=yes
 AllowBlinking=yes
 FontHeight=10
 FontSmoothing=full
@@ -10,15 +10,15 @@ Locale=en_US
 Charset=UTF-8
 Font=Lucida Console
 RightClickAction=paste
-Columns=100
-Rows=40
+Columns=170
+Rows=47
 ScrollMod=off
 Term=xterm-256color
 ConfirmExit=no
 CursorType=line
 
 ForegroundColour=131,148,150
-BackgroundColour=0,43,54
+BackgroundColour=7,54,66
 CursorColour=220,50,47
 
 Black=7,54,66
@@ -37,4 +37,5 @@ Cyan=42,161,152
 BoldCyan=147,161,161
 White=238,232,213
 BoldWhite=253,246,227
+
 DeleteSendsDEL=no
