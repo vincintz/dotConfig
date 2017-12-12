@@ -84,22 +84,20 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
 
-# Setup VCS info
-setopt prompt_subst
-autoload -Uz vcs_info
-
-zstyle ':vcs_info:*' actionformats ' [%b:%a]'
-zstyle ':vcs_info:*' formats       ' [%b]'
-zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b:%r'
-zstyle ':vcs_info:*' enable git cvs
-precmd () { vcs_info }
-
-
-# Set up the prompt
-autoload -Uz promptinit && promptinit
-PS1='%F{green}%* %~ %F{cyan}%${vcs_info_msg_0_} %F{green}%# %f'
-
 # No error on wildcard no match
 setopt nonomatch
 setopt AUTO_CD
 
+# Setup VCS info
+setopt prompt_subst
+autoload -Uz vcs_info
+
+zstyle ':vcs_info:*'    enable git hg
+zstyle ':vcs_info:git*' actionformats ' [%b:%a]'
+zstyle ':vcs_info:git*' formats       ' [%b]'
+zstyle ':vcs_info:hg*'  formats       ' (%b)'
+precmd () { vcs_info }
+
+# Set up the prompt
+autoload -Uz promptinit && promptinit
+PS1='%F{green}%* %~ %F{cyan}%${vcs_info_msg_0_} %F{green}%# %f'
