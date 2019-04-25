@@ -92,12 +92,21 @@ setopt AUTO_CD
 setopt prompt_subst
 autoload -Uz vcs_info
 
-zstyle ':vcs_info:*'    enable git hg
+zstyle ':vcs_info:*'    enable git
 zstyle ':vcs_info:git*' actionformats ' [%b:%a]'
 zstyle ':vcs_info:git*' formats       ' [%b]'
 zstyle ':vcs_info:hg*'  formats       ' (%b)'
 precmd () { vcs_info }
 
+is_elevated () { 
+   [[ $(uname -o) -eq "Cygwin" ]] || return 1
+   id -G | grep -qE '\<(114|544)\>' &> /dev/null
+}
+
 # Set up the prompt
 autoload -Uz promptinit && promptinit
-PS1='%F{green}%* %~ %F{cyan}%${vcs_info_msg_0_} %F{green}%# %f'
+#PS1='%F{green}%* %~ %F{cyan}%${vcs_info_msg_0_} %F{green}%# %f'
+PS1='%F{green}%* %~ %F{cyan}%${vcs_info_msg_0_} %F'
+is_elevated && PS1="$PS1{green}# %f" || PS1="$PS1{green}$ %f"
+
+source ~/dotConfig/lib/zsh-autoenv/autoenv.zsh
