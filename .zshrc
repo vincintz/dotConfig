@@ -109,4 +109,20 @@ autoload -Uz promptinit && promptinit
 PS1='%F{green}%* %~ %F{cyan}%${vcs_info_msg_0_} %F'
 is_elevated && PS1="$PS1{green}# %f" || PS1="$PS1{green}$ %f"
 
-source ~/dotConfig/lib/zsh-autoenv/autoenv.zsh
+# source ~/dotConfig/lib/zsh-autoenv/autoenv.zsh
+
+# load zgen
+source "${HOME}/.zgen/zgen.zsh"
+
+# if the init script doesn't exist
+if ! zgen saved; then
+  # specify plugins here
+  zgen oh-my-zsh
+  zgen load Tarrasch/zsh-autoenv
+  zgen load zsh-users/zsh-autosuggestions
+  zgen load zsh-users/zsh-completions
+  zgen load zsh-users/zsh-syntax-highlighting
+
+  # generate the init script from plugins above
+  zgen save
+fi
