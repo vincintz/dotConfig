@@ -1,5 +1,9 @@
-# Cygwin
+# My personal dotConfig files
 
+Mostly tested in Cygwin. TODO: make it work on Linux terminals
+
+
+# Cygwin
 1. Change Shell - zsh
 * Edit /etc/nsswitch.conf
 * db_shell: /usr/bin/zsh
@@ -20,14 +24,35 @@
 
 4. Install a Package Manager - apt-cyg
 ```
-mkdir /opt/tools && cd /opt/tools
-curl https://raw.githubusercontent.com/transcode-open/apt-cyg/master/apt-cyg > apt-cyg
-chmod +x apt-cyg
+cd /usr/local/lib/
+git clone https://github.com/transcode-open/apt-cyg
+chmod -R g-wx,o-wx apt-cyg/*
+ln -s /usr/local/lib/apt-cyg/apt-cyg /usr/local/bin/apt-cyg
 ```
 
 5. Install dependencies
-* python-3
-* netutils (wget)
+```
+apt-cyg install python38
+```
 
 6. Install sudo
-* https://github.com/Chronial/cygwin-sudo
+```
+cd /usr/local/lib/
+git clone https://github.com/Chronial/cygwin-sudo
+chmod -R g-wx,o-wx cygwin-sudo/*
+alias sudo="python3 /usr/local/lib/cygwin-sudo/cygwin-sudo.py"
+```
+
+6. Others
+mkdir $HOME/dotConfig/libs
+```
+cd $HOME/dotConfig/libs
+git clone https://github.com/zsh-users/zsh-autosuggestions
+echo "source $HOME/dotConfig/libs/zsh-autosuggestions/zsh-autosuggestions.zsh" >> $HOME/.zshrc
+```
+
+```
+cd $HOME/dotConfig/libs
+git clone https://github.com/zsh-users/zsh-syntax-highlighting
+echo "source $HOME/dotConfig/libs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> $HOME/.zshrc
+```
