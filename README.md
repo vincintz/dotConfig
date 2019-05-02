@@ -24,7 +24,7 @@ Mostly tested in Cygwin. TODO: make it work on Linux terminals
 
 4. Install a Package Manager - apt-cyg
 ```
-cd /usr/local/lib/
+mkdir -p /usr/local/lib/ 2>/dev/null ; cd $_
 git clone https://github.com/transcode-open/apt-cyg
 chmod -R g-wx,o-wx apt-cyg/*
 ln -s /usr/local/lib/apt-cyg/apt-cyg /usr/local/bin/apt-cyg
@@ -32,27 +32,34 @@ ln -s /usr/local/lib/apt-cyg/apt-cyg /usr/local/bin/apt-cyg
 
 5. Install dependencies
 ```
-apt-cyg install python38
+apt-cyg install python3
 ```
 
 6. Install sudo
 ```
-cd /usr/local/lib/
+mkdir -p /usr/local/lib/ 2>/dev/null ; cd $_
 git clone https://github.com/Chronial/cygwin-sudo
 chmod -R g-wx,o-wx cygwin-sudo/*
 alias sudo="python3 /usr/local/lib/cygwin-sudo/cygwin-sudo.py"
 ```
 
-6. Others
-mkdir $HOME/dotConfig/libs
+7. Others
 ```
-cd $HOME/dotConfig/libs
+mkdir -p $HOME/dotConfig/libs 2>/dev/null ; cd $_
 git clone https://github.com/zsh-users/zsh-autosuggestions
-echo "source $HOME/dotConfig/libs/zsh-autosuggestions/zsh-autosuggestions.zsh" >> $HOME/.zshrc
+```
+```
+mkdir -p $HOME/dotConfig/libs 2>/dev/null ; cd $_
+git clone https://github.com/zsh-users/zsh-syntax-highlighting
+```
+```
+mkdir -p $HOME/dotConfig/libs 2>/dev/null ; cd $_
+clone https://github.com/Tarrasch/zsh-autoenv
 ```
 
+8. Install Powerline Fonts
 ```
-cd $HOME/dotConfig/libs
-git clone https://github.com/zsh-users/zsh-syntax-highlighting
-echo "source $HOME/dotConfig/libs/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" >> $HOME/.zshrc
+mkdir -p /usr/local/lib/ 2>/dev/null ; cd $_
+git clone https://github.com/powerline/fonts powerline-fonts
+chmod -R g-wx,o-wx powerline-fonts/*
 ```
