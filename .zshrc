@@ -96,14 +96,36 @@ zstyle ':vcs_info:git*' formats       ' [%b]'
 zstyle ':vcs_info:hg*'  formats       ' (%b)'
 precmd () { vcs_info }
 
-is_elevated () { 
+is_elevated() { 
    [[ $(uname -o) -eq "Cygwin" ]] || return 1
    id -G | grep -qE '\<(114|544)\>' &> /dev/null
+}
+
+usr_prompt() {
+   if [[ $(uname -o) -eq "Cygwin" ]]; then
+      id -G | grep -qE '\<(114|544)\>' &> /dev/null
+      if [ $? -eq 0 ]; then
+         echo '%F{magenta}#%f '
+      else
+         echo '%# '
+      fi
+   else
+      echo '%# '
+   fi
+}
+
+git_info() {
+   local gitbranch="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
+   if [ -n "$gitbranch" ]; then
+      if [ -n "$(git status --porcelain 2> /dev/null)" ]; then
+         echo "[%F{magenta}$gitbranch%f] "
+      else
+         echo "[%F{cyan}$gitbranch%f] "
+      fi
+   fi
 }
 
 # Load plugins from libs
 for plugin in $HOME/dotConfig/libs/**/*.plugin.zsh; source $plugin
 
-# Set up the prompt
-autoload -Uz promptinit && promptinit
-PS1='%F{green}%* %~ %F{cyan}%${vcs_info_msg_0_} %F{green}%# %f'
+PROMPT='%* %~ $(git_info)$(usr_prompt)'
