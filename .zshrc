@@ -105,4 +105,5 @@ is_elevated () {
 autoload -Uz promptinit && promptinit
 PS1='%F{green}%* %~ %F{cyan}%${vcs_info_msg_0_} %F{green}%# %f'
 
-for 
+# Load plugins from libs
+for plugin in $HOME/dotConfig/libs/**/*.plugin.zsh; source $plugin
