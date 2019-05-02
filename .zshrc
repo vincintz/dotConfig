@@ -101,9 +101,9 @@ is_elevated () {
    id -G | grep -qE '\<(114|544)\>' &> /dev/null
 }
 
+# Load plugins from libs
+for plugin in $HOME/dotConfig/libs/**/*.plugin.zsh; source $plugin
+
 # Set up the prompt
 autoload -Uz promptinit && promptinit
 PS1='%F{green}%* %~ %F{cyan}%${vcs_info_msg_0_} %F{green}%# %f'
-
-# Load plugins from libs
-for plugin in $HOME/dotConfig/libs/**/*.plugin.zsh; source $plugin
