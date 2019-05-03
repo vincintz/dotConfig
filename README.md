@@ -48,7 +48,7 @@ ln -s /usr/local/lib/apt-cyg/apt-cyg /usr/local/bin/apt-cyg
 6. Install other packages
 ```
 apt-cyg install openssh
-apt-cyg install vim
+apt-cyg install vim dos2unix
 apt-cyg install zip unzip
 apt-cyg install python3 python3-pip
 ```
@@ -56,6 +56,11 @@ apt-cyg install python3 python3-pip
 cd /usr/local/bin/
 wget https://download.elifulkerson.com//files/tcping/0.39/tcping.exe
 chmod +x tcping.exe
+
+wget https://github.com/rprichard/winpty/releases/download/0.4.3/winpty-0.4.3-cygwin-2.8.0-x64.tar.gz
+tar xvf winpty-0.4.3-cygwin-2.8.0-x64.tar.gz
+mv winpty-0.4.3-cygwin-2.8.0-x64 /usr/local/lib
+ln -s /usr/local/lib/winpty-0.4.3-cygwin-2.8.0-x64/bin/winpty.exe /usr/local/bin/winpty
 ```
 
 7. Install sudo
