@@ -45,11 +45,17 @@ chmod -R g-wx,o-wx apt-cyg/*
 ln -s /usr/local/lib/apt-cyg/apt-cyg /usr/local/bin/apt-cyg
 ```
 
-6. Install dependencies
+6. Install other packages
 ```
 apt-cyg install openssh
-apt-cyg install python3
-apt-cyg install python3-pip
+apt-cyg install vim
+apt-cyg install zip unzip
+apt-cyg install python3 python3-pip
+```
+```
+cd /usr/local/bin/
+wget https://download.elifulkerson.com//files/tcping/0.39/tcping.exe
+chmod +x tcping.exe
 ```
 
 7. Install sudo
@@ -72,6 +78,10 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting
 ```
 mkdir -p $HOME/dotConfig/libs 2>/dev/null ; cd $_
 git clone https://github.com/Tarrasch/zsh-autoenv
+```
+```
+mkdir -p $HOME/dotConfig/themes 2>/dev/null ; cd $_
+git clone https://github.com/seebi/dircolors-solarized
 ```
 
 9. Install Powerline Fonts

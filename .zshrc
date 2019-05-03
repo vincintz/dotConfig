@@ -129,3 +129,4 @@ git_info() {
 for plugin in $HOME/dotConfig/libs/**/*.plugin.zsh; source $plugin
 
 PROMPT='%* %~ $(git_info)$(usr_prompt)'
+eval `dircolors $HOME/dotConfig/themes/dircolors-solarized/dircolors.256dark`
