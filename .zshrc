@@ -14,6 +14,7 @@ source $HOME/dotConfig/alias.zshrc
 
 if [[ $(uname -o) -eq "Cygwin" ]]; then
    source $HOME/dotConfig/cygwin/alias.zshrc
+   source $HOME/dotConfig/cygwin/vars.zshrc
 fi
 
 # Load plugins from libs
