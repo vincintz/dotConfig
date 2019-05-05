@@ -7,7 +7,7 @@ source $HOME/dotConfig/common/options.zsh
 source $HOME/dotConfig/common/autocomplete.zsh
 
 # Source cygwin configs
-if [[ $OSTYPE -eq "cygwin" ]]; then
+if [[ $OSTYPE == "cygwin" ]]; then
    source $HOME/dotConfig/cygwin/alias.zsh
    source $HOME/dotConfig/cygwin/vars.zsh
 fi

@@ -19,7 +19,7 @@ git_info() {
         fi
     fi
 }
-if [[ $OSTYPE -eq "cygwin" ]]; then
+if [[ $OSTYPE == "cygwin" ]]; then
     PROMPT='%F{yellow}%* %~%f $(git_info)$(usr_prompt) '
 else
     PROMPT='%F{yellow}%* %~%f $(git_info)%# '
