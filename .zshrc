@@ -14,4 +14,7 @@ fi
 
 # Load plugins from libs
 for plugin in $HOME/dotConfig/libs/**/*.plugin.zsh; source $plugin
-eval `dircolors $HOME/dotConfig/themes/dircolors-solarized/dircolors.256dark`
+
+# Set dir colots
+d=$HOME/dotConfig/themes/dircolors-solarized/dircolors.ansi-universal
+[[ -f $d ]] && eval `dircolors $d`
