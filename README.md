@@ -4,19 +4,20 @@ Mostly tested in Cygwin. TODO: make it work on Linux terminals
 
 
 # Cygwin
-## Prerequisites
-  - Cygwin packages - zsh, tmux, wget
-  - Windows Git
-  - (optional) Hack - powerline font for Windows
+
+##  Prerequisites
+- Cygwin packages - zsh, tmux, wget
+- Windows Git
+- (optional) Hack - powerline font for Windows
 
 ## Post install
-### Change Shell - zsh
-  * Edit /etc/nsswitch.conf
-  * db_shell: /usr/bin/zsh
-### Autorun tmux - change windows shortcut for mintty
-  * mintty.exe /usr/bin/tmux
-### Map drives
-  * Edit /etc/fstab
+* Change Shell - zsh
+    * Edit /etc/nsswitch.conf
+    * db_shell: /usr/bin/zsh
+* Autorun tmux - change windows shortcut for mintty
+    * mintty.exe /usr/bin/tmux
+* Map drives
+    * Edit /etc/fstab
 ```
     none /cygdrive cygdrive binary,noacl,posix=0,user 0 0
     c: /c none bind 0 0
@@ -38,14 +39,14 @@ ln -s $HOME/dotConfig/.vimrc $HOME/.vimrc
 
 
 ## Install other cygwin packages
-### Install a Package Manager - apt-cyg
+* Install a Package Manager - apt-cyg
 ```
 mkdir -p /usr/local/lib/ 2>/dev/null ; cd $_
 git clone https://github.com/transcode-open/apt-cyg
 chmod -R g-wx,o-wx apt-cyg/*
 ln -s /usr/local/lib/apt-cyg/apt-cyg /usr/local/bin/apt-cyg
 ```
-### Use apt-cyg
+* Use apt-cyg
 ```
 apt-cyg install openssh
 apt-cyg install vim dos2unix
@@ -53,7 +54,7 @@ apt-cyg install zip unzip
 apt-cyg install python3 python3-pip
 apt-cyg install inetutils procps-ng openssh
 ```
-### Manual - wget
+* Manual - wget
 ```
 cd /usr/local/bin/
 wget https://download.elifulkerson.com//files/tcping/0.39/tcping.exe
@@ -64,7 +65,7 @@ tar xvf winpty-0.4.3-cygwin-2.8.0-x64.tar.gz
 mv winpty-0.4.3-cygwin-2.8.0-x64 /usr/local/lib
 ln -s /usr/local/lib/winpty-0.4.3-cygwin-2.8.0-x64/bin/winpty.exe /usr/local/bin/winpty
 ```
-### Install sudo
+* Install sudo
 ```
 mkdir -p /usr/local/lib/ 2>/dev/null ; cd $_
 git clone https://github.com/Chronial/cygwin-sudo
