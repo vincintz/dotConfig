@@ -11,6 +11,10 @@ bindkey '^[[1~'   beginning-of-line
 bindkey '^[[F'    end-of-line
 bindkey '^[[4~'   end-of-line
 
+# Up/Down
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
 # Ctrl-Left/Ctrl-Right
 bindkey '^[[1;5D' backward-word        # Ctrl + left arrow
 bindkey '^[[1;5C' forward-word         # Ctrl + right arrow

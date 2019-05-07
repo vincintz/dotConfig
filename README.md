@@ -4,54 +4,56 @@ Mostly tested in Cygwin. TODO: make it work on Linux terminals
 
 
 # Cygwin
-0. Prereq
-  - Powerline fonts for Windows
-  - zsh
-  - tmux
-  - wget
+## Prerequisites
+  - Cygwin packages - zsh, tmux, wget
+  - Windows Git
+  - (optional) Hack - powerline font for Windows
 
-1. Change Shell - zsh
+## Post install
+### Change Shell - zsh
   * Edit /etc/nsswitch.conf
   * db_shell: /usr/bin/zsh
-
-2. Autorun tmux - change windows shortcut for mintty
+### Autorun tmux - change windows shortcut for mintty
   * mintty.exe /usr/bin/tmux
-
-3. Map drives
-* Edit /etc/fstab
+### Map drives
+  * Edit /etc/fstab
 ```
     none /cygdrive cygdrive binary,noacl,posix=0,user 0 0
     c: /c none bind 0 0
     d: /d none bind 0 0
-    d:/home /home none bind 0 0
+    c:/Users /home none bind 0 0
     d:/opt /opt none bind 0 0
     d:/tmp /tmp none bind 0 0
 ```
 
-4. Clone dotConfig
+## Clone dotConfig
 ```
 git clone https://github.com/vincintz/dotConfig
 ln -s $HOME/dotConfig/.minttyrc $HOME/.minttyrc
 ln -s $HOME/dotConfig/.zshrc $HOME/.zshrc
 ln -s $HOME/dotConfig/.zshenv $HOME/.zshenv
 ln -s $HOME/dotConfig/.tmux.conf $HOME/.tmux.conf
+ln -s $HOME/dotConfig/.vimrc $HOME/.vimrc
 ```
 
-5. Install a Package Manager - apt-cyg
+
+## Install other cygwin packages
+### Install a Package Manager - apt-cyg
 ```
 mkdir -p /usr/local/lib/ 2>/dev/null ; cd $_
 git clone https://github.com/transcode-open/apt-cyg
 chmod -R g-wx,o-wx apt-cyg/*
 ln -s /usr/local/lib/apt-cyg/apt-cyg /usr/local/bin/apt-cyg
 ```
-
-6. Install other packages
+### Use apt-cyg
 ```
 apt-cyg install openssh
 apt-cyg install vim dos2unix
 apt-cyg install zip unzip
 apt-cyg install python3 python3-pip
+apt-cyg install inetutils procps-ng openssh
 ```
+### Manual - wget
 ```
 cd /usr/local/bin/
 wget https://download.elifulkerson.com//files/tcping/0.39/tcping.exe
@@ -62,8 +64,7 @@ tar xvf winpty-0.4.3-cygwin-2.8.0-x64.tar.gz
 mv winpty-0.4.3-cygwin-2.8.0-x64 /usr/local/lib
 ln -s /usr/local/lib/winpty-0.4.3-cygwin-2.8.0-x64/bin/winpty.exe /usr/local/bin/winpty
 ```
-
-7. Install sudo
+### Install sudo
 ```
 mkdir -p /usr/local/lib/ 2>/dev/null ; cd $_
 git clone https://github.com/Chronial/cygwin-sudo
@@ -71,27 +72,17 @@ chmod -R g-wx,o-wx cygwin-sudo/*
 alias sudo="python3 /usr/local/lib/cygwin-sudo/cygwin-sudo.py"
 ```
 
-8. Others
-```
-mkdir -p $HOME/dotConfig/libs 2>/dev/null ; cd $_
-git clone https://github.com/zsh-users/zsh-autosuggestions
-```
-```
-mkdir -p $HOME/dotConfig/libs 2>/dev/null ; cd $_
-git clone https://github.com/zsh-users/zsh-syntax-highlighting
-```
+## Install zsh plugins
 ```
 mkdir -p $HOME/dotConfig/libs 2>/dev/null ; cd $_
 git clone https://github.com/Tarrasch/zsh-autoenv
+git clone https://github.com/zsh-users/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions
+https://github.com/zsh-users/zsh-history-substring-search
 ```
+
+## TODO - find better way to set dircolors
 ```
 mkdir -p $HOME/dotConfig/themes 2>/dev/null ; cd $_
 git clone https://github.com/seebi/dircolors-solarized
-```
-
-9. Install Powerline Fonts
-```
-mkdir -p /usr/local/lib/ 2>/dev/null ; cd $_
-git clone https://github.com/powerline/fonts powerline-fonts
-chmod -R g-wx,o-wx powerline-fonts/*
 ```
