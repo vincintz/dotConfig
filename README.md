@@ -78,7 +78,7 @@ mkdir -p $HOME/dotConfig/libs 2>/dev/null ; cd $_
 git clone https://github.com/Tarrasch/zsh-autoenv
 git clone https://github.com/zsh-users/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions
-https://github.com/zsh-users/zsh-history-substring-search
+git clone https://github.com/zsh-users/zsh-history-substring-search
 ```
 
 ## TODO - find better way to set dircolors
