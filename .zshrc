@@ -18,5 +18,5 @@ if [[ $OSTYPE == "cygwin" ]]; then
 fi
 
 # Set dir colots
-d=$HOME/dotConfig/themes/dircolors-solarized/dircolors.ansi-universal
+d=$HOME/dotConfig/.dircolors
 [[ -f $d ]] && eval `dircolors $d`
