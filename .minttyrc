@@ -1,6 +1,6 @@
 BoldAsFont=no
 BackspaceSendsBS=no
-Transparency=off
+Transparency=low
 Scrollbar=none
 OpaqueWhenFocused=yes
 AllowBlinking=yes
