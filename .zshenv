@@ -1,6 +1,6 @@
 TERM=xterm
 
-JAVA_HOME=/opt/java/jdk1.8.0_211
+JAVA_HOME=/opt/java/jdk1.8.0_221
 JAVA_OPTS="-server -Xms512m -Xmx2048m -XX:PermSize=512m -XX:MaxPermSize=1024m"
 JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF-8"
 
