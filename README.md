@@ -1,9 +1,9 @@
 # My personal dotConfig files
 
-Mostly tested in Cygwin. TODO: make it work on Linux terminals
+Mostly tested in Cygwin and ssh shell
 
 
-# Cygwin
+# Windows
 
 ##  Prerequisites
 - Cygwin packages - zsh, tmux, wget
@@ -26,17 +26,6 @@ Mostly tested in Cygwin. TODO: make it work on Linux terminals
     d:/opt /opt none bind 0 0
     d:/tmp /tmp none bind 0 0
 ```
-
-## Clone dotConfig
-```
-git clone https://github.com/vincintz/dotConfig
-ln -s $HOME/dotConfig/.minttyrc $HOME/.minttyrc
-ln -s $HOME/dotConfig/.zshrc $HOME/.zshrc
-ln -s $HOME/dotConfig/.zshenv $HOME/.zshenv
-ln -s $HOME/dotConfig/.tmux.conf $HOME/.tmux.conf
-ln -s $HOME/dotConfig/.vimrc $HOME/.vimrc
-```
-
 
 ## Install other cygwin packages
 * Install a Package Manager - apt-cyg
@@ -71,6 +60,36 @@ mkdir -p /usr/local/lib/ 2>/dev/null ; cd $_
 git clone https://github.com/Chronial/cygwin-sudo
 chmod -R g-wx,o-wx cygwin-sudo/*
 alias sudo="python3 /usr/local/lib/cygwin-sudo/cygwin-sudo.py"
+```
+
+## Install chocolatey (Windows)
+* see: https://chocolatey.org/install
+```
+winpty sudo powershell
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+
+sudo choco install adoptopenjdk8
+sudo choco install virtualbox
+sudo choco install vagrant
+sudo choco install docker-desktop
+```
+
+## Setup docker-machine
+```
+docker-machine create default
+eval "$(docker-machine env default)"
+```
+
+# Linux/Windows
+
+## Clone dotConfig
+```
+git clone https://github.com/vincintz/dotConfig
+ln -s $HOME/dotConfig/.minttyrc $HOME/.minttyrc
+ln -s $HOME/dotConfig/.zshrc $HOME/.zshrc
+ln -s $HOME/dotConfig/.zshenv $HOME/.zshenv
+ln -s $HOME/dotConfig/.tmux.conf $HOME/.tmux.conf
+ln -s $HOME/dotConfig/.vimrc $HOME/.vimrc
 ```
 
 ## Install zsh plugins
