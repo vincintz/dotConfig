@@ -68,10 +68,23 @@ alias sudo="python3 /usr/local/lib/cygwin-sudo/cygwin-sudo.py"
 winpty sudo powershell
 Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 
+sudo choco install notepadplusplus
+sudo choco install bitwarden
+sudo choco install git
+sudo choco install treesizefree
 sudo choco install adoptopenjdk8
+sudo choco install adoptopenjdk11
+sudo choco install dbeaver
+sudo choco install winscp
+sudo choco install paint.net
+sudo choco install drawio
+sudo choco install pencil
+sudo choco install jmeter
+sudo choco install postman
+sudo choco install soapui
 sudo choco install virtualbox
+sudo choco install docker-machine
 sudo choco install vagrant
-sudo choco install docker-desktop
 ```
 
 ## Setup docker-machine
