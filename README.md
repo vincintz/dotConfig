@@ -6,7 +6,7 @@ Mostly tested in Cygwin and ssh shell
 # Windows
 
 ##  Prerequisites
-- Cygwin packages - zsh, tmux, wget
+- Cygwin packages - zsh, tmux, wget, gnupg2
 - Windows Git
 - (optional) Hack - powerline font for Windows
 
@@ -28,6 +28,17 @@ Mostly tested in Cygwin and ssh shell
 ```
 
 ## Install other cygwin packages
+* TODO: change apt-cyg to https://github.com/kou1okada/apt-cyg
+```
+# mkdir -p /usr/local/lib/ 2>/dev/null ; cd $_
+# git clone https://github.com/kou1okada/apt-cyg
+# chmod -R g-wx,o-wx apt-cyg/*
+# ln -s /usr/local/lib/apt-cyg/apt-cyg /usr/local/bin/apt-cyg
+
+# PROBLEM: Can't run apt-cyg withou gnupg2
+# apt-cyg install gnupg2
+```
+
 * Install a Package Manager - apt-cyg
 ```
 mkdir -p /usr/local/lib/ 2>/dev/null ; cd $_
