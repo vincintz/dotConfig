@@ -1,5 +1,7 @@
 ORIG_JAVA_HOME=$JAVA_HOME
-JAVA_HOME=/opt/java/jdk1.6.0_45
+JAVA_HOME=/opt/java/jdk1.7.0_80
 
-echo 'Setting Java to ' $JAVA_HOME
-path[${path[(i)/opt/java/**]}]=$JAVA_HOME/bin
+if [[ "$ORIG_JAVA_HOME" != "$JAVA_HOME" ]] && [ -d "$JAVA_HOME" ]; then
+  echo 'Setting Java to ' $JAVA_HOME
+  path[${path[(i)$ORIG_JAVA_HOME/**]}]=$JAVA_HOME/bin
+fi

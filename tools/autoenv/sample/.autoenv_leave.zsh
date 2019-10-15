@@ -1,6 +1,6 @@
 if [[ -n $ORIG_JAVA_HOME ]]; then
+  path[${path[(i)$JAVA_HOME/**]}]=$ORIG_JAVA_HOME/bin
   JAVA_HOME=$ORIG_JAVA_HOME
-  path[${path[(i)/opt/java/**]}]=$JAVA_HOME/bin
 fi
 
 echo 'Current JAVA_HOME:' $JAVA_HOME
