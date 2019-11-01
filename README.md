@@ -1,70 +1,84 @@
 # My personal dotConfig files
 
-Mostly tested in Cygwin and ssh shell
+Mostly tested in Cygwin with zsh shell
 
 
 # Windows
 
-##  Prerequisites
-- Cygwin packages - zsh, tmux, wget, gnupg2
-- Windows Git
-- (optional) Hack - powerline font for Windows
+## Install chocolatey - The Package Manager for Windows
 
-## Post install
-* Change Shell - zsh
-    * Edit /etc/nsswitch.conf
-    * db_shell: /usr/bin/zsh
-* Autorun tmux - change windows shortcut for mintty
-    * mintty.exe /usr/bin/tmux
-* Map drives
-    * Edit /etc/fstab
+* Instructions in https://chocolatey.org/install
+
+* Run powershell as admin
 ```
-    none /cygdrive cygdrive binary,noacl,posix=0,user 0 0
-    c: /c none bind 0 0
-    d: /d none bind 0 0
-    c:/Users /home none bind 0 0
-    d:/opt /opt none bind 0 0
-    d:/tmp /tmp none bind 0 0
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 ```
 
-## Install other cygwin packages
-* TODO: change apt-cyg to https://github.com/kou1okada/apt-cyg
+* Install the following Windows application
 ```
-# mkdir -p /usr/local/lib/ 2>/dev/null ; cd $_
-# git clone https://github.com/kou1okada/apt-cyg
-# chmod -R g-wx,o-wx apt-cyg/*
-# ln -s /usr/local/lib/apt-cyg/apt-cyg /usr/local/bin/apt-cyg
+choco install -y git.install
+choco install -y notepadplusplus.install
+choco install -y hackfont
+choco install -y virtualbox
+choco install -y adoptopenjdk8
+choco install -y 7zip.install
+choco install -y nvm
+choco install -y bitwarden
+choco install -y treesizefree
+choco install -y wps-office-free
+choco install -y youtube-dl
+choco install -y vlc
+choco install -y adoptopenjdk11
+choco install -y dbeaver
+choco install -y winscp
+choco install -y paint.net
+choco install -y drawio
+choco install -y pencil
+choco install -y jmeter
+choco install -y postman
+choco install -y soapui
+choco install -y docker-machine
+choco install -y vagrant
+choco install -y vscode
+choco install -y intellijidea-community
+```
 
-# PROBLEM: Can't run apt-cyg withou gnupg2
-# apt-cyg install gnupg2
+##  Install Cygwin
+
+* Download from https://cygwin.com/install.html
+* Set
+  * Root Directory: `C:\cygwin\root`
+  * Local Packages: `C:\cygwin\package` 
+* Install the following packages
+```
+zsh, tmux, wget, gnupg2, python3
 ```
 
-* Install a Package Manager - apt-cyg
+* Create directories
 ```
-mkdir -p /usr/local/lib/ 2>/dev/null ; cd $_
-git clone https://github.com/transcode-open/apt-cyg
-chmod -R g-wx,o-wx apt-cyg/*
-ln -s /usr/local/lib/apt-cyg/apt-cyg /usr/local/bin/apt-cyg
+mkdir c:\tmp
+mkdir c:\opt
 ```
-* Use apt-cyg
-```
-apt-cyg install openssh
-apt-cyg install vim dos2unix
-apt-cyg install zip unzip
-apt-cyg install python3 python3-pip
-apt-cyg install inetutils procps-ng openssh
-```
-* Manual - wget
-```
-cd /usr/local/bin/
-wget https://download.elifulkerson.com//files/tcping/0.39/tcping.exe
-chmod +x tcping.exe
 
-wget https://github.com/rprichard/winpty/releases/download/0.4.3/winpty-0.4.3-cygwin-2.8.0-x64.tar.gz
-tar xvf winpty-0.4.3-cygwin-2.8.0-x64.tar.gz
-mv winpty-0.4.3-cygwin-2.8.0-x64 /usr/local/lib
-ln -s /usr/local/lib/winpty-0.4.3-cygwin-2.8.0-x64/bin/winpty.exe /usr/local/bin/winpty
+* Map drives - edit /etc/fstab
 ```
+none /cygdrive cygdrive binary,noacl,posix=0,user 0 0
+c: /c none bind 0 0
+d: /d none bind 0 0
+c:/Users /home none bind 0 0
+c:/opt /opt none bind 0 0
+c:/tmp /tmp none bind 0 0
+```
+
+* Change default shell - edit /etc/nsswitch.conf
+```
+db_shell: /usr/bin/zsh
+```
+
+## Install cygwin packages
+
+### Manual download
+
 * Install sudo
 ```
 mkdir -p /usr/local/lib/ 2>/dev/null ; cd $_
@@ -73,40 +87,42 @@ chmod -R g-wx,o-wx cygwin-sudo/*
 alias sudo="python3 /usr/local/lib/cygwin-sudo/cygwin-sudo.py"
 ```
 
-## Install chocolatey (Windows)
-* see: https://chocolatey.org/install
+* Install apt-cyg
 ```
-winpty sudo powershell
-Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-
-sudo choco install notepadplusplus
-sudo choco install bitwarden
-sudo choco install git
-sudo choco install treesizefree
-sudo choco install adoptopenjdk8
-sudo choco install adoptopenjdk11
-sudo choco install dbeaver
-sudo choco install winscp
-sudo choco install paint.net
-sudo choco install drawio
-sudo choco install pencil
-sudo choco install jmeter
-sudo choco install postman
-sudo choco install soapui
-sudo choco install virtualbox
-sudo choco install docker-machine
-sudo choco install vagrant
+mkdir -p /usr/local/lib/ 2>/dev/null ; cd $_
+git clone https://github.com/kou1okada/apt-cyg
+chmod -R g-wx,o-wx apt-cyg/*
+ln -s /usr/local/lib/apt-cyg/apt-cyg /usr/local/bin/apt-cyg
 ```
 
-## Setup docker-machine
+* Install winpty
 ```
-docker-machine create default
-eval "$(docker-machine env default)"
+mkdir -p /usr/local/lib/ 2>/dev/null ; cd $_
+wget https://github.com/rprichard/winpty/releases/download/0.4.3/winpty-0.4.3-cygwin-2.8.0-x64.tar.gz
+tar xvf winpty-0.4.3-cygwin-2.8.0-x64.tar.gz
+ln -s /usr/local/lib/winpty-0.4.3-cygwin-2.8.0-x64/bin/winpty.exe /usr/local/bin/winpty
+rm winpty-0.4.3-cygwin-2.8.0-x64.tar.gz
 ```
 
-# Linux/Windows
+* Install tcping
+```
+cd /usr/local/bin/
+wget https://download.elifulkerson.com//files/tcping/0.39/tcping.exe
+chmod +x tcping.exe
+```
 
-## Clone dotConfig
+### Using apt-cyg
+```
+apt-cyg install openssh
+apt-cyg install vim dos2unix
+apt-cyg install zip unzip
+apt-cyg install python3-pip
+apt-cyg install inetutils procps-ng openssh
+```
+
+## Configure shell
+
+* Clone dotConfig
 ```
 git clone https://github.com/vincintz/dotConfig
 ln -s $HOME/dotConfig/.minttyrc $HOME/.minttyrc
@@ -116,7 +132,7 @@ ln -s $HOME/dotConfig/.tmux.conf $HOME/.tmux.conf
 ln -s $HOME/dotConfig/.vimrc $HOME/.vimrc
 ```
 
-## Install zsh plugins
+* Install zsh plugins
 ```
 mkdir -p $HOME/dotConfig/libs 2>/dev/null ; cd $_
 git clone https://github.com/Tarrasch/zsh-autoenv
@@ -125,8 +141,15 @@ git clone https://github.com/zsh-users/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-history-substring-search
 ```
 
-## TODO - find better way to set dircolors
+## Others
+
+* Setup docker-machine
 ```
-mkdir -p $HOME/dotConfig/themes 2>/dev/null ; cd $_
-git clone https://github.com/seebi/dircolors-solarized
+docker-machine create default
+eval "$(docker-machine env default)"
+```
+
+* Create shortcut
+```
+C:\cygwin\root\bin\mintty.exe /usr/bin/tmux
 ```
