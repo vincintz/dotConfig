@@ -1,5 +1,30 @@
 # My personal dotConfig files
 
+## Install chocolatey - The Package Manager for Windows
+
+* Instructions in https://chocolatey.org/install
+
+* Run powershell as admin
+```
+Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+```
+
+## Install msys2
+* Instructions in http://www.msys2.org/
+
+## Review
+* zsh
+  https://medium.com/@borekb/zsh-via-msys2-on-windows-3964a943b1ce
+* sudo
+  https://github.com/imachug/win-sudo
+* tmux
+  https://blog.pjsen.eu/?p=440
+* jshell
+  https://kichwacoders.com/2017/05/25/woohoo-java-9-has-a-repl-getting-started-with-jshell-and-eclipse-january/
+
+---
+# My old personal dotConfig files
+
 Mostly tested in Cygwin with zsh shell
 
 
