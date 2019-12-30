@@ -1,5 +1,5 @@
 # JAVA_HOME=/opt/java/jdk1.8.0_221
-JAVA_HOME=/opt/openjdk/jdk8u222-b10
+JAVA_HOME=/opt/openjdk/latest
 JAVA_OPTS="-server -Xms512m -Xmx2048m -XX:PermSize=512m -XX:MaxPermSize=1024m"
 JAVA_TOOL_OPTIONS="-Dfile.encoding=UTF-8"
 

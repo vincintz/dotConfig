@@ -19,7 +19,9 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.We
 choco install -y git.install
 choco install -y notepadplusplus.install
 choco install -y hackfont
+choco install -y inconsolata
 choco install -y virtualbox
+choco install -y openjdk
 choco install -y adoptopenjdk8
 choco install -y 7zip.install
 choco install -y nvm
@@ -28,7 +30,6 @@ choco install -y treesizefree
 choco install -y wps-office-free
 choco install -y youtube-dl
 choco install -y vlc
-choco install -y adoptopenjdk11
 choco install -y dbeaver
 choco install -y winscp
 choco install -y paint.net
