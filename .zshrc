@@ -15,8 +15,11 @@ source $HOME/dotConfig/common/autocomplete.zsh
 if [[ $OSTYPE == "cygwin" ]]; then
     source $HOME/dotConfig/cygwin/alias.zsh
     source $HOME/dotConfig/cygwin/vars.zsh
+    source $HOME/dotConfig/cygwin/dircolors.zsh
 fi
 
-# Set dir colots
-d=$HOME/dotConfig/.dircolors
-[[ -f $d ]] && eval `dircolors $d`
+# Source OSX configs
+if [[ $OSTYPE == darwin* ]]; then
+    source $HOME/dotConfig/osx/nvm.zsh
+    source $(brew --prefix nvm)/nvm.sh
+fi

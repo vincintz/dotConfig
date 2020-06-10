@@ -1,4 +1,4 @@
-alias ls='ls --color=auto'
+alias ls='ls -G'
 alias grep='grep --color=auto'
 alias mkcd='foo(){ mkdir -p "$1"; cd "$1" }; foo'
 alias diff='/opt/tools/diff-so-fancy'
