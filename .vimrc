@@ -52,7 +52,7 @@ set numberwidth=2
 
 " show invisble characters
 set list
-set listchars=tab:→\ ,eol:⏎
+set listchars=tab:>-,trail:.,precedes:<,extends:>,eol:$
 
 " search options
 set showmatch
@@ -64,6 +64,9 @@ set smartcase
 " colors for non-visible chars
 highlight NonText ctermfg=DarkGrey
 highlight LineNr  ctermfg=Grey
+
+" Set colorscheme
+colorscheme industry
 
 " disable arrow 
 map <up> <nop>
