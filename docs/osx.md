@@ -7,35 +7,43 @@
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   ```
 
-## Install packages
-
-* `brew cask list`
-  ```
-  android-ndk              android-studio           docker                   google-chrome            java                     mysqlworkbench           vagrant
-  android-sdk              atom                     firefox                  insomnia                 mono-mdk                 spotify
-  ```
-* `brew list`
-  ```
-  cask                    ghostscript             jpeg                    libpng                  ncurses                 p11-kit                 sqlite
-  coreutils               glib                    libde265                libtasn1                neofetch                pcre                    tmux
-  docbook                 gmp                     libevent                libtiff                 nettle                  pkcs11-helper           unbound
-  docbook-xsl             gnu-getopt              libffi                  libtool                 openexr                 protobuf                utf8proc
-  emacs                   gnutls                  libheif                 libunistring            openjdk                 python@3.8              webp
-  freetype                httpie                  libidn2                 little-cms2             openjpeg                readline                x265
-  gdbm                    ilmbase                 liblqr                  lz4                     openssl@1.1             screenresolution        xmlto
-  gettext                 imagemagick             libomp                  lzo                     openvpn                 shared-mime-info        xz
-```
-
 ## Install Node Version Manager
 
-* install
-```
-brew install nvm
-mkdir ~/.nvm
-```
-
-* .zshrc
+* Install Node Version Manager
   ```
-  export NVM_DIR=~/.nvm
-  source $(brew --prefix nvm)/nvm.sh
+  mkdir ~/.nvm
+  brew install nvm
+  ```
+
+## Install other packages
+
+* `brew list`
+  ```
+  ant                     ghostscript             lame                    libtool                 nginx                   pkcs11-helper           tree
+  bdw-gc                  glib                    libde265                libunistring            node                    pkg-config              unbound
+  cask                    gmp                     libevent                libvorbis               nvm                     protobuf                utf8proc
+  coreutils               gnu-getopt              libffi                  little-cms2             openexr                 python@3.8              watch
+  diff-so-fancy           gnutls                  libheif                 lz4                     openjdk                 python@3.9              webp
+  docbook                 guile                   libidn2                 lzo                     openjpeg                readline                wget
+  docbook-xsl             htop                    liblqr                  mad                     openssl@1.1             ripgrep                 x265
+  dos2unix                httpie                  libogg                  mpg123                  openvpn                 screenresolution        xmlto
+  emacs                   icu4c                   libomp                  mysql                   opus                    shared-mime-info        xz
+  flac                    ilmbase                 libpng                  mysql-client            opusfile                sox                     yarn
+  freetype                imagemagick             libsndfile              ncurses                 p11-kit                 sqlite
+  gdbm                    jansson                 libtasn1                neofetch                pcre                    tcping
+  gettext                 jpeg                    libtiff                 nettle                  pcre2                   tmux
+  adobe-acrobat-reader          atom                          docker                        google-chat                   java                          skype
+  alacritty                     balenaetcher                  drawio                        google-chrome                 microsoft-auto-update         spotify
+  android-ndk                   bitwarden                     firefox                       imageoptim                    microsoft-edge                vagrant
+  android-sdk                   blisk                         gifcapture                    insomnia                      mono-mdk                      visual-studio-code
+  android-studio                dbeaver-community             gimp                          intellij-idea-ce              mysqlworkbench
+  ```
+
+* `brew list --cask`
+  ```
+  adobe-acrobat-reader          atom                          docker                        google-chat                   java                          skype
+  alacritty                     balenaetcher                  drawio                        google-chrome                 microsoft-auto-update         spotify
+  android-ndk                   bitwarden                     firefox                       imageoptim                    microsoft-edge                vagrant
+  android-sdk                   blisk                         gifcapture                    insomnia                      mono-mdk                      visual-studio-code
+  android-studio                dbeaver-community             gimp                          intellij-idea-ce              mysqlworkbench
   ```

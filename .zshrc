@@ -1,3 +1,5 @@
+# zmodload zsh/zprof
+
 # Load plugins from libs
 for plugin in $HOME/dotConfig/libs/**/*.plugin.zsh; do
     source $plugin
@@ -19,7 +21,6 @@ if [[ $OSTYPE == "cygwin" ]]; then
 fi
 
 # Source OSX configs
-if [[ $OSTYPE == darwin* ]]; then
-    source $HOME/dotConfig/osx/nvm.zsh
-    source $(brew --prefix nvm)/nvm.sh
-fi
+[[ $OSTYPE == darwin* ]] && source $HOME/dotConfig/osx/nvm.zsh
+
+# zprof | tee zprof1.out
