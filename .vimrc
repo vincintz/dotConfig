@@ -61,19 +61,56 @@ set hlsearch
 set ignorecase
 set smartcase
 
-" colors for non-visible chars
-highlight NonText ctermfg=DarkGrey
-highlight LineNr  ctermfg=Grey
+set clipboard=unnamed
 
 " Set colorscheme
-colorscheme industry
+" colorscheme industry
+
+" colors for non-visible chars
+highlight NonText ctermfg=darkgray
+highlight SpecialKey ctermfg=darkgray
+highlight LineNr ctermfg=gray
+highlight CursorLineNr ctermfg=gray
+highlight CursorLine ctermfg=gray
+
+syntax on
+
+
+let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git'
+
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'mattn/emmet-vim'
+
+call plug#end()
+
 
 " disable arrow 
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+" map <up> <nop>
+" map <down> <nop>
+" map <left> <nop>
+" map <right> <nop>
 " imap <up> <nop>
 " imap <down> <nop>
 " imap <left> <nop>
 " imap <right> <nop>
+
+
+nmap <leader>gh :diffget //3<CR>
+nmap <leader>gu :diffget //2<CR>
+nmap <leader>gs :G<CR>
+map <C-n> :NERDTreeToggle<CR>
+map <C-o> :FZF<CR>
+
