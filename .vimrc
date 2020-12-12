@@ -1,27 +1,13 @@
 " Get the defaults that most users want.
 source $VIMRUNTIME/defaults.vim
 
+set autoindent
 set nobackup		" do not keep a backup file, use versions instead
 
 if &t_Co > 2 || has("gui_running")
   " Switch on highlighting the last used search pattern.
   set hlsearch
 endif
-
-" Only do this part when compiled with support for autocommands.
-if has("autocmd")
-  " Put these in an autocmd group, so that we can delete them easily.
-  augroup vimrcEx
-  au!
-  " For all text files set 'textwidth' to 78 characters.
-  autocmd FileType text setlocal textwidth=78
-
-  augroup END
-
-else
-  set autoindent		" always set autoindenting on
-
-endif " has("autocmd")
 
 " The matchit plugin makes the % command work better, but it is not backwards
 " compatible.
@@ -75,9 +61,6 @@ highlight CursorLine ctermfg=gray
 
 syntax on
 
-
-let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git'
-
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -91,7 +74,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree' | Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline' | Plug 'vim-airline/vim-airline-themes'
 Plug 'tpope/vim-fugitive'
-Plug 'ycm-core/YouCompleteMe'
+" Plug 'ycm-core/YouCompleteMe'
 Plug 'mattn/emmet-vim'
 
 call plug#end()
@@ -108,9 +91,15 @@ call plug#end()
 " imap <right> <nop>
 
 
+let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendo'
+let $FZF_DEFAULT_OPTS = "--preview 'bat --theme=TwoDark --style=numbers --color=always --line-range :120 {}'"
+let NERDTreeShowHidden=1
+
+
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
-map <C-n> :NERDTreeToggle<CR>
-map <C-o> :FZF<CR>
+nmap <C-n> :NERDTreeToggle<CR>
+nmap <C-p> :FZF<CR>
 
+noremap ; :
