@@ -16,6 +16,7 @@ set wildmenu
 " Search settings
 set incsearch
 set nowrap
+set ignorecase
 set smartcase
 
 " Use undofile instead of backup
@@ -25,11 +26,13 @@ set undofile
 
 " Allow backspace
 set backspace=indent,eol,start
-set clipboard=unnamed
+
+" Yank to system clipboard
+set clipboard+=unnamedplus
 
 " show invisble characters
 set list
-set listchars=tab:>-,trail:.,precedes:<,extends:>,eol:$
+set listchars=tab:>-,trail:.,precedes:<,extends:> ",eol:$
 
 " Show marker column
 set colorcolumn=120
@@ -53,11 +56,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-commentary'
 call plug#end()
 
-let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendo'
+let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
 let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=TwoDark --style=numbers --color=always --line-range :120 {}'"
 let g:undotree_WindowLayout = 4
 
-nmap ; :
+" noremap ; :
 nmap <leader>f  :FZF<CR>
 nmap <leader>o  :Fern . -drawer<CR>
 nmap <leader>u  :UndotreeShow<CR>:UndotreeFocus<CR>
@@ -78,7 +81,7 @@ else
 endif
 
 " Colors
-hi LineNr ctermfg=gray
-hi SpecialKey ctermfg=8 guifg=DimGrey
-hi ColorColumn ctermbg=gray
+hi LineNr ctermfg=darkgray
+hi SpecialKey ctermfg=darkgray guifg=DimGrey
+hi ColorColumn ctermbg=darkgray
 
