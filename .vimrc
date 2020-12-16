@@ -67,6 +67,8 @@ nmap <leader>u  :UndotreeShow<CR>:UndotreeFocus<CR>
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
+nmap <leader>gd :Gdiffsplit<CR>
+nmap <leader>gb :Gblame<CR>
 nmap <silent> <leader>d :YcmCompleter GoTo<CR>
 
 " Color settings
@@ -85,3 +87,5 @@ hi LineNr ctermfg=darkgray
 hi SpecialKey ctermfg=darkgray guifg=DimGrey
 hi ColorColumn ctermbg=darkgray
 
+command! Q q
+command! Qa qa
