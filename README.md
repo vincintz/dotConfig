@@ -28,8 +28,15 @@ git clone https://github.com/zsh-users/zsh-history-substring-search
 ```
 
 * Install plug-ins (Linux)
+TODO: Add notes on installing vim plugin thirdparty apps
 ```
 apt install fzf
-apt install fdfind
+apt install fd-find
 apt install bat
 ```
+  * Commands
+  ```
+  fzf
+  fdfind
+  batcat
+  ```
