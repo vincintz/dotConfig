@@ -89,3 +89,9 @@ hi ColorColumn ctermbg=darkgray
 
 command! Q q
 command! Qa qa
+
+hi DiffAdd      ctermfg=Green         ctermbg=DarkGray
+hi DiffChange   ctermfg=Blue          ctermbg=DarkGray
+hi DiffDelete   ctermfg=Red           ctermbg=LightRed
+hi DiffText     ctermfg=Yellow        ctermbg=DarkGray
+
