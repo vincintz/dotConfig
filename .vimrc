@@ -39,6 +39,7 @@ set autoread
 
 " leader key options
 set showcmd
+set timeoutlen=3000
 map <space> \
 
 " Install vim-plug if not found
