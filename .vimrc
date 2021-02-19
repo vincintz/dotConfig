@@ -27,9 +27,6 @@ set undofile
 " Allow backspace
 set backspace=indent,eol,start
 
-" Yank to system clipboard
-set clipboard+=unnamedplus
-
 " show invisble characters
 set list
 set listchars=tab:>-,trail:.,precedes:<,extends:> ",eol:$
@@ -39,6 +36,10 @@ set colorcolumn=120
 
 " automatically load changed files
 set autoread
+
+" leader key options
+set showcmd
+map <space> \
 
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -50,7 +51,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
     Plug 'lambdalisue/fern.vim' | Plug 'lambdalisue/fern-git-status.vim'
     Plug 'tpope/vim-fugitive'
-    Plug 'ycm-core/YouCompleteMe',{ 'do': './install.py' }
     Plug 'mattn/emmet-vim'
     Plug 'mbbill/undotree'
     Plug 'tpope/vim-commentary'
@@ -61,7 +61,8 @@ let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=TwoDark --style=number
 let g:undotree_WindowLayout = 4
 
 " noremap ; :
-nmap <leader>f  :FZF<CR>
+nmap <leader>p  :FZF<CR>
+nmap <leader>f  :Rg<CR>
 nmap <leader>o  :Fern . -drawer<CR>
 nmap <leader>u  :UndotreeShow<CR>:UndotreeFocus<CR>
 nmap <leader>gh :diffget //3<CR>
@@ -69,7 +70,6 @@ nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
 nmap <leader>gd :Gdiffsplit<CR>
 nmap <leader>gb :Gblame<CR>
-nmap <silent> <leader>d :YcmCompleter GoTo<CR>
 
 " Color settings
 " set t_Co=256
