@@ -96,3 +96,7 @@ hi DiffChange   ctermfg=Blue          ctermbg=DarkGray
 hi DiffDelete   ctermfg=Red           ctermbg=LightRed
 hi DiffText     ctermfg=Yellow        ctermbg=DarkGray
 
+" jump to the last position when reopening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+endif
