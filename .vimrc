@@ -61,16 +61,24 @@ let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log 
 let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=TwoDark --style=numbers --color=always --line-range :120 {}'"
 let g:undotree_WindowLayout = 4
 
-" noremap ; :
+" Buffer navigation map
+map bn :bn<cr>
+map bp :bp<cr>
+map bb :Buffers<CR>
+
+" Git shortcuts
+map gs :Gstatus<CR>
+nmap <leader>gs :G<CR>
+nmap <leader>gh :diffget //3<CR>
+nmap <leader>gu :diffget //2<CR>
+nmap <leader>gd :Gdiffsplit<CR>
+nmap <leader>gb :Gblame<CR>
+
+" Other shortcuts
 nmap <leader>p  :FZF<CR>
 nmap <leader>f  :Rg<CR>
 nmap <leader>o  :Fern . -drawer<CR>
 nmap <leader>u  :UndotreeShow<CR>:UndotreeFocus<CR>
-nmap <leader>gh :diffget //3<CR>
-nmap <leader>gu :diffget //2<CR>
-nmap <leader>gs :G<CR>
-nmap <leader>gd :Gdiffsplit<CR>
-nmap <leader>gb :Gblame<CR>
 
 " Color settings
 " set t_Co=256
