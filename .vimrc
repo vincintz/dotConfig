@@ -55,6 +55,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'mattn/emmet-vim'
     Plug 'mbbill/undotree'
     Plug 'tpope/vim-commentary'
+    Plug 'szw/vim-maximizer'
+    Plug 'majutsushi/tagbar'
 call plug#end()
 
 let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
@@ -79,6 +81,7 @@ nmap <leader>p  :FZF<CR>
 nmap <leader>f  :Rg<CR>
 nmap <leader>o  :Fern . -drawer<CR>
 nmap <leader>u  :UndotreeShow<CR>:UndotreeFocus<CR>
+nmap <F8> :TagbarToggle<CR>
 
 " Color settings
 " set t_Co=256

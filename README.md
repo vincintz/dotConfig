@@ -39,19 +39,7 @@ wget https://github.com/junegunn/fzf/releases/download/0.25.1/fzf-0.25.1-linux_a
 tar xf fzf-0.25.1-linux_amd64.tar.gz
 mv fzf /usr/local/bin/
 rm fzf-0.25.1-linux_amd64.tar.gz
+
+apt install exuberant-ctags
 ```
 
-**Deprecated**
-
-TODO: Add notes on installing vim plugin thirdparty apps
-```
-apt install fzf
-apt install fd-find
-apt install bat
-```
-  * Commands
-  ```
-  fzf
-  fdfind
-  batcat
-  ```
