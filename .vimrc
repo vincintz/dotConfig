@@ -87,6 +87,7 @@ nmap <F8> :TagbarToggle<CR>
 " Color settings
 " set t_Co=256
 set background=dark
+colorscheme onedark
 
 " Enable syntax highlighting
 if &diff
