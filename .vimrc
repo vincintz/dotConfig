@@ -57,6 +57,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-commentary'
     Plug 'szw/vim-maximizer'
     Plug 'majutsushi/tagbar'
+    Plug 'joshdick/onedark.vim'
 call plug#end()
 
 let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
