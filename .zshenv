@@ -5,4 +5,4 @@ TERM=xterm-256color
 #     source $HOME/dotConfig/cygwin/envs.zsh
 # fi
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=7'
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
