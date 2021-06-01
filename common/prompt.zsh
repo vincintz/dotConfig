@@ -27,9 +27,9 @@ git_info() {
 
 if [[ $OSTYPE == "cygwin" ]]; then
     PROMPT='%F{white}%~%f $(git_info)$(usr_prompt) '
-    RPROMPT='%F{cyan}[%*]'
+    # RPROMPT='%F{cyan}[%*]'
 else
     PROMPT='%F{white}%~%f $(git_info)%# '
-    RPROMPT='%F{cyan}%m [%*]'
+    # RPROMPT='%F{cyan}%m [%*]'
 fi
 

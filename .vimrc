@@ -71,7 +71,7 @@ map bp :bp<cr>
 map bb :Buffers<CR>
 
 " Git shortcuts
-map gs :Gstatus<CR>
+map gs :Git<CR>
 nmap <leader>gs :G<CR>
 nmap <leader>gh :diffget //3<CR>
 nmap <leader>gu :diffget //2<CR>
