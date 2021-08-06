@@ -65,25 +65,30 @@ let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log 
 let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=TwoDark --style=numbers --color=always --line-range :120 {}'"
 let g:undotree_WindowLayout = 4
 
+" Editor shortcuts
+nmap <silent> nr    :set relativenumber!<cr>
+nmap <silent> nn    :set number!<cr>
+
 " Buffer navigation map
-map bn :bn<cr>
-map bp :bp<cr>
-map bb :Buffers<CR>
+nmap <silent> bb    :Buffers<cr>
+nmap <silent> bn    :bn<cr>
+nmap <silent> bp    :bp<cr>
 
 " Git shortcuts
-map gs :Git<CR>
-nmap <leader>gs :G<CR>
-nmap <leader>gh :diffget //3<CR>
-nmap <leader>gu :diffget //2<CR>
-nmap <leader>gd :Gdiffsplit<CR>
-nmap <leader>gb :Gblame<CR>
+nmap <silent> gg    :GFiles?<cr>
+nmap <silent> gs    :Git<cr>
+nmap <silent> gb    :Git blame<cr>
+nmap <silent> gd    :Gdiffsplit<cr>
+nmap <silent> gh    :diffget //3<cr>
+nmap <silent> gu    :diffget //2<cr>
 
 " Other shortcuts
-nmap <leader>p  :FZF<CR>
-nmap <leader>f  :Rg<CR>
-nmap <leader>o  :Fern . -drawer<CR>
-nmap <leader>u  :UndotreeShow<CR>:UndotreeFocus<CR>
-nmap <F8> :TagbarToggle<CR>
+" map <silent> <F2>
+nmap <silent> <F2>  :FZF<cr>
+nmap <silent> <F3>  :Rg<cr>
+nmap <silent> <F4>  :Fern . -drawer -toggle<cr>
+nmap <silent> <F5>  :UndotreeShow<cr>:UndotreeFocus<cr>
+nmap <silent> <F8>  :TagbarToggle<cr>
 
 " Color settings
 " set t_Co=256
@@ -114,3 +119,4 @@ hi DiffText     ctermfg=Yellow        ctermbg=DarkGray
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
+
