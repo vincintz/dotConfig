@@ -86,7 +86,7 @@ nmap <silent> gu    :diffget //2<cr>
 " map <silent> <F2>
 nmap <silent> <F2>  :FZF<cr>
 nmap <silent> <F3>  :Rg<cr>
-nmap <silent> <F4>  :Fern . -drawer -toggle<cr>
+nmap <silent> <F4>  :Fern . -drawer -toggle -reveal=%<cr>
 nmap <silent> <F5>  :UndotreeShow<cr>:UndotreeFocus<cr>
 nmap <silent> <F8>  :TagbarToggle<cr>
 
