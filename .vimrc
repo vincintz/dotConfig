@@ -66,13 +66,13 @@ let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=TwoDark --style=number
 let g:undotree_WindowLayout = 4
 
 " Editor shortcuts
-nmap <silent> nr    :set relativenumber!<cr>
-nmap <silent> nn    :set number!<cr>
+" nmap <leader> nr    :set relativenumber!<cr>
+" nmap <leader> nn    :set number!<cr>
 
 " Buffer navigation map
 nmap <silent> bb    :Buffers<cr>
-nmap <silent> bn    :bn<cr>
-nmap <silent> bp    :bp<cr>
+" nmap <silent> bn    :bn<cr>
+" nmap <silent> bp    :bp<cr>
 
 " Git shortcuts
 nmap <silent> gg    :GFiles?<cr>
