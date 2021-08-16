@@ -23,6 +23,9 @@ set noswapfile
 set nobackup
 set undofile
 
+" split window to bottom
+set splitbelow
+
 " Allow backspace
 set backspace=indent,eol,start
 
@@ -70,12 +73,15 @@ nmap <silent> gd    :Gdiffsplit<cr>
 nmap <silent> gh    :diffget //3<cr>
 nmap <silent> gu    :diffget //2<cr>
 
-" Other shortcuts
+" Function key shortcuts
 nmap <silent> <F1>  :Rg<cr>
 nmap <silent> <F2>  :FZF<cr>
 nmap <silent> <F4>  :Fern . -drawer -toggle -reveal=%<cr>
-nmap <silent> <F5>  :UndotreeToggle<cr>
-nmap <silent> <F6>  :TagbarToggle<cr>
+nmap <silent> <F5>  :TagbarToggle<cr>
+
+" Ctrl shortcuts
+nmap <C-t>  :terminal<cr>
+nmap <C-z>  :UndotreeToggle<cr>
 
 " Color settings
 " set t_Co=256
