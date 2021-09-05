@@ -1,5 +1,8 @@
 set nocompatible
 
+" allow hidden buffers
+set hidden
+
 " Tab key settings
 set tabstop=4 softtabstop=4
 set shiftwidth=4
@@ -36,6 +39,9 @@ set listchars=tab:>-,trail:.,precedes:<,extends:> ",eol:$
 " Show marker column
 set colorcolumn=120
 
+" Set scroll offset
+set scrolloff=2
+
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -49,10 +55,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'mattn/emmet-vim'
     Plug 'mbbill/undotree'
     Plug 'tpope/vim-commentary'
-    Plug 'szw/vim-maximizer'
     Plug 'majutsushi/tagbar'
     Plug 'joshdick/onedark.vim'
-    Plug 'mattn/emmet-vim'
 call plug#end()
 
 let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
@@ -66,21 +70,19 @@ nmap <silent> ;;    :set number! relativenumber!<cr>
 nmap <silent> bb    :Buffers<cr>
 
 " Git shortcuts
-nmap <silent> gg    :GFiles?<cr>
+nmap <silent> gf    :GFiles?<cr>
 nmap <silent> gs    :Git<cr>
 nmap <silent> gb    :Git blame<cr>
 nmap <silent> gd    :Gdiffsplit<cr>
 nmap <silent> gh    :diffget //3<cr>
 nmap <silent> gu    :diffget //2<cr>
 
-" Function key shortcuts
-nmap <silent> <F1>  :Rg<cr>
-nmap <silent> <F2>  :FZF<cr>
-nmap <silent> <F4>  :Fern . -drawer -toggle -reveal=%<cr>
-nmap <silent> <F5>  :TagbarToggle<cr>
-
 " Ctrl shortcuts
+nmap <C-c>  :TagbarToggle<cr>
+nmap <C-o>  :Fern . -drawer -toggle -reveal=%<cr>
+nmap <C-p>  :FZF<cr>
 nmap <C-t>  :terminal<cr>
+nmap <C-s>  :Rg<cr>
 nmap <C-z>  :UndotreeToggle<cr>
 
 " Color settings
