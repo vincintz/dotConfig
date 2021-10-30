@@ -58,11 +58,13 @@ call plug#begin('~/.vim/plugged')
     Plug 'majutsushi/tagbar'
     Plug 'joshdick/onedark.vim'
     Plug 'editorconfig/editorconfig-vim'
+    Plug 'ojroques/vim-oscyank'
 call plug#end()
 
 let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
 let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=TwoDark --style=numbers --color=always --line-range :120 {}'"
 let g:undotree_WindowLayout = 4
+let g:oscyank_term = 'tmux'
 
 " Toggle hybrid line number
 nmap <silent> ;;    :set number! relativenumber!<cr>
@@ -85,6 +87,9 @@ nmap <C-p>  :FZF<cr>
 nmap <C-t>  :terminal<cr>
 nmap <C-s>  :Rg<cr>
 nmap <C-z>  :UndotreeToggle<cr>
+
+" yank to os clipboard
+vnoremap <C-c> :OSCYank<CR>
 
 " Color settings
 " set t_Co=256
