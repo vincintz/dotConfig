@@ -50,7 +50,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
     Plug 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
-    Plug 'lambdalisue/fern.vim' | Plug 'lambdalisue/fern-git-status.vim'
+    Plug 'lambdalisue/fern.vim' " | Plug 'lambdalisue/fern-git-status.vim'
     Plug 'tpope/vim-fugitive'
     Plug 'mattn/emmet-vim'
     Plug 'mbbill/undotree'
