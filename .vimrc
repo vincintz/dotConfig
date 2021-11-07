@@ -59,6 +59,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'joshdick/onedark.vim'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'ojroques/vim-oscyank'
+    Plug 'leafOfTree/vim-vue-plugin'
 call plug#end()
 
 let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
@@ -120,7 +121,19 @@ hi DiffText     ctermfg=Yellow        ctermbg=DarkGray
 " jump to the last position when reopening a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-  autocmd FileType nginx setlocal commentstring=#\ %s
-  autocmd FileType vue setlocal commentstring=//\ %s
+  " autocmd FileType nginx setlocal commentstring=#\ %s
+  " autocmd FileType vue setlocal commentstring=//\ %s
 endif
 
+function! OnChangeVueSubtype(subtype)
+  echom 'Subtype is '.a:subtype
+  if a:subtype == 'html'
+    setlocal commentstring=<!--\ %s\ -->
+    setlocal comments=s:<!--,m:\ \ \ \ ,e:-->
+  elseif a:subtype =~ 'css'
+    setlocal comments=s1:/*,mb:*,ex:*/ commentstring&
+  else
+    setlocal commentstring=//\ %s
+    setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
+  endif
+endfunction
