@@ -120,5 +120,7 @@ hi DiffText     ctermfg=Yellow        ctermbg=DarkGray
 " jump to the last position when reopening a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+  autocmd FileType nginx setlocal commentstring=#\ %s
+  autocmd FileType vue setlocal commentstring=//\ %s
 endif
 
