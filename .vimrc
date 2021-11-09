@@ -126,7 +126,6 @@ if has("autocmd")
 endif
 
 function! OnChangeVueSubtype(subtype)
-  echom 'Subtype is '.a:subtype
   if a:subtype == 'html'
     setlocal commentstring=<!--\ %s\ -->
     setlocal comments=s:<!--,m:\ \ \ \ ,e:-->
