@@ -49,17 +49,17 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+    Plug 'editorconfig/editorconfig-vim'
+    Plug 'joshdick/onedark.vim'
     Plug 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
     Plug 'lambdalisue/fern.vim' " | Plug 'lambdalisue/fern-git-status.vim'
-    Plug 'tpope/vim-fugitive'
+    Plug 'leafOfTree/vim-vue-plugin'
+    Plug 'majutsushi/tagbar'
     Plug 'mattn/emmet-vim'
     Plug 'mbbill/undotree'
-    Plug 'tpope/vim-commentary'
-    Plug 'majutsushi/tagbar'
-    Plug 'joshdick/onedark.vim'
-    Plug 'editorconfig/editorconfig-vim'
     Plug 'ojroques/vim-oscyank'
-    Plug 'leafOfTree/vim-vue-plugin'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-commentary'
 call plug#end()
 
 let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
@@ -67,11 +67,16 @@ let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=TwoDark --style=number
 let g:undotree_WindowLayout = 4
 let g:oscyank_term = 'tmux'
 
-" Toggle hybrid line number
-nmap <silent> ;;    :set number! relativenumber!<cr>
-
-" Buffer navigation map
-nmap <silent> bb    :Buffers<cr>
+" Shortcuts
+nmap <leader>\      :FZF<cr>
+nmap <leader>]      :Buffers<cr>
+nmap <leader>[      :Rg<cr>
+nmap <leader>q      :Fern . -drawer -toggle -reveal=%<cr>
+nmap <leader>w      :TagbarToggle<cr>
+nmap <leader>e      :UndotreeToggle<cr>
+nmap <leader>r      :source ~/.vimrc<cr>
+nmap <leader>;      :execute "set cc=" . (&cc == "" ? "120" : "")<cr>
+nmap <leader>t      :terminal<cr>
 
 " Git shortcuts
 nmap <silent> gf    :GFiles?<cr>
@@ -82,12 +87,6 @@ nmap <silent> gh    :diffget //3<cr>
 nmap <silent> gu    :diffget //2<cr>
 
 " Ctrl shortcuts
-nmap <C-c>  :TagbarToggle<cr>
-nmap <C-o>  :Fern . -drawer -toggle -reveal=%<cr>
-nmap <C-p>  :FZF<cr>
-nmap <C-t>  :terminal<cr>
-nmap <C-s>  :Rg<cr>
-nmap <C-z>  :UndotreeToggle<cr>
 
 " yank to os clipboard
 vnoremap <C-c> :OSCYank<CR>
