@@ -60,6 +60,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'ojroques/vim-oscyank'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-commentary'
+    Plug 'vimwiki/vimwiki'
 call plug#end()
 
 let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
@@ -72,11 +73,13 @@ nmap <leader>\      :FZF<cr>
 nmap <leader>]      :Buffers<cr>
 nmap <leader>[      :Rg<cr>
 nmap <leader>q      :Fern . -drawer -toggle -reveal=%<cr>
-nmap <leader>w      :TagbarToggle<cr>
+" nmap <leader>w      :TagbarToggle<cr>
 nmap <leader>e      :UndotreeToggle<cr>
 nmap <leader>r      :source ~/.vimrc<cr>
+nmap <leader>t      :TagbarToggle<cr>
 nmap <leader>;      :execute "set cc=" . (&cc == "" ? "120" : "")<cr>
-nmap <leader>t      :terminal<cr>
+nmap <leader>=      :resize +5<cr>
+nmap <leader>-      :resize -5<cr>
 
 " Git shortcuts
 nmap <silent> gf    :GFiles?<cr>
@@ -135,29 +138,4 @@ function! OnChangeVueSubtype(subtype)
     setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
   endif
 endfunction
-
-function! GitBranch()
-  return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
-endfunction
-
-function! StatuslineGit()
-  let l:branchname = GitBranch()
-  return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
-endfunction
-
-set statusline=
-set statusline+=%#PmenuSel#
-set statusline+=%{StatuslineGit()}
-set statusline+=%#LineNr#
-set statusline+=\ %f
-set statusline+=%m
-set statusline+=%=
-set statusline+=%#CursorColumn#
-set statusline+=\ %y
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
-set statusline+=\[%{&fileformat}\]
-set statusline+=\ %p%%
-set statusline+=\ %l:%c
-set statusline+=\ 
-set laststatus=2
 
