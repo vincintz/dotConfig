@@ -128,6 +128,7 @@ if has("autocmd")
   " autocmd FileType vue setlocal commentstring=//\ %s
 endif
 
+" Detect vue subtype
 function! OnChangeVueSubtype(subtype)
   if a:subtype == 'html'
     setlocal commentstring=<!--\ %s\ -->

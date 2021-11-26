@@ -15,3 +15,4 @@ zstyle ':completion:*' menu select # select completions with arrow keys
 zstyle ':completion:*' group-name ''
 # enable approximate matches for completion
 zstyle ':completion:::::' completer _expand _complete _ignored _approximate
+

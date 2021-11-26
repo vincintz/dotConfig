@@ -202,3 +202,4 @@ EXEC  00;32                     # file that is executable; green
 .pdf  01;91
 .tex  01;91
 .md   01;91
+

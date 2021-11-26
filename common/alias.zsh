@@ -5,3 +5,4 @@ alias gts='git status'
 alias gtcx='git add . && git commit -am'
 alias gtd='git diff | diff'
 alias myip="curl http://ipecho.net/plain; echo"
+

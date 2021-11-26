@@ -23,4 +23,3 @@ fi
 # Source OSX configs
 [[ $OSTYPE == darwin* ]] && source $HOME/dotConfig/osx/nvm.zsh
 
-# zprof | tee zprof1.out

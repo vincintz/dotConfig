@@ -6,3 +6,4 @@ TERM=xterm-256color
 # fi
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+

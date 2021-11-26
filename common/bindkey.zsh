@@ -31,3 +31,4 @@ bindkey '^[[3;5~' delete-word
 # Undo/Redo
 bindkey '^Z'      undo
 bindkey '^Y'      redo
+
