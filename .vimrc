@@ -57,6 +57,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'majutsushi/tagbar'
     Plug 'mattn/emmet-vim'
     Plug 'mbbill/undotree'
+    Plug 'mhinz/vim-signify'
     Plug 'ojroques/vim-oscyank'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-commentary'
@@ -90,10 +91,11 @@ nmap <silent> gd    :Gdiffsplit<cr>
 nmap <silent> gh    :diffget //3<cr>
 nmap <silent> gu    :diffget //2<cr>
 
-" Ctrl shortcuts
-
 " yank to os clipboard
 vnoremap <C-c> :OSCYank<CR>
+
+" vim-signify async update
+set updatetime=100
 
 " Color settings
 " set t_Co=256
