@@ -10,11 +10,10 @@ window:
   decorations: none
   startup_mode: Maximized
   title: Terminal
+  opacity: 1.0
 
 scrolling:
   history: 0
-
-background_opacity: 1.0
 
 # Font configuration
 font:

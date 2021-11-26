@@ -43,3 +43,40 @@ rm fzf-0.25.1-linux_amd64.tar.gz
 apt install exuberant-ctags
 ```
 
+## Notes
+* Update
+```
+sudo apt update
+apt list --upgradable | tee apt-upgrade_$(date '+%Y%m%d').txt
+sudo apt upgrande -y
+```
+
+* Install powerline font
+```
+sudo apt-get install fonts-powerline
+```
+
+* Install alacritty
+```
+sudo add-apt-repository ppa:mmstick76/alacritty
+sudo apt install -y  alacritty
+```
+
+* Install vim 8.2
+```
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt install vim
+```
+
+* Install stuff
+```
+sudo apt install -y zsh tmux
+sudo apt install curl net-tools
+```
+
+* Install [vim plug](https://github.com/junegunn/vim-plug)
+```
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
