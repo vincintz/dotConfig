@@ -27,6 +27,8 @@ git_info() {
 
 if [[ $OSTYPE == "cygwin" ]]; then
     PROMPT='%F{white}%~%f $(git_info)$(usr_prompt) '
+elif [[ $OSTYPE == "linux-gnu" ]]; then
+    PROMPT='%F{white}%n@%m:%~%f $(git_info)%# '
 else
     PROMPT='%F{white}%~%f $(git_info)%# '
 fi
