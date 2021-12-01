@@ -85,7 +85,7 @@ nmap <leader>-      :resize -5<cr>
 
 " Git shortcuts
 nmap <silent> gf    :GFiles?<cr>
-nmap <silent> gs    :Git<cr>
+nmap <silent> gs    :Git<cr>:resize 10<cr>
 nmap <silent> gb    :Git blame<cr>
 nmap <silent> gd    :Gdiffsplit<cr>
 nmap <silent> gh    :diffget //3<cr>
