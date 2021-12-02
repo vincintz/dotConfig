@@ -62,6 +62,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-commentary'
     Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
     Plug 'vimwiki/vimwiki'
 call plug#end()
 
@@ -86,6 +87,7 @@ nmap <leader>-      :resize -5<cr>
 " Git shortcuts
 nmap <silent> gf    :GFiles?<cr>
 nmap <silent> gs    :Git<cr>:resize 10<cr>
+nmap <silent> gl    :Git log<cr>:resize +10<cr>
 nmap <silent> gb    :Git blame<cr>
 nmap <silent> gd    :Gdiffsplit<cr>
 nmap <silent> gh    :diffget //3<cr>
@@ -101,6 +103,7 @@ set updatetime=100
 " set t_Co=256
 set background=dark
 colorscheme onedark
+let g:airline_theme='lucius'
 
 " Enable syntax highlighting
 if &diff
@@ -126,8 +129,6 @@ hi DiffText     ctermfg=Yellow        ctermbg=DarkGray
 " jump to the last position when reopening a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-  " autocmd FileType nginx setlocal commentstring=#\ %s
-  " autocmd FileType vue setlocal commentstring=//\ %s
 endif
 
 " Detect vue subtype
