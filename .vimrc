@@ -64,10 +64,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'vimwiki/vimwiki'
-    if v:version < 802
-        finish
+    if v:version >= 802
+        Plug 'lambdalisue/fern-git-status.vim'
     endif
-    Plug 'lambdalisue/fern-git-status.vim'
 call plug#end()
 
 let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
