@@ -23,7 +23,7 @@ sudo apt install vim
 * others
 ```
 sudo apt install -y zsh tmux
-sudo apt install curl net-tools
+sudo apt install -y curl net-tools
 ```
 
 ## Clone dotConfig
