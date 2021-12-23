@@ -1,4 +1,4 @@
-TERM=xterm-256color
+TERM=screen-256color
 
 # Source cygwin environment variables
 # if [[ $OSTYPE == "cygwin" ]]; then

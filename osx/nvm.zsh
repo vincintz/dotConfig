@@ -26,3 +26,4 @@ npx() {
     npx "$@"
 }
 
+export NVM_DIR=$HOME/.nvm
