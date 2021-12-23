@@ -103,6 +103,9 @@ vnoremap <C-c> :OSCYank<CR>
 " vim-signify async update
 set updatetime=100
 
+" diffsplit vertical
+set diffopt+=vertical
+
 " Color settings
 " set t_Co=256
 set background=dark
