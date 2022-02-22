@@ -155,6 +155,11 @@ function! OnChangeVueSubtype(subtype)
   endif
 endfunction
 
+" vimwiki url folding
+let g:vimwiki_url_maxsave=0
+let g:indentLine_concealcursor=""
+let g:indentLine_conceallevel=2
+
 " set
 autocmd TermEnter term://*toggleterm#*
       \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm direction=float"<CR>
@@ -162,5 +167,5 @@ autocmd TermEnter term://*toggleterm#*
 " By applying the mappings this way you can pass a count to your
 " mapping to open a specific window.
 " For example: 2<C-t> will open terminal 2
-nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm direction=float"<CR>
-inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
+" nnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm direction=float"<CR>
+" inoremap <silent><c-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
