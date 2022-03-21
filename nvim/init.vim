@@ -40,7 +40,7 @@ set list
 set listchars=tab:>-,trail:.,precedes:<,extends:> ",eol:$
 
 " Show marker column
-set colorcolumn=120
+" set colorcolumn=120
 
 " Set scroll offset
 set scrolloff=2
@@ -66,8 +66,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'ojroques/vim-oscyank'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-commentary'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
+    " Plug 'vim-airline/vim-airline'
+    " Plug 'vim-airline/vim-airline-themes'
     Plug 'vimwiki/vimwiki'
     " if v:version >= 802
     "     Plug 'lambdalisue/fern-git-status.vim'
@@ -114,7 +114,7 @@ set diffopt+=vertical
 " set t_Co=256
 set background=dark
 colorscheme onedark
-let g:airline_theme='lucius'
+" let g:airline_theme='lucius'
 
 " Enable syntax highlighting
 if &diff
