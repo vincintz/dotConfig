@@ -3,25 +3,26 @@ set nocompatible
 " allow hidden buffers
 set hidden
 
-" Tab key settings
+" tab key settings
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
 
-" Show relative line numbers
+" line number
 set number relativenumber
+set nowrap
 
-set ruler
+" menu behaviour
 set wildmenu
 
-" Search settings
+" search settings
 set incsearch
-set nowrap
 set ignorecase
 set smartcase
+set shortmess-=S
 
-" Use undofile instead of backup
+" use undofile instead of backup
 set noswapfile
 set nobackup
 set undofile
@@ -29,17 +30,18 @@ set undofile
 " split window to bottom
 set splitbelow
 
-" Allow backspace
+" allow backspace
 set backspace=indent,eol,start
 
 " show invisble characters
 set list
 set listchars=tab:>-,trail:.,precedes:<,extends:> ",eol:$
 
-" Show marker column
+" show marker column
 set colorcolumn=120
+set ruler
 
-" Set scroll offset
+" set scroll offset
 set scrolloff=2
 
 " Install vim-plug if not found
@@ -118,6 +120,11 @@ if &diff
 else
     syntax on
 endif
+
+" vimwiki url folding
+let g:vimwiki_url_maxsave=0
+let g:indentLine_concealcursor=""
+let g:indentLine_conceallevel=2
 
 " Colors
 hi LineNr ctermfg=darkgray
