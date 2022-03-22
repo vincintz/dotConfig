@@ -4,5 +4,4 @@ alias mkcd='foo(){ mkdir -p "$1"; cd "$1" }; foo'
 alias gts='git status'
 alias gtcx='git add . && git commit -am'
 alias gtd='git diff | diff'
-alias myip="curl http://ipecho.net/plain; echo"
-alias v="nvim"
+alias myip="curl https://ifconfig.me; echo"
