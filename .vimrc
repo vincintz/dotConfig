@@ -44,6 +44,9 @@ set ruler
 " set scroll offset
 set scrolloff=2
 
+" set paste on
+set paste
+
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -67,11 +70,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'vimwiki/vimwiki'
-    Plug 'diepm/vim-rest-console'
     Plug 'chengzeyi/multiterm.vim'
-    " if v:version >= 802
-    "     Plug 'lambdalisue/fern-git-status.vim'
-    " endif
 call plug#end()
 
 let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
