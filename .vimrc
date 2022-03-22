@@ -67,6 +67,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'vimwiki/vimwiki'
+    Plug 'diepm/vim-rest-console'
+    Plug 'chengzeyi/multiterm.vim'
     " if v:version >= 802
     "     Plug 'lambdalisue/fern-git-status.vim'
     " endif
@@ -98,6 +100,12 @@ nmap <silent> gb    :Git blame<cr>
 nmap <silent> gd    :Gdiffsplit<cr>
 nmap <silent> gh    :diffget //3<cr>
 nmap <silent> gu    :diffget //2<cr>
+
+" ctrl-t to toggle terminal
+nmap <C-t> <Plug>(Multiterm)
+tmap <C-t> <Plug>(Multiterm)
+imap <C-t> <Plug>(Multiterm)
+xmap <C-t> <Plug>(Multiterm)
 
 " yank to os clipboard
 vnoremap <C-c> :OSCYank<CR>
