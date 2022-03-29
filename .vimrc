@@ -44,8 +44,8 @@ set ruler
 " set scroll offset
 set scrolloff=2
 
-" set paste on
-set paste
+" set paste on - conflicts with emmet-vim
+" set paste
 
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
