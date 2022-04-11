@@ -54,6 +54,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+    Plug 'chengzeyi/multiterm.vim'
     Plug 'chr4/nginx.vim'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'joshdick/onedark.vim'
@@ -65,12 +66,12 @@ call plug#begin('~/.vim/plugged')
     Plug 'mbbill/undotree'
     Plug 'mhinz/vim-signify'
     Plug 'ojroques/vim-oscyank'
+    Plug 'tabnine/YouCompleteMe'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-commentary'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'vimwiki/vimwiki'
-    Plug 'chengzeyi/multiterm.vim'
 call plug#end()
 
 let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
