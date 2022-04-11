@@ -72,3 +72,12 @@ git clone https://github.com/zsh-users/zsh-history-substring-search
   ```
 </details>
 
+<details>
+  <summary>Complie YouCompleteMe </summary>
+  * https://github.com/ycm-core/YouCompleteMe
+
+  ```
+  cd ~/.vim/plugged/YouCompleteMe/
+  ./install.py --ts-completer
+  ```
+</details>
