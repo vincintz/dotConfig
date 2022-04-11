@@ -78,6 +78,13 @@ let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log 
 let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=TwoDark --style=numbers --color=always --line-range :120 {}'"
 let g:undotree_WindowLayout = 4
 let g:oscyank_term = 'tmux'
+let g:ycm_auto_trigger = 0
+let g:ycm_complete_in_strings = 0
+
+" YouCompleteMe config
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_auto_hover=''
 
 " Shortcuts
 nmap <leader>\      :FZF<cr>
