@@ -66,8 +66,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'mbbill/undotree'
     Plug 'mhinz/vim-signify'
     Plug 'ojroques/vim-oscyank'
-    Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-commentary'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-unimpaired'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'vimwiki/vimwiki'
@@ -91,13 +92,13 @@ nmap <leader>\      :FZF<cr>
 nmap <leader>]      :Buffers<cr>
 nmap <leader>[      :Rg<cr>
 nmap <leader>q      :Fern . -drawer -toggle -reveal=%<cr>
-" nmap <leader>w      :TagbarToggle<cr>
 nmap <leader>e      :UndotreeToggle<cr>
 nmap <leader>r      :source ~/.vimrc<cr>
 nmap <leader>t      :TagbarToggle<cr>
 nmap <leader>;      :execute "set cc=" . (&cc == "" ? "120" : "")<cr>
 nmap <leader>=      :resize +5<cr>
 nmap <leader>-      :resize -5<cr>
+nmap <leader>d      :YcmCompleter GoToDefinition<cr>
 
 " Git shortcuts
 nmap <silent> gf    :GFiles?<cr>
