@@ -26,6 +26,7 @@ set shortmess-=S
 set noswapfile
 set nobackup
 set undofile
+set undodir=~/.vim/undo/
 
 " split window to bottom
 set splitbelow
