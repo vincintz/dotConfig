@@ -1,5 +1,8 @@
 set nocompatible
 
+" set encoding
+set encoding=utf-8
+
 " allow hidden buffers
 set hidden
 
