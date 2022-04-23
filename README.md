@@ -24,6 +24,7 @@ sudo apt install vim
 ```
 sudo apt install -y zsh tmux
 sudo apt install -y curl net-tools
+sudo apt install -y build-essential cmake vim-nox python3-dev
 ```
 
 ## Clone dotConfig
@@ -77,7 +78,6 @@ git clone https://github.com/zsh-users/zsh-history-substring-search
   * https://github.com/ycm-core/YouCompleteMe
 
   ```
-  cd ~/.vim/plugged/YouCompleteMe/
-  ./install.py --ts-completer
+  ( cd ~/.vim/plugged/YouCompleteMe/ && ./install.py --ts-completer )
   ```
 </details>
