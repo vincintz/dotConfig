@@ -76,11 +76,19 @@ if empty(glob('~/.vim/autoload/plug.vim'))
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
 
+let vim_plug_just_installed = 0
+let vim_plug_path = expand('~/.vim/autoload/plug.vim')
+if !filereadable(vim_plug_path)
+    echo "Installing Vim-plug..."
+    silent !mkdir -p ~/.vim/autoload
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    let vim_plug_just_installed = 1
+endif
+
 call plug#begin('~/.vim/plugged')
     Plug 'chengzeyi/multiterm.vim'
     Plug 'chr4/nginx.vim'
     Plug 'editorconfig/editorconfig-vim'
-    Plug 'joshdick/onedark.vim'
     Plug 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
     Plug 'lambdalisue/fern.vim'
     Plug 'leafOfTree/vim-vue-plugin'
@@ -97,7 +105,14 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline-themes'
     Plug 'vimwiki/vimwiki'
     Plug 'ycm-core/YouCompleteMe'
+    " colorschemes
+    Plug 'joshdick/onedark.vim'
 call plug#end()
+
+if vim_plug_just_installed
+    echo "Installing Bundles, please ignore key map error messages"
+    :PlugInstall
+endif
 
 let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
 let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=TwoDark --style=numbers --color=always --line-range :120 {}'"
@@ -115,6 +130,7 @@ let g:ycm_auto_hover=''
 nmap <leader>\      :FZF<cr>
 nmap <leader>]      :Buffers<cr>
 nmap <leader>[      :Rg<cr>
+nmap <leader>p      :set invpaste paste?<cr>
 nmap <leader>q      :Fern . -drawer -toggle -reveal=%<cr>
 nmap <leader>e      :UndotreeToggle<cr>
 nmap <leader>r      :source ~/.vimrc<cr>
