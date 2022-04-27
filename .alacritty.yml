@@ -1,6 +1,8 @@
 # Set TERM environment variable
 .env:
   TERM: 'xterm-256color'
+  LANG: "en_US.UTF-8"
+  LC_CTYPE: "en_US.UTF-8"
 
 # Window configuration
 window:
@@ -18,19 +20,24 @@ scrolling:
 # Font configuration
 font:
   normal:
-    family: Source Code Pro for Powerline
+    family: Hack
     style: Regular
   bold:
-    family: Source Code Pro for Powerline
+    family: Hack
     style: Bold
   italic:
-    family: Source Code Pro for Powerline
+    family: Hack
     style: Italic
   bold_italic:
-    family: Source Code Pro for Powerline
+    family: Hack
     style: Bold Italic
   size: 16.0
-  use_thin_strokes: true
+  # use_thin_strokes: true
+
+colors:
+  primary:
+    background: '#262626'
+    foreground: '#AFAFAF'
 
 selection:
   save_to_clipboard: false

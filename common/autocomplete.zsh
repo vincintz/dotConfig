@@ -10,7 +10,8 @@ fi
 
 zmodload -i zsh/complist
 
-zstyle ':completion:*' menu select # select completions with arrow keys
+# select completions with arrow keys
+zstyle ':completion:*' menu select
 # group results by category
 zstyle ':completion:*' group-name ''
 # enable approximate matches for completion

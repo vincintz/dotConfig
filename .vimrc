@@ -1,6 +1,7 @@
+" do not require full VI compatability
 set nocompatible
 
-" set encoding
+" set file encoding
 set encoding=utf-8
 
 " allow hidden buffers
@@ -61,7 +62,9 @@ set list
 set listchars=tab:>-,trail:.,precedes:<,extends:> ",eol:$
 
 " show marker column
-set colorcolumn=120
+let &colorcolumn=join(range(121,999),",")
+
+" show cursor position
 set ruler
 
 " set scroll offset
@@ -75,27 +78,33 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-    Plug 'chengzeyi/multiterm.vim'
     Plug 'chr4/nginx.vim'
+    Plug 'diepm/vim-rest-console'
     Plug 'editorconfig/editorconfig-vim'
-    Plug 'junegunn/fzf' | Plug 'junegunn/fzf.vim'
+    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'junegunn/fzf.vim'
     Plug 'lambdalisue/fern.vim'
     Plug 'leafOfTree/vim-vue-plugin'
     Plug 'majutsushi/tagbar'
     Plug 'mattn/emmet-vim'
-    Plug 'mbbill/undotree'
-    Plug 'mhinz/vim-signify'
+    Plug 'mhinz/vim-signify'  " similar to vim-gitgutter
     Plug 'ojroques/vim-oscyank'
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-unimpaired'
     Plug 'tpope/vim-surround'
+    Plug 'vimwiki/vimwiki'
+    Plug 'https://tpope.io/vim/dispatch.git'
+    " colors and themes
+    Plug 'joshdick/onedark.vim'
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
-    Plug 'vimwiki/vimwiki'
-    Plug 'ycm-core/YouCompleteMe'
-    " colorschemes
-    Plug 'joshdick/onedark.vim'
+    " install new plugins
+    if version >= 802
+        Plug 'chengzeyi/multiterm.vim'
+        Plug 'psliwka/vim-smoothie'
+        Plug 'ycm-core/YouCompleteMe'
+    endif
 call plug#end()
 
 if vim_plug_just_installed
@@ -103,52 +112,28 @@ if vim_plug_just_installed
     :PlugInstall
 endif
 
+" fuzzy finder options
 let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
-let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=TwoDark --style=numbers --color=always --line-range :120 {}'"
-let g:undotree_WindowLayout = 4
+let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=TwoDark --style=header,numbers --color=always --line-range :120 {}'"
+
 let g:oscyank_term = 'tmux'
 let g:ycm_auto_trigger = 0
 let g:ycm_complete_in_strings = 0
 
-" YouCompleteMe config
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_auto_hover=''
+" config for new plugins
+if version >= 802
+    " YouCompleteMe config
+    let g:ycm_autoclose_preview_window_after_completion = 1
+    let g:ycm_autoclose_preview_window_after_insertion = 1
+    let g:ycm_auto_hover=''
 
-" Shortcuts
-nmap <leader>\      :FZF<cr>
-nmap <leader>]      :Buffers<cr>
-nmap <leader>[      :Rg<cr>
-nmap <leader>p      :set invpaste paste?<cr>
-nmap <leader>q      :Fern . -drawer -toggle -reveal=%<cr>
-nmap <leader>e      :UndotreeToggle<cr>
-nmap <leader>r      :source ~/.vimrc<cr>
-nmap <leader>t      :TagbarToggle<cr>
-nmap <leader>;      :execute "set cc=" . (&cc == "" ? "120" : "")<cr>
-nmap <leader>=      :resize +5<cr>
-nmap <leader>-      :resize -5<cr>
-nmap <leader>d      :YcmCompleter GoToDefinition<cr>
-
-" Git shortcuts
-nmap <silent> gf    :GFiles?<cr>
-nmap <silent> gs    :Git<cr>:resize 10<cr>
-nmap <silent> gl    :Gclog<cr>
-nmap <silent> gb    :Git blame<cr>
-nmap <silent> gd    :Gdiffsplit<cr>
-nmap <silent> gh    :diffget //3<cr>
-nmap <silent> gu    :diffget //2<cr>
-
-" ctrl-t to toggle terminal
-nmap <C-t> <Plug>(Multiterm)
-tmap <C-t> <Plug>(Multiterm)
-imap <C-t> <Plug>(Multiterm)
-xmap <C-t> <Plug>(Multiterm)
-
-" yank to os clipboard
-vnoremap <C-c> :OSCYank<CR>
+    " smooth scroll
+    let g:smoothie_speed_constant_factor = 100
+    let g:smoothie_speed_linear_factor = 30
+endif
 
 " vim-signify async update
-set updatetime=100
+set updatetime=500
 
 " diffsplit vertical
 set diffopt+=vertical
@@ -172,34 +157,93 @@ let g:indentLine_concealcursor=""
 let g:indentLine_conceallevel=2
 
 " Colors
-hi LineNr ctermfg=darkgray
-hi SpecialKey ctermfg=darkgray guifg=DimGrey
-hi ColorColumn ctermbg=darkgray
+hi LineNr       ctermfg=darkgray    ctermbg=black
+hi SpecialKey   ctermfg=darkgray
+hi ColorColumn  ctermbg=black
 
 command! Q q
 command! Qa qa
 command! Wq wq
 
-hi DiffAdd      ctermfg=Green         ctermbg=DarkGray
-hi DiffChange   ctermfg=Blue          ctermbg=DarkGray
-hi DiffDelete   ctermfg=Red           ctermbg=LightRed
-hi DiffText     ctermfg=Yellow        ctermbg=DarkGray
+" diff colors
+hi DiffAdd      term=bold       ctermfg=235     ctermbg=114
+hi DiffDelete   term=bold       ctermfg=9       ctermbg=224
+hi DiffChange   term=bold       cterm=underline ctermfg=180
+hi DiffText     term=reverse    ctermfg=235     ctermbg=180
 
 " jump to the last position when reopening a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
 
-" Detect vue subtype
-function! OnChangeVueSubtype(subtype)
-  if a:subtype == 'html'
-    setlocal commentstring=<!--\ %s\ -->
-    setlocal comments=s:<!--,m:\ \ \ \ ,e:-->
-  elseif a:subtype =~ 'css'
-    setlocal comments=s1:/*,mb:*,ex:*/ commentstring&
-  else
-    setlocal commentstring=//\ %s
-    setlocal comments=sO:*\ -,mO:*\ \ ,exO:*/,s1:/*,mb:*,ex:*/,://
-  endif
+function! ToggleQuickFix()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+        Copen
+    else
+        cclose
+    endif
 endfunction
 
+" project search shortcuts
+nmap <C-p>          :FZF!<CR>
+nmap <C-s>          :Rg!<CR>
+
+" more shortcuts
+nmap <leader>\      :TagbarToggle<CR>
+nmap <leader>]      :Buffers!<CR>
+nmap <leader>p      :set invpaste paste?<CR>
+nmap <leader>q      :call ToggleQuickFix()<CR>
+nmap <leader>e      :Fern . -drawer -toggle -reveal=%<CR>
+nmap <leader>r      :source ~/.vimrc<CR>
+nmap <leader>d      :YcmCompleter GoToDefinition<CR>
+
+" hide the line width warning line
+nmap <leader>;      :execute "set cc=" . (&cc == "" ? "120" : "")<CR>
+
+" window resize
+nmap <leader>=      :resize +5<CR>
+nmap <leader>-      :resize -5<CR>
+
+" Git shortcuts
+nmap <silent>gf     :GitFiles!?<CR>
+nmap <silent>gs     :Git<CR>:resize 10<CR>
+nmap <silent>gl     :Gclog<CR>
+nmap <silent>gb     :Git blame<CR>
+nmap <silent>gd     :Gdiffsplit<CR>
+
+" Lint commands
+nmap <silent>lp     :compiler pylint<CR>:Make! %<CR>
+nmap <silent>lP     :compiler pylint<CR>:Make! $(git diff --name-only -- "*.py")<CR>
+nmap <silent>lj     :compiler eslint<CR>:Make! %<CR>
+nmap <silent>lJ     :compiler eslint<CR>:Make! $(git diff --name-only -- "*.vue" "*.js")<CR>
+
+" ctrl-c yank to os clipboard
+xmap <C-c>      :OSCYank<CR>
+
+" keyboard shortcuts based on installed plugins
+if version >= 802
+    " ctrl-t to toggle terminal
+    nmap <C-t>      :1Multiterm<CR>
+    imap <C-t>      :1Multiterm<CR>
+    xmap <C-t>      :1Multiterm<CR>
+    tmap <C-t>      <Plug>(Multiterm)
+
+    " ctrl-j for NodeJS
+    nmap <C-j>      :2Multiterm node<CR>
+    imap <C-j>      :2Multiterm node<CR>
+    xmap <C-j>      :2Multiterm node<CR>
+    tmap <C-j>      <Plug>(Multiterm)
+
+    " ctrl-n for python3
+    nmap <C-n>      :3Multiterm python3<CR>
+    imap <C-n>      :3Multiterm python3<CR>
+    xmap <C-n>      :3Multiterm python3<CR>
+    tmap <C-n>      <Plug>(Multiterm)
+
+else
+    " ctrl-t to run terminal
+    nmap <C-t>      :terminal<CR>
+    imap <C-t>      :terminal<CR>
+    xmap <C-t>      :terminal<CR>
+
+endif

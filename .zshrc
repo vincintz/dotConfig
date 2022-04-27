@@ -18,8 +18,9 @@ if [[ $OSTYPE == "cygwin" ]]; then
     source $HOME/dotConfig/cygwin/alias.zsh
     source $HOME/dotConfig/cygwin/vars.zsh
     source $HOME/dotConfig/cygwin/dircolors.zsh
-fi
-
 # Source OSX configs
-[[ $OSTYPE == darwin* ]] && source $HOME/dotConfig/osx/nvm.zsh
+elif [[ $OSTYPE == darwin* ]]; then
+    source $HOME/dotConfig/osx/envs.zsh
+    source $HOME/dotConfig/osx/nvm.zsh
+fi
 
