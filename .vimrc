@@ -79,7 +79,6 @@ endif
 
 call plug#begin('~/.vim/plugged')
     Plug 'chr4/nginx.vim'
-    Plug 'diepm/vim-rest-console'
     Plug 'editorconfig/editorconfig-vim'
     Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'junegunn/fzf.vim'
@@ -102,6 +101,7 @@ call plug#begin('~/.vim/plugged')
     " install new plugins
     if version >= 802
         Plug 'chengzeyi/multiterm.vim'
+        Plug 'diepm/vim-rest-console'
         Plug 'psliwka/vim-smoothie'
         Plug 'ycm-core/YouCompleteMe'
     endif
@@ -117,19 +117,32 @@ let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log 
 let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=TwoDark --style=header,numbers --color=always --line-range :120 {}'"
 
 let g:oscyank_term = 'tmux'
-let g:ycm_auto_trigger = 0
-let g:ycm_complete_in_strings = 0
-
 " config for new plugins
 if version >= 802
     " YouCompleteMe config
     let g:ycm_autoclose_preview_window_after_completion = 1
     let g:ycm_autoclose_preview_window_after_insertion = 1
     let g:ycm_auto_hover=''
+    let g:ycm_auto_trigger = 0
+    let g:ycm_complete_in_strings = 0
 
     " smooth scroll
     let g:smoothie_speed_constant_factor = 100
     let g:smoothie_speed_linear_factor = 30
+
+    " vim-rest-console settings
+    let g:vrc_output_buffer_name = '_localhost_out.json'
+    let g:vrc_trigger = '<C-k>'
+    let g:vrc_syntax_highlight_response = 1
+    let g:vrc_auto_format_response_enabled = 1
+    let b:vrc_response_default_content_type = 'application/json'
+    let g:vrc_curl_opts = {
+                \   '--silent': ''
+                \}
+    let g:vrc_auto_format_response_patterns = {
+                \   'json': 'python3 -mjson.tool',
+                \}
+
 endif
 
 " vim-signify async update
@@ -219,25 +232,23 @@ nmap <silent>lJ     :compiler eslint<CR>:Make! $(git diff --name-only -- "*.vue"
 
 " ctrl-c yank to os clipboard
 xmap <C-c>      :OSCYank<CR>
+xmap <C-j>      :!python3 -mjson.tool<CR>
 
 " keyboard shortcuts based on installed plugins
 if version >= 802
     " ctrl-t to toggle terminal
     nmap <C-t>      :1Multiterm<CR>
     imap <C-t>      :1Multiterm<CR>
-    xmap <C-t>      :1Multiterm<CR>
     tmap <C-t>      <Plug>(Multiterm)
 
     " ctrl-j for NodeJS
     nmap <C-j>      :2Multiterm node<CR>
     imap <C-j>      :2Multiterm node<CR>
-    xmap <C-j>      :2Multiterm node<CR>
     tmap <C-j>      <Plug>(Multiterm)
 
     " ctrl-n for python3
     nmap <C-n>      :3Multiterm python3<CR>
     imap <C-n>      :3Multiterm python3<CR>
-    xmap <C-n>      :3Multiterm python3<CR>
     tmap <C-n>      <Plug>(Multiterm)
 
 else
