@@ -140,7 +140,7 @@ if version >= 802
                 \   '--silent': ''
                 \}
     let g:vrc_auto_format_response_patterns = {
-                \   'json': 'python3 -mjson.tool',
+                \   'json': 'python3 -mjson.tool --indent=2',
                 \}
 
 endif
@@ -232,7 +232,7 @@ nmap <silent>lJ     :compiler eslint<CR>:Make! $(git diff --name-only -- "*.vue"
 
 " ctrl-c yank to os clipboard
 xmap <C-c>      :OSCYank<CR>
-xmap <C-j>      :!python3 -mjson.tool<CR>
+xmap <C-j>      :!python3 -mjson.tool --indent=2<CR>
 
 " keyboard shortcuts based on installed plugins
 if version >= 802
