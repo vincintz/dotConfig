@@ -27,6 +27,25 @@ sudo apt install -y curl net-tools
 sudo apt install -y build-essential cmake vim-nox python3-dev
 ```
 
+## Install zsh plugins
+```
+mkdir -p $HOME/dotConfig/libs 2>/dev/null ; cd $_
+git clone https://github.com/Tarrasch/zsh-autoenv
+git clone https://github.com/zsh-users/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-history-substring-search
+```
+
+## Install tmux plugins
+1. Display ssh host in status bar [tmux-current-pane-hostname](https://github.com/soyuka/tmux-current-pane-hostname)
+    ```
+    git clone https://github.com/soyuka/tmux-current-pane-hostname ~/dotConfig/libs/tmux-current-pane-hostname
+    ```
+2. Restore tmux session [tmux-resurrect](https://github.com/tmux-plugins/tmux-resurrect)
+    ```
+    git clone https://github.com/tmux-plugins/tmux-resurrect ~/dotConfig/libs/tmux-resurrect
+    ```
+
 ## Clone dotConfig
 ```
 git clone https://github.com/vincintz/dotConfig
@@ -35,15 +54,6 @@ ln -s $HOME/dotConfig/.zshrc $HOME/.zshrc
 ln -s $HOME/dotConfig/.zshenv $HOME/.zshenv
 ln -s $HOME/dotConfig/.tmux.conf $HOME/.tmux.conf
 ln -s $HOME/dotConfig/.vimrc $HOME/.vimrc
-```
-
-## Install zsh plugins
-```
-mkdir -p $HOME/dotConfig/libs 2>/dev/null ; cd $_
-git clone https://github.com/Tarrasch/zsh-autoenv
-git clone https://github.com/zsh-users/zsh-syntax-highlighting
-git clone https://github.com/zsh-users/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-history-substring-search
 ```
 
 ## Install vim plugins
