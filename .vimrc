@@ -87,7 +87,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'majutsushi/tagbar'
     Plug 'mattn/emmet-vim'
     Plug 'mhinz/vim-signify'  " similar to vim-gitgutter
-    Plug 'ojroques/vim-oscyank'
+    Plug 'ojroques/vim-oscyank', {'branch': 'main'}
     Plug 'tpope/vim-commentary'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-unimpaired'
@@ -116,7 +116,9 @@ endif
 let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
 let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=TwoDark --style=header,numbers --color=always --line-range :120 {}'"
 
-let g:oscyank_term = 'tmux'
+" let g:oscyank_term = 'tmux'
+let g:oscyank_term = 'default'
+
 " config for new plugins
 if version >= 802
     " YouCompleteMe config
