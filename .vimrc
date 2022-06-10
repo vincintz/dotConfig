@@ -232,31 +232,41 @@ nmap <silent>lP     :compiler pylint<CR>:Make! $(git diff --name-only -- "*.py")
 nmap <silent>lj     :compiler eslint<CR>:Make! %<CR>
 nmap <silent>lJ     :compiler eslint<CR>:Make! $(git diff --name-only -- "*.vue" "*.js")<CR>
 
+" ctrl-j format json
+xmap <C-j>      :!python3 -mjson.tool --indent=2<CR>
+
 " ctrl-c yank to os clipboard
 xmap <C-c>      :OSCYank<CR>
-xmap <C-j>      :!python3 -mjson.tool --indent=2<CR>
+let g:clipboard = {
+    \   'name': 'osc52',
+    \   'copy': {
+    \     '+': {lines, regtype -> OSCYankString(join(lines, "\n"))},
+    \     '*': {lines, regtype -> OSCYankString(join(lines, "\n"))},
+    \   },
+    \   'paste': {
+    \     '+': {-> [split(getreg(''), '\n'), getregtype('')]},
+    \     '*': {-> [split(getreg(''), '\n'), getregtype('')]},
+    \   },
+    \ }
+set clipboard=unnamed
 
 " keyboard shortcuts based on installed plugins
 if version >= 802
     " ctrl-t to toggle terminal
     nmap <C-t>      :1Multiterm<CR>
-    imap <C-t>      :1Multiterm<CR>
     tmap <C-t>      <Plug>(Multiterm)
 
     " ctrl-j for NodeJS
     nmap <C-j>      :2Multiterm node<CR>
-    imap <C-j>      :2Multiterm node<CR>
     tmap <C-j>      <Plug>(Multiterm)
 
     " ctrl-n for python3
     nmap <C-n>      :3Multiterm python3<CR>
-    imap <C-n>      :3Multiterm python3<CR>
     tmap <C-n>      <Plug>(Multiterm)
 
 else
     " ctrl-t to run terminal
     nmap <C-t>      :terminal<CR>
-    imap <C-t>      :terminal<CR>
     xmap <C-t>      :terminal<CR>
 
 endif
