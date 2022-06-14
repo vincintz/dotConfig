@@ -103,6 +103,7 @@ call plug#begin('~/.vim/plugged')
         Plug 'chengzeyi/multiterm.vim'
         Plug 'diepm/vim-rest-console'
         Plug 'psliwka/vim-smoothie'
+        Plug 'tpope/vim-dadbod'
         Plug 'ycm-core/YouCompleteMe'
     endif
 call plug#end()
