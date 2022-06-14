@@ -66,12 +66,12 @@ call plug#begin('~/.vim/plugged')
     Plug 'ojroques/vim-oscyank'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-commentary'
-    " Plug 'vim-airline/vim-airline'
-    " Plug 'vim-airline/vim-airline-themes'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
     Plug 'vimwiki/vimwiki'
-    " if v:version >= 802
-    "     Plug 'lambdalisue/fern-git-status.vim'
-    " endif
+    Plug 'diepm/vim-rest-console'
+    Plug 'psliwka/vim-smoothie'
+    Plug 'tpope/vim-dadbod'
 call plug#end()
 
 let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
@@ -79,30 +79,38 @@ let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=TwoDark --style=number
 let g:undotree_WindowLayout = 4
 let g:oscyank_term = 'tmux'
 
-" Shortcuts
-nmap <leader>\      :FZF<cr>
-nmap <leader>]      :Buffers<cr>
-nmap <leader>[      :Rg<cr>
-nmap <leader>q      :Fern . -drawer -toggle -reveal=%<cr>
-" nmap <leader>w      :TagbarToggle<cr>
-nmap <leader>e      :UndotreeToggle<cr>
-nmap <leader>r      :source ~/.vimrc<cr>
-nmap <leader>t      :TagbarToggle<cr>
-nmap <leader>;      :execute "set cc=" . (&cc == "" ? "120" : "")<cr>
-nmap <leader>=      :resize +5<cr>
-nmap <leader>-      :resize -5<cr>
+" project search shortcuts
+nmap <C-p>          :FZF!<CR>
+nmap <C-s>          :Rg!<CR>
+
+" more shortcuts
+nmap <leader>\      :TagbarToggle<CR>
+nmap <leader>]      :Buffers!<CR>
+nmap <leader>e      :Fern . -drawer -toggle -reveal=%<CR>
+nmap <leader>r      :source ~/.vimrc<CR>
+
+" hide the line width warning line
+nmap <leader>;      :execute "set cc=" . (&cc == "" ? "120" : "")<CR>
+
+" window resize
+nmap <leader>=      :resize +5<CR>
+nmap <leader>-      :resize -5<CR>
 
 " Git shortcuts
-nmap <silent> gf    :GFiles?<cr>
-nmap <silent> gs    :Git<cr>:resize 10<cr>
-nmap <silent> gl    :Git log<cr>:resize +10<cr>
-nmap <silent> gb    :Git blame<cr>
-nmap <silent> gd    :Gdiffsplit<cr>
-nmap <silent> gh    :diffget //3<cr>
-nmap <silent> gu    :diffget //2<cr>
+nmap <silent>gf     :GitFiles!?<CR>
+nmap <silent>gs     :Git<CR>:resize 10<CR>
+nmap <silent>gl     :Gclog<CR>
+nmap <silent>gb     :Git blame<CR>
+nmap <silent>gd     :Gdiffsplit<CR>
 
-" yank to os clipboard
-vnoremap <C-c> :OSCYank<CR>
+" Lint commands
+nmap <silent>lp     :compiler pylint<CR>:Make! %<CR>
+nmap <silent>lP     :compiler pylint<CR>:Make! $(git diff --name-only -- "*.py")<CR>
+nmap <silent>lj     :compiler eslint<CR>:Make! %<CR>
+nmap <silent>lJ     :compiler eslint<CR>:Make! $(git diff --name-only -- "*.vue" "*.js")<CR>
+
+" ctrl-j format json
+xmap <C-j>      :!python3 -mjson.tool --indent=2<CR>
 
 " vim-signify async update
 set updatetime=100
