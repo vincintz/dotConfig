@@ -22,5 +22,6 @@ if [[ $OSTYPE == "cygwin" ]]; then
 elif [[ $OSTYPE == darwin* ]]; then
     source $HOME/dotConfig/osx/envs.zsh
     source $HOME/dotConfig/osx/nvm.zsh
+    source $HOME/dotConfig/osx/rprompt.zsh
 fi
 
