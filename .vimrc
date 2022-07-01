@@ -78,33 +78,32 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-    Plug 'chr4/nginx.vim'
-    Plug 'editorconfig/editorconfig-vim'
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
-    Plug 'lambdalisue/fern.vim'
-    Plug 'leafOfTree/vim-vue-plugin'
-    Plug 'majutsushi/tagbar'
-    Plug 'mattn/emmet-vim'
-    Plug 'mhinz/vim-signify'  " similar to vim-gitgutter
-    Plug 'ojroques/vim-oscyank', {'branch': 'main'}
-    Plug 'tpope/vim-commentary'
-    Plug 'tpope/vim-fugitive'
-    Plug 'tpope/vim-unimpaired'
-    Plug 'tpope/vim-surround'
-    Plug 'vimwiki/vimwiki'
-    Plug 'https://tpope.io/vim/dispatch.git'
+    Plug 'https://github.com/chr4/nginx.vim'
+    Plug 'https://github.com/editorconfig/editorconfig-vim'
+    Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'https://github.com/junegunn/fzf.vim'
+    Plug 'https://github.com/lambdalisue/fern.vim'
+    Plug 'https://github.com/leafOfTree/vim-vue-plugin'
+    Plug 'https://github.com/majutsushi/tagbar'
+    Plug 'https://github.com/mattn/emmet-vim'
+    Plug 'https://github.com/mhinz/vim-signify'  " similar to vim-gitgutter
+    Plug 'https://github.com/tpope/vim-commentary'
+    Plug 'https://github.com/tpope/vim-fugitive'
+    Plug 'https://github.com/tpope/vim-unimpaired'
+    Plug 'https://github.com/tpope/vim-surround'
+    Plug 'https://github.com/vimwiki/vimwiki'
     " colors and themes
-    Plug 'joshdick/onedark.vim'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
+    Plug 'https://github.com/rafi/awesome-vim-colorschemes'
+    Plug 'https://github.com/vim-airline/vim-airline'
+    Plug 'https://github.com/vim-airline/vim-airline-themes'
     " install new plugins
     if version >= 802
-        Plug 'chengzeyi/multiterm.vim'
-        Plug 'diepm/vim-rest-console'
-        Plug 'psliwka/vim-smoothie'
-        Plug 'tpope/vim-dadbod'
-        Plug 'ycm-core/YouCompleteMe'
+        Plug 'https://github.com/chengzeyi/multiterm.vim'
+        Plug 'https://github.com/diepm/vim-rest-console'
+        Plug 'https://github.com/psliwka/vim-smoothie'
+        Plug 'https://github.com/tpope/vim-dadbod'
+        Plug 'https://github.com/tpope/vim-dispatch'
+        Plug 'https://github.com/ycm-core/YouCompleteMe'
     endif
 call plug#end()
 
@@ -157,7 +156,7 @@ set diffopt+=vertical
 " Color settings
 " set t_Co=256
 set background=dark
-colorscheme onedark
+colorscheme apprentice
 let g:airline_theme='lucius'
 
 " Enable syntax highlighting
