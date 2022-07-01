@@ -87,6 +87,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/majutsushi/tagbar'
     Plug 'https://github.com/mattn/emmet-vim'
     Plug 'https://github.com/mhinz/vim-signify'  " similar to vim-gitgutter
+    Plug 'https://github.com/thaerkh/vim-workspace'
     Plug 'https://github.com/tpope/vim-commentary'
     Plug 'https://github.com/tpope/vim-fugitive'
     Plug 'https://github.com/tpope/vim-unimpaired'
@@ -115,9 +116,6 @@ endif
 " fuzzy finder options
 let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
 let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=TwoDark --style=header,numbers --color=always --line-range :120 {}'"
-
-" let g:oscyank_term = 'tmux'
-let g:oscyank_term = 'default'
 
 " config for new plugins
 if version >= 802
@@ -170,6 +168,11 @@ endif
 let g:vimwiki_url_maxsave=0
 let g:indentLine_concealcursor=""
 let g:indentLine_conceallevel=2
+
+" workspace
+let g:workspace_autocreate = 1
+let g:workspace_session_directory = $HOME . '/.vim/sessions/'
+let g:workspace_persist_undo_history = 0
 
 " Colors
 hi LineNr       ctermfg=darkgray    ctermbg=black
