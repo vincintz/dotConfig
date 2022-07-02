@@ -14,7 +14,7 @@ set expandtab
 set smartindent
 
 " line number
-set number relativenumber
+set number
 set nowrap
 
 " menu behaviour
@@ -114,7 +114,7 @@ if vim_plug_just_installed
 endif
 
 " fuzzy finder options
-let $FZF_DEFAULT_COMMAND = 'fd . --type f --hidden --exclude .git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
+let $FZF_DEFAULT_COMMAND = 'fd . --type=f --hidden --exclude=.git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
 let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=TwoDark --style=header,numbers --color=always --line-range :120 {}'"
 
 " config for new plugins
@@ -194,6 +194,7 @@ if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
 
+" toggle quick fix window
 function! ToggleQuickFix()
     if empty(filter(getwininfo(), 'v:val.quickfix'))
         Copen
@@ -226,8 +227,9 @@ nmap <leader>-      :resize -5<CR>
 nmap <silent>gf     :GitFiles!?<CR>
 nmap <silent>gs     :Git<CR>:resize 10<CR>
 nmap <silent>gl     :Gclog<CR>
-nmap <silent>gb     :Git blame<CR>
+nmap <silent>gb     :Git blame<CR><C-W><C-W>
 nmap <silent>gd     :Gdiffsplit<CR>
+nmap <silent>gh     :Commits!<CR>
 
 " Lint commands
 nmap <silent>lp     :compiler pylint<CR>:Make! %<CR>
@@ -235,23 +237,8 @@ nmap <silent>lP     :compiler pylint<CR>:Make! $(git diff --name-only -- "*.py")
 nmap <silent>lj     :compiler eslint<CR>:Make! %<CR>
 nmap <silent>lJ     :compiler eslint<CR>:Make! $(git diff --name-only -- "*.vue" "*.js")<CR>
 
-" ctrl-j format json
+" ctrl-j format json on visual mode
 xmap <C-j>      :!python3 -mjson.tool --indent=2<CR>
-
-" ctrl-c yank to os clipboard
-xmap <C-c>      :OSCYank<CR>
-let g:clipboard = {
-    \   'name': 'osc52',
-    \   'copy': {
-    \     '+': {lines, regtype -> OSCYankString(join(lines, "\n"))},
-    \     '*': {lines, regtype -> OSCYankString(join(lines, "\n"))},
-    \   },
-    \   'paste': {
-    \     '+': {-> [split(getreg(''), '\n'), getregtype('')]},
-    \     '*': {-> [split(getreg(''), '\n'), getregtype('')]},
-    \   },
-    \ }
-set clipboard=unnamed
 
 " keyboard shortcuts based on installed plugins
 if version >= 802
