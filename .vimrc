@@ -179,8 +179,10 @@ hi LineNr       ctermfg=darkgray    ctermbg=black
 hi SpecialKey   ctermfg=darkgray
 hi ColorColumn  ctermbg=black
 
+" Accept common typos
 command! Q q
 command! Qa qa
+command! W w
 command! Wq wq
 
 " diff colors
@@ -260,3 +262,6 @@ else
     xmap <C-t>      :terminal<CR>
 
 endif
+
+" use system clipboard
+set clipboard=unnamed
