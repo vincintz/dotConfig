@@ -142,6 +142,11 @@ if version >= 802
     let g:vrc_auto_format_response_patterns = {
                 \   'json': 'python3 -mjson.tool --indent=2',
                 \}
+    if !exists('g:multiterm_opts')
+        let g:multiterm_opts = {}
+    endif
+    let g:multiterm_opts.height = '&lines - 2'
+    let g:multiterm_opts.width = '&columns - 2'
 
 endif
 
@@ -240,7 +245,7 @@ nmap <silent>lj     :compiler eslint<CR>:Make! %<CR>
 nmap <silent>lJ     :compiler eslint<CR>:Make! $(git diff --name-only -- "*.vue" "*.js")<CR>
 
 " ctrl-j format json on visual mode
-xmap <C-j>      :!python3 -mjson.tool --indent=2<CR>
+xmap <C-j>          :!python3 -mjson.tool --indent=2<CR>
 
 " keyboard shortcuts based on installed plugins
 if version >= 802
@@ -259,9 +264,9 @@ if version >= 802
 else
     " ctrl-t to run terminal
     nmap <C-t>      :terminal<CR>
-    xmap <C-t>      :terminal<CR>
 
 endif
 
 " use system clipboard
-set clipboard=unnamed
+set clipboard+=unnamed
+
