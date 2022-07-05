@@ -85,6 +85,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/editorconfig/editorconfig-vim'
     Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'https://github.com/junegunn/fzf.vim'
+    Plug 'https://github.com/kshenoy/vim-signature'
     Plug 'https://github.com/lambdalisue/fern.vim'
     Plug 'https://github.com/leafOfTree/vim-vue-plugin'
     Plug 'https://github.com/majutsushi/tagbar'
@@ -99,7 +100,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/tpope/vim-surround'
     Plug 'https://github.com/vimwiki/vimwiki'
     Plug 'https://github.com/vim-airline/vim-airline'
-    Plug 'https://github.com/vim-airline/vim-airline-themes'
     " install new plugins
     if version >= 802
         Plug 'https://github.com/chengzeyi/multiterm.vim'
@@ -162,8 +162,7 @@ set diffopt+=vertical
 " Color settings
 " set t_Co=256
 set background=dark
-colorscheme apprentice
-let g:airline_theme='lucius'
+colorscheme nord
 
 " Enable syntax highlighting
 if &diff
@@ -198,6 +197,9 @@ hi DiffAdd      term=bold       ctermfg=235     ctermbg=114
 hi DiffDelete   term=bold       ctermfg=9       ctermbg=224
 hi DiffChange   term=bold       cterm=underline ctermfg=180
 hi DiffText     term=reverse    ctermfg=235     ctermbg=180
+
+" Visual mode
+hi Visual       ctermbg=239     ctermfg=245
 
 " jump to the last position when reopening a file
 if has("autocmd")
