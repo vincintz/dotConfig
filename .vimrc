@@ -32,24 +32,8 @@ set nobackup
 set undofile
 set undodir=~/.vim/undo/
 
-" better backup, swap and undos storage for vim
-set directory=~/.vim/dirs/tmp     " directory to place swap files in
-set backup                        " make backup files
-set backupdir=~/.vim/dirs/backups " where to put backup files
-set undofile                      " persistent undos - undo after you re-open the file
-set undodir=~/.vim/dirs/undos
-set viminfo+=n~/.vim/dirs/viminfo
-
-" create needed directories if they don't exist
-if !isdirectory(&backupdir)
-    call mkdir(&backupdir, "p")
-endif
-if !isdirectory(&directory)
-    call mkdir(&directory, "p")
-endif
-if !isdirectory(&undodir)
-    call mkdir(&undodir, "p")
-endif
+" use system clipboard
+set clipboard+=unnamed
 
 " split window to bottom
 set splitbelow
@@ -70,6 +54,25 @@ set ruler
 " set scroll offset
 set scrolloff=2
 
+" better backup, swap and undos storage for vim
+set directory=~/.vim/dirs/tmp     " directory to place swap files in
+set backup                        " make backup files
+set backupdir=~/.vim/dirs/backups " where to put backup files
+set undofile                      " persistent undos - undo after you re-open the file
+set undodir=~/.vim/dirs/undos
+set viminfo+=n~/.vim/dirs/viminfo
+
+" create needed directories if they don't exist
+if !isdirectory(&backupdir)
+    call mkdir(&backupdir, "p")
+endif
+if !isdirectory(&directory)
+    call mkdir(&directory, "p")
+endif
+if !isdirectory(&undodir)
+    call mkdir(&undodir, "p")
+endif
+
 " Install vim-plug if not found
 let vim_plug_just_installed = 0
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -87,14 +90,14 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/majutsushi/tagbar'
     Plug 'https://github.com/mattn/emmet-vim'
     Plug 'https://github.com/mhinz/vim-signify'  " similar to vim-gitgutter
+    Plug 'https://github.com/osyo-manga/vim-anzu'
+    Plug 'https://github.com/rafi/awesome-vim-colorschemes'
     Plug 'https://github.com/thaerkh/vim-workspace'
     Plug 'https://github.com/tpope/vim-commentary'
     Plug 'https://github.com/tpope/vim-fugitive'
     Plug 'https://github.com/tpope/vim-unimpaired'
     Plug 'https://github.com/tpope/vim-surround'
     Plug 'https://github.com/vimwiki/vimwiki'
-    " colors and themes
-    Plug 'https://github.com/rafi/awesome-vim-colorschemes'
     Plug 'https://github.com/vim-airline/vim-airline'
     Plug 'https://github.com/vim-airline/vim-airline-themes'
     " install new plugins
@@ -115,7 +118,7 @@ endif
 
 " fuzzy finder options
 let $FZF_DEFAULT_COMMAND = 'fd . --type=f --hidden --exclude=.git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
-let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=TwoDark --style=header,numbers --color=always --line-range :120 {}'"
+let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=Nord --style=header,numbers --color=always --line-range :120 {}'"
 
 " config for new plugins
 if version >= 802
@@ -266,7 +269,3 @@ else
     nmap <C-t>      :terminal<CR>
 
 endif
-
-" use system clipboard
-set clipboard+=unnamed
-
