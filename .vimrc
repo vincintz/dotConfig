@@ -25,6 +25,7 @@ set incsearch
 set ignorecase
 set smartcase
 set shortmess-=S
+set hlsearch
 
 " use undofile instead of backup
 set noswapfile
@@ -234,6 +235,9 @@ nmap <leader>;      :execute "set cc=" . (&cc == "" ? "120" : "")<CR>
 " window resize
 nmap <leader>=      :resize +5<CR>
 nmap <leader>-      :resize -5<CR>
+
+" toggle highlight search
+nmap <leader>h      :set hls!<CR>
 
 " Git shortcuts
 nmap <silent>gf     :GitFiles!?<CR>
