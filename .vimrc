@@ -47,7 +47,7 @@ set list
 set listchars=tab:>-,trail:.,precedes:<,extends:> ",eol:$
 
 " show marker column
-let &colorcolumn=join(range(121,999),",")
+set colorcolumn=120
 
 " show cursor position
 set ruler
@@ -93,8 +93,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/mattn/emmet-vim'
     Plug 'https://github.com/mhinz/vim-signify'  " similar to vim-gitgutter
     Plug 'https://github.com/osyo-manga/vim-anzu'
-    Plug 'https://github.com/rafi/awesome-vim-colorschemes'
-    Plug 'https://github.com/thaerkh/vim-workspace'
     Plug 'https://github.com/tpope/vim-commentary'
     Plug 'https://github.com/tpope/vim-fugitive'
     Plug 'https://github.com/tpope/vim-unimpaired'
@@ -163,7 +161,7 @@ set diffopt+=vertical
 " Color settings
 " set t_Co=256
 set background=dark
-colorscheme nord
+colorscheme diff
 
 " Enable syntax highlighting
 if &diff
@@ -177,11 +175,6 @@ let g:vimwiki_url_maxsave=0
 let g:indentLine_concealcursor=""
 let g:indentLine_conceallevel=2
 
-" workspace
-let g:workspace_autocreate = 1
-let g:workspace_session_directory = $HOME . '/.vim/sessions/'
-let g:workspace_persist_undo_history = 0
-
 " Colors
 hi LineNr       ctermfg=darkgray    ctermbg=black
 hi SpecialKey   ctermfg=darkgray
@@ -192,15 +185,6 @@ command! Q q
 command! Qa qa
 command! W w
 command! Wq wq
-
-" diff colors
-hi DiffAdd      term=bold       ctermfg=235     ctermbg=114
-hi DiffDelete   term=bold       ctermfg=9       ctermbg=224
-hi DiffChange   term=bold       cterm=underline ctermfg=180
-hi DiffText     term=reverse    ctermfg=235     ctermbg=180
-
-" Visual mode
-hi Visual       ctermbg=239     ctermfg=245
 
 " jump to the last position when reopening a file
 if has("autocmd")
@@ -230,7 +214,7 @@ nmap <leader>r      :source ~/.vimrc<CR>
 nmap <leader>d      :YcmCompleter GoToDefinition<CR>
 
 " hide the line width warning line
-nmap <leader>;      :execute "set cc=" . (&cc == "" ? "120" : "")<CR>
+nmap <leader>;      :set relativenumber!<CR>
 
 " window resize
 nmap <leader>=      :resize +5<CR>
