@@ -93,6 +93,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/mattn/emmet-vim'
     Plug 'https://github.com/mhinz/vim-signify'  " similar to vim-gitgutter
     Plug 'https://github.com/osyo-manga/vim-anzu'
+    Plug 'https://github.com/rafi/awesome-vim-colorschemes'
     Plug 'https://github.com/tpope/vim-commentary'
     Plug 'https://github.com/tpope/vim-fugitive'
     Plug 'https://github.com/tpope/vim-unimpaired'
@@ -161,7 +162,7 @@ set diffopt+=vertical
 " Color settings
 " set t_Co=256
 set background=dark
-colorscheme diff
+colorscheme nord
 
 " Enable syntax highlighting
 if &diff
