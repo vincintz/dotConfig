@@ -187,6 +187,14 @@ command! Qa qa
 command! W w
 command! Wq wq
 
+" diff colors
+hi DiffAdd      term=bold       ctermfg=235     ctermbg=114
+hi DiffDelete   term=bold       ctermfg=9       ctermbg=224
+hi DiffText     term=reverse    ctermfg=235     ctermbg=180
+
+" visual mode
+hi Visual       ctermbg=239     ctermfg=245
+
 " jump to the last position when reopening a file
 if has("autocmd")
   au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
