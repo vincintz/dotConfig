@@ -123,8 +123,8 @@ endif
 let $FZF_DEFAULT_COMMAND = 'fd . --type=f --hidden --exclude=.git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
 let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=Nord --style=header,numbers --color=always --line-range :120 {}'"
 
-" yank through tmux
-let g:oscyank_term = 'tmux'
+" osc52 yank
+let g:oscyank_term = 'default'
 
 " config for new plugins
 if version >= 900
