@@ -63,6 +63,8 @@ set undofile                      " persistent undos - undo after you re-open th
 set undodir=~/.vim/dirs/undos
 set viminfo+=n~/.vim/dirs/viminfo
 
+set mouse=a
+
 " create needed directories if they don't exist
 if !isdirectory(&backupdir)
     call mkdir(&backupdir, "p")
@@ -86,13 +88,12 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/editorconfig/editorconfig-vim'
     Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'https://github.com/junegunn/fzf.vim'
-    Plug 'https://github.com/kshenoy/vim-signature'
     Plug 'https://github.com/lambdalisue/fern.vim'
     Plug 'https://github.com/leafOfTree/vim-vue-plugin'
     Plug 'https://github.com/majutsushi/tagbar'
     Plug 'https://github.com/mattn/emmet-vim'
-    Plug 'https://github.com/mhinz/vim-signify'  " similar to vim-gitgutter
-    Plug 'https://github.com/osyo-manga/vim-anzu'
+    Plug 'https://github.com/mhinz/vim-signify'     " similar to vim-gitgutter
+    Plug 'https://github.com/ojroques/vim-oscyank'  " Copy to clipboard from ssh session
     Plug 'https://github.com/rafi/awesome-vim-colorschemes'
     Plug 'https://github.com/tpope/vim-commentary'
     Plug 'https://github.com/tpope/vim-fugitive'
@@ -108,6 +109,10 @@ call plug#begin('~/.vim/plugged')
         Plug 'https://github.com/tpope/vim-dadbod'
         Plug 'https://github.com/tpope/vim-dispatch'
         Plug 'https://github.com/ycm-core/YouCompleteMe'
+
+        Plug 'https://github.com/lambdalisue/nerdfont.vim'
+        Plug 'https://github.com/lambdalisue/fern-renderer-nerdfont.vim'
+
     endif
 call plug#end()
 
@@ -120,8 +125,12 @@ endif
 let $FZF_DEFAULT_COMMAND = 'fd . --type=f --hidden --exclude=.git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
 let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=Nord --style=header,numbers --color=always --line-range :120 {}'"
 
+" yank through tmux
+let g:oscyank_term = 'tmux'
+
 " config for new plugins
 if version >= 802
+    let g:fern#renderer = "nerdfont"
     " YouCompleteMe config
     let g:ycm_autoclose_preview_window_after_completion = 1
     let g:ycm_autoclose_preview_window_after_insertion = 1
@@ -245,6 +254,9 @@ nmap <silent>lp     :compiler pylint<CR>:Make! %<CR>
 nmap <silent>lP     :compiler pylint<CR>:Make! $(git diff --name-only -- "*.py")<CR>
 nmap <silent>lj     :compiler eslint<CR>:Make! %<CR>
 nmap <silent>lJ     :compiler eslint<CR>:Make! $(git diff --name-only -- "*.vue" "*.js")<CR>
+
+" ctrl-c yank to clipboard
+xmap <C-c>          :OSCYank<CR>
 
 " ctrl-j format json on visual mode
 xmap <C-j>          :!python3 -mjson.tool --indent=2<CR>
