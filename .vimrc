@@ -101,18 +101,16 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/tpope/vim-surround'
     Plug 'https://github.com/vimwiki/vimwiki'
     Plug 'https://github.com/vim-airline/vim-airline'
-    " install new plugins
-    if version >= 802
+    " plugins we only need on local machine
+    if version >= 900
         Plug 'https://github.com/chengzeyi/multiterm.vim'
         Plug 'https://github.com/diepm/vim-rest-console'
+        Plug 'https://github.com/lambdalisue/nerdfont.vim'
+        Plug 'https://github.com/lambdalisue/fern-renderer-nerdfont.vim'
         Plug 'https://github.com/psliwka/vim-smoothie'
         Plug 'https://github.com/tpope/vim-dadbod'
         Plug 'https://github.com/tpope/vim-dispatch'
         Plug 'https://github.com/ycm-core/YouCompleteMe'
-
-        Plug 'https://github.com/lambdalisue/nerdfont.vim'
-        Plug 'https://github.com/lambdalisue/fern-renderer-nerdfont.vim'
-
     endif
 call plug#end()
 
@@ -129,7 +127,7 @@ let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=Nord --style=header,nu
 let g:oscyank_term = 'tmux'
 
 " config for new plugins
-if version >= 802
+if version >= 900
     let g:fern#renderer = "nerdfont"
     " YouCompleteMe config
     let g:ycm_autoclose_preview_window_after_completion = 1
@@ -229,7 +227,6 @@ nmap <leader>p      :set invpaste paste?<CR>
 nmap <leader>q      :call ToggleQuickFix()<CR>
 nmap <leader>e      :Fern . -drawer -toggle -reveal=%<CR>
 nmap <leader>r      :source ~/.vimrc<CR>
-nmap <leader>d      :YcmCompleter GoToDefinition<CR>
 
 " hide the line width warning line
 nmap <leader>;      :set relativenumber!<CR>
@@ -262,7 +259,7 @@ xmap <C-c>          :OSCYank<CR>
 xmap <C-j>          :!python3 -mjson.tool --indent=2<CR>
 
 " keyboard shortcuts based on installed plugins
-if version >= 802
+if version >= 900
     " ctrl-t to toggle terminal
     nmap <C-t>      :1Multiterm<CR>
     tmap <C-t>      <Plug>(Multiterm)
@@ -274,6 +271,9 @@ if version >= 802
     " ctrl-n for python3
     nmap <C-n>      :3Multiterm python3<CR>
     tmap <C-n>      <Plug>(Multiterm)
+
+    " ycm goto definition
+    nmap <leader>d  :YcmCompleter GoToDefinition<CR>
 
 else
     " ctrl-t to run terminal
