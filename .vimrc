@@ -15,6 +15,7 @@ set smartindent
 
 " line number
 set number
+set relativenumber
 set nowrap
 
 " menu behaviour
@@ -226,7 +227,7 @@ nmap <leader>q      :call ToggleQuickFix()<CR>
 nmap <leader>e      :Fern . -drawer -toggle -reveal=%<CR>
 nmap <leader>r      :source ~/.vimrc<CR>
 
-" hide the line width warning line
+" set relative number
 nmap <leader>;      :set relativenumber!<CR>
 
 " window resize
