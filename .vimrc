@@ -63,8 +63,6 @@ set undofile                      " persistent undos - undo after you re-open th
 set undodir=~/.vim/dirs/undos
 set viminfo+=n~/.vim/dirs/viminfo
 
-set mouse=a
-
 " create needed directories if they don't exist
 if !isdirectory(&backupdir)
     call mkdir(&backupdir, "p")
