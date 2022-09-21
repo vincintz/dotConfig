@@ -13,6 +13,9 @@ set shiftwidth=4
 set expandtab
 set smartindent
 
+" don't auto-comment next line
+set formatoptions-=cro
+
 " line number
 set number
 set relativenumber
@@ -37,8 +40,8 @@ set undodir=~/.vim/undo/
 " use system clipboard
 set clipboard+=unnamed
 
-" split window to bottom
-set splitbelow
+" spit window to bottom
+set splitbelow splitright
 
 " allow backspace
 set backspace=indent,eol,start
@@ -215,16 +218,7 @@ function! ToggleQuickFix()
     endif
 endfunction
 
-" project search shortcuts
-nmap <C-p>          :FZF!<CR>
-nmap <C-s>          :Rg!<CR>
-
-" more shortcuts
-nmap <leader>\      :TagbarToggle<CR>
-nmap <leader>]      :Buffers!<CR>
-nmap <leader>p      :set invpaste paste?<CR>
-nmap <leader>q      :call ToggleQuickFix()<CR>
-nmap <leader>e      :Fern . -drawer -toggle -reveal=%<CR>
+" reload vimrc
 nmap <leader>r      :source ~/.vimrc<CR>
 
 " set relative number
@@ -237,12 +231,28 @@ nmap <leader>-      :resize -5<CR>
 " toggle highlight search
 nmap <leader>h      :set hls!<CR>
 
+" toggle spellcheck
+nmap <leader>s      :setlocal spell!<CR>
+
+" toggle paste
+nmap <leader>p      :set invpaste paste?<CR>
+
+" project search shortcuts
+nmap <C-p>          :FZF!<CR>
+nmap <C-s>          :Rg!<CR>
+
+" Plugin shortcuts
+nmap <leader>\      :TagbarToggle<CR>
+nmap <leader>]      :Buffers!<CR>
+nmap <leader>q      :call ToggleQuickFix()<CR>
+nmap <leader>e      :Fern . -drawer -toggle -reveal=%<CR>
+
 " Git shortcuts
 nmap <silent>gf     :GitFiles!?<CR>
 nmap <silent>gs     :Git<CR>:resize 10<CR>
 nmap <silent>gl     :Gclog<CR>
-nmap <silent>gb     :Git blame<CR><C-W><C-W>
-nmap <silent>gd     :Gdiffsplit<CR>
+nmap <silent>gb     :Git blame<CR><C-w><C-w>
+nmap <silent>gd     :Gdiffsplit<CR><C-w><C-w>
 nmap <silent>gh     :Commits!<CR>
 
 " Lint commands
