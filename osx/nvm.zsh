@@ -25,5 +25,3 @@ npx() {
     [ -s "$(brew --prefix nvm)/nvm.sh" ] && . "$(brew --prefix nvm)/nvm.sh"  # This loads nvm
     npx "$@"
 }
-
-export NVM_DIR=$HOME/.nvm

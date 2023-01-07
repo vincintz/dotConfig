@@ -88,6 +88,7 @@ endif
 call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/chr4/nginx.vim'
     Plug 'https://github.com/editorconfig/editorconfig-vim'
+    Plug 'https://github.com/davidhalter/jedi-vim'
     Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'https://github.com/junegunn/fzf.vim'
     Plug 'https://github.com/lambdalisue/fern.vim'

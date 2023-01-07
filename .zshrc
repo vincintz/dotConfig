@@ -12,6 +12,7 @@ source $HOME/dotConfig/common/prompt.zsh
 source $HOME/dotConfig/common/alias.zsh
 source $HOME/dotConfig/common/options.zsh
 source $HOME/dotConfig/common/autocomplete.zsh
+source $HOME/dotConfig/common/nvm.zsh
 
 # Source cygwin configs
 if [[ $OSTYPE == "cygwin" ]]; then
@@ -24,4 +25,3 @@ elif [[ $OSTYPE == darwin* ]]; then
     source $HOME/dotConfig/osx/nvm.zsh
     source $HOME/dotConfig/osx/rprompt.zsh
 fi
-

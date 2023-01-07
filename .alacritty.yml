@@ -12,7 +12,7 @@ window:
   decorations: none
   startup_mode: Maximized
   title: Terminal
-  opacity: 1.0
+  opacity: 0.90
 
 scrolling:
   history: 0
@@ -31,8 +31,7 @@ font:
   bold_italic:
     family: Hack Nerd Font Mono
     style: Bold Italic
-  size: 16.0
-  # use_thin_strokes: true
+  size: 14.0
 
 colors:
   primary:
