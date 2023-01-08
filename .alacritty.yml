@@ -9,7 +9,7 @@ window:
   padding:
     x: 10
     y: 8
-  decorations: none
+  # decorations: none
   startup_mode: Maximized
   title: Terminal
   opacity: 0.90

@@ -241,10 +241,10 @@ nmap <leader>p      :set invpaste paste?<CR>
 " project search shortcuts
 nmap <C-p>          :FZF!<CR>
 nmap <C-s>          :Rg!<CR>
+nmap <C-b>          :Buffers!<CR>
 
 " Plugin shortcuts
 nmap <leader>\      :TagbarToggle<CR>
-nmap <leader>]      :Buffers!<CR>
 nmap <leader>q      :call ToggleQuickFix()<CR>
 nmap <leader>e      :Fern . -drawer -toggle -reveal=%<CR>
 
