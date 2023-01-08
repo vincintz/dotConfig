@@ -56,6 +56,27 @@ return require('packer').startup(function(use)
   -- terminal
   use {'https://github.com/akinsho/toggleterm.nvim', tag = '*'}
 
+  -- lualine
+  use("https://github.com/nvim-lualine/lualine.nvim")
+
+  -- autocompletion
+  use("https://github.com/hrsh7th/nvim-cmp") -- completion plugin
+  use("https://github.com/hrsh7th/cmp-buffer") -- source for text in buffer
+  use("https://github.com/hrsh7th/cmp-path") -- source for file system paths
+
+  -- snippets
+  use("https://github.com/L3MON4D3/LuaSnip") -- snippet engine
+  use("https://github.com/saadparwaiz1/cmp_luasnip") -- for autocompletion
+  use("https://github.com/rafamadriz/friendly-snippets") -- useful snippets
+
+  -- mason for managing lsp servers and linters
+  use("https://github.com/williamboman/mason.nvim")
+  use("https://github.com/williamboman/mason-lspconfig.nvim")
+
+  -- configuring lsp servers
+  use("https://github.com/neovim/nvim-lspconfig")
+  use("https://github.com/hrsh7th/cmp-nvim-lsp")
+
   -- /Bootstrap
   if packer_bootstrap then
     require('packer').sync()
