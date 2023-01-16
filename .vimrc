@@ -130,7 +130,7 @@ let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=Nord --style=header,nu
 let g:oscyank_term = 'default'
 
 " config for new plugins
-if version >= 900
+if empty($SSH_CLIENT)
     let g:fern#renderer = "nerdfont"
     " YouCompleteMe config
     let g:ycm_autoclose_preview_window_after_completion = 1
