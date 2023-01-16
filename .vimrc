@@ -89,11 +89,9 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/chengzeyi/multiterm.vim'
     Plug 'https://github.com/chr4/nginx.vim'
     Plug 'https://github.com/editorconfig/editorconfig-vim'
-    Plug 'https://github.com/davidhalter/jedi-vim'
     Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'https://github.com/junegunn/fzf.vim'
     Plug 'https://github.com/lambdalisue/fern.vim'
-    Plug 'https://github.com/leafOfTree/vim-vue-plugin'
     Plug 'https://github.com/majutsushi/tagbar'
     Plug 'https://github.com/mattn/emmet-vim'
     Plug 'https://github.com/mhinz/vim-signify'     " similar to vim-gitgutter
@@ -107,9 +105,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/vim-airline/vim-airline'
     " plugins we only need on local machine
     if empty($SSH_CLIENT)
+        Plug 'https://github.com/davidhalter/jedi-vim'
         Plug 'https://github.com/diepm/vim-rest-console'
         Plug 'https://github.com/lambdalisue/nerdfont.vim'
         Plug 'https://github.com/lambdalisue/fern-renderer-nerdfont.vim'
+        Plug 'https://github.com/leafOfTree/vim-vue-plugin'
         Plug 'https://github.com/psliwka/vim-smoothie'
         Plug 'https://github.com/tpope/vim-dadbod'
         Plug 'https://github.com/tpope/vim-dispatch'
