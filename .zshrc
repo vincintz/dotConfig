@@ -24,4 +24,7 @@ elif [[ $OSTYPE == darwin* ]]; then
     source $HOME/dotConfig/osx/envs.zsh
     source $HOME/dotConfig/osx/nvm.zsh
     source $HOME/dotConfig/osx/rprompt.zsh
+# Source Linux configs
+elif [[ $OSTYPE == linux* ]]; then
+    source $HOME/dotConfig/linux/bindkey.zsh
 fi
