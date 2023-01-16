@@ -105,7 +105,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/vim-airline/vim-airline'
     " plugins we only need on local machine
     if empty($SSH_CLIENT)
-        Plug 'https://github.com/davidhalter/jedi-vim'
         Plug 'https://github.com/diepm/vim-rest-console'
         Plug 'https://github.com/lambdalisue/nerdfont.vim'
         Plug 'https://github.com/lambdalisue/fern-renderer-nerdfont.vim'
