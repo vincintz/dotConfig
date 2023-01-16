@@ -86,6 +86,7 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
+    Plug 'https://github.com/chengzeyi/multiterm.vim'
     Plug 'https://github.com/chr4/nginx.vim'
     Plug 'https://github.com/editorconfig/editorconfig-vim'
     Plug 'https://github.com/davidhalter/jedi-vim'
@@ -105,8 +106,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/vimwiki/vimwiki'
     Plug 'https://github.com/vim-airline/vim-airline'
     " plugins we only need on local machine
-    if version >= 900
-        Plug 'https://github.com/chengzeyi/multiterm.vim'
+    if empty($SSH_CLIENT)
         Plug 'https://github.com/diepm/vim-rest-console'
         Plug 'https://github.com/lambdalisue/nerdfont.vim'
         Plug 'https://github.com/lambdalisue/fern-renderer-nerdfont.vim'
