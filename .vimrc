@@ -172,7 +172,7 @@ set diffopt+=vertical
 " Color settings
 " set t_Co=256
 set background=dark
-colorscheme nord
+silent! colorscheme tender
 
 " Enable syntax highlighting
 if &diff
@@ -186,27 +186,30 @@ let g:vimwiki_url_maxsave=0
 let g:indentLine_concealcursor=""
 let g:indentLine_conceallevel=2
 
-" Colors
-hi LineNr       ctermfg=darkgray    ctermbg=black
-hi SpecialKey   ctermfg=darkgray
-hi ColorColumn  ctermbg=black
-
 " Accept common typos
 command! Q q
 command! Qa qa
 command! W w
 command! Wq wq
 
-" diff colors
-hi DiffAdd      term=bold       ctermfg=235     ctermbg=114
-hi DiffDelete   term=bold       ctermfg=9       ctermbg=224
-hi DiffText     term=reverse    ctermfg=235     ctermbg=180
+if !exists("colors_name") || colors_name == 'default'
+    " some colors
+    hi LineNr       ctermfg=darkgray    ctermbg=black
+    hi SpecialKey   ctermfg=darkgray
+    hi ColorColumn  ctermbg=black
 
-" search result
-hi Search       ctermbg=239     ctermfg=white
+    " diff colors
+    hi DiffAdd      term=bold       ctermfg=235     ctermbg=114
+    hi DiffDelete   term=bold       ctermfg=9       ctermbg=224
+    hi DiffText     term=reverse    ctermfg=235     ctermbg=180
 
-" visual mode
-hi Visual       ctermbg=239     ctermfg=245
+    " search result
+    hi Search       ctermbg=239     ctermfg=white
+
+    " visual mode
+    hi Visual       ctermbg=239     ctermfg=245
+
+endif
 
 " jump to the last position when reopening a file
 if has("autocmd")
