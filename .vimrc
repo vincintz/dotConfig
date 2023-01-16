@@ -105,6 +105,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/vim-airline/vim-airline'
     " plugins we only need on local machine
     if empty($SSH_CLIENT)
+        Plug 'https://github.com/davidhalter/jedi-vim'
         Plug 'https://github.com/diepm/vim-rest-console'
         Plug 'https://github.com/lambdalisue/nerdfont.vim'
         Plug 'https://github.com/lambdalisue/fern-renderer-nerdfont.vim'
@@ -137,6 +138,11 @@ if empty($SSH_CLIENT)
     let g:ycm_auto_hover=''
     let g:ycm_auto_trigger = 0
     let g:ycm_complete_in_strings = 0
+
+    " don't auto-show popup
+    let g:jedi#popup_on_dot = 0
+    let g:jedi#popup_select_first = 0
+    let g:jedi#completions_command = "<c-p>"
 
     " smooth scroll
     let g:smoothie_speed_constant_factor = 100
