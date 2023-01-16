@@ -202,6 +202,9 @@ hi DiffAdd      term=bold       ctermfg=235     ctermbg=114
 hi DiffDelete   term=bold       ctermfg=9       ctermbg=224
 hi DiffText     term=reverse    ctermfg=235     ctermbg=180
 
+" search result
+hi Search       ctermbg=239     ctermfg=white
+
 " visual mode
 hi Visual       ctermbg=239     ctermfg=245
 
