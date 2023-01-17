@@ -8,24 +8,24 @@ sudo apt update && sudo apt upgrade -y
 
 ## Install programs
 
-* alacritty
-```
-sudo add-apt-repository ppa:mmstick76/alacritty
-sudo apt install -y  alacritty
-```
+* Alacritty
+   ```
+   sudo add-apt-repository ppa:mmstick76/alacritty
+   sudo apt install -y  alacritty
+   ```
 
-* vim 8.2
-```
-sudo add-apt-repository ppa:jonathonf/vim
-sudo apt install vim
-```
+* Latest vim
+   ```
+   sudo add-apt-repository ppa:jonathonf/vim
+   sudo apt install vim
+   ```
 
-* others
-```
-sudo apt install -y zsh tmux
-sudo apt install -y curl net-tools
-sudo apt install -y build-essential cmake vim-nox python3-dev
-```
+* Others
+   ```
+   sudo apt install -y zsh tmux
+   sudo apt install -y curl net-tools
+   sudo apt install -y build-essential cmake vim-nox python3-dev
+   ```
 
 ## Install zsh plugins
 ```
@@ -56,15 +56,7 @@ ln -s $HOME/dotConfig/.tmux.conf $HOME/.tmux.conf
 ln -s $HOME/dotConfig/.vimrc $HOME/.vimrc
 ```
 
-## Install vim plugins
-<details>
-  <summary>Install [vim plug](https://github.com/junegunn/vim-plug)</summary>
-
-  ```
-  curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  ```
-</details>
-
+## Install vim plugins dependecies
 <details>
   <summary>Install plugin dependencies</summary>
 
