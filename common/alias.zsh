@@ -1,7 +1,4 @@
-alias ls='ls -G'
+alias ls='ls --color --group-directories-first'
 alias grep='grep --color=auto'
-alias mkcd='foo(){ mkdir -p "$1"; cd "$1" }; foo'
-alias gts='git status'
-alias gtcx='git add . && git commit -am'
-alias gtd='git diff | diff'
 alias myip="curl https://ifconfig.me; echo"
+alias tree="tree -C | less -r"

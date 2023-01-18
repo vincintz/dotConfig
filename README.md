@@ -14,17 +14,17 @@ sudo apt update && sudo apt upgrade -y
    sudo apt install -y  alacritty
    ```
 
-* Latest vim
+* Latest vim with clipboard support
    ```
    sudo add-apt-repository ppa:jonathonf/vim
-   sudo apt install vim
+   sudo apt install vim-gtk3
    ```
 
 * Others
    ```
    sudo apt install -y zsh tmux
    sudo apt install -y curl net-tools
-   sudo apt install -y build-essential cmake vim-nox python3-dev
+   sudo apt install -y build-essential cmake python3-dev
    ```
 
 ## Install Plugins
@@ -62,6 +62,25 @@ sudo apt update && sudo apt upgrade -y
   ```
   ( cd ~/.vim/plugged/YouCompleteMe/ && ./install.py --ts-completer )
   ```
+
+## Set Git configs
+
+* credentials
+   ```
+   git config --global user.name "Theo Reyes"
+   git config --global user.email "vincintz@yahoo.com"
+   ```
+* difftool
+   ```
+   git config --global diff.tool vimdiff
+   git config --global difftool.prompt false
+   ```
+* alias
+   ```
+   git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+   git config --global alias.df "diff --compact-summary"
+   git confif --global alias.br "branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate"
+   ```
 
 ## Clone dotConfig
 ```
