@@ -262,16 +262,17 @@ nmap <leader>e      :Fern . -drawer -toggle -reveal=%<CR>
 " Git shortcuts
 nmap <silent>gf     :GitFiles?<CR>
 nmap <silent>gs     :Git<CR>:resize 10<CR>
-nmap <silent>gl     :Gclog<CR>
 nmap <silent>gb     :Git blame<CR><C-w><C-w>
 nmap <silent>gd     :Gdiffsplit<CR><C-w><C-w>
-nmap <silent>gh     :Commits<CR>
+nmap <silent>gh     :0GcLog<CR>
+nmap <silent>gH     :Commits<CR>
 
 " Lint commands
 nmap <silent>lp     :compiler pylint<CR>:Make! %<CR>
 nmap <silent>lP     :compiler pylint<CR>:Make! $(git diff --name-only -- "*.py")<CR>
 nmap <silent>lj     :compiler eslint<CR>:Make! %<CR>
 nmap <silent>lJ     :compiler eslint<CR>:Make! $(git diff --name-only -- "*.vue" "*.js")<CR>
+nmap <silent>ls     :compiler shellcheck<CR>:Make! %<CR>
 
 " ctrl-c yank to clipboard
 xmap <C-c>          :OSCYank<CR>
