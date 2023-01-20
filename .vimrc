@@ -234,7 +234,7 @@ endfunction
 nmap <leader>r      :source ~/.vimrc<CR>
 
 " set relative number
-nmap <leader>;      :set relativenumber!<CR>
+nmap <leader>;      :set invrelativenumber relativenumber?<CR>
 
 " window resize
 nmap <leader>=      :resize +5<CR>
@@ -244,15 +244,15 @@ nmap <leader>-      :resize -5<CR>
 nmap <leader>h      :set hls!<CR>
 
 " toggle spellcheck
-nmap <leader>s      :setlocal spell!<CR>
+nmap <leader>s      :setlocal invspell spell?<CR>
 
 " toggle paste
 nmap <leader>p      :set invpaste paste?<CR>
 
 " project search shortcuts
-nmap <C-f>          :FZF!<CR>
-nmap <C-b>          :Buffers!<CR>
-nmap <C-s>s         :Rg!<CR>
+nmap <C-f>          :FZF<CR>
+nmap <C-b>          :Buffers<CR>
+nmap <C-s>s         :Rg<CR>
 
 " Plugin shortcuts
 nmap <leader>\      :TagbarToggle<CR>
@@ -260,12 +260,12 @@ nmap <leader>q      :call ToggleQuickFix()<CR>
 nmap <leader>e      :Fern . -drawer -toggle -reveal=%<CR>
 
 " Git shortcuts
-nmap <silent>gf     :GitFiles!?<CR>
+nmap <silent>gf     :GitFiles?<CR>
 nmap <silent>gs     :Git<CR>:resize 10<CR>
 nmap <silent>gl     :Gclog<CR>
 nmap <silent>gb     :Git blame<CR><C-w><C-w>
 nmap <silent>gd     :Gdiffsplit<CR><C-w><C-w>
-nmap <silent>gh     :Commits!<CR>
+nmap <silent>gh     :Commits<CR>
 
 " Lint commands
 nmap <silent>lp     :compiler pylint<CR>:Make! %<CR>
