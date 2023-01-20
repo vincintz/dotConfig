@@ -124,7 +124,7 @@ endif
 
 " fuzzy finder options
 let $FZF_DEFAULT_COMMAND = 'fd . --type=f --hidden --exclude=.git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
-let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=Nord --style=header,numbers --color=always --line-range :120 {}'"
+let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=Nord --style=numbers --color=always --line-range :120 {}'"
 
 " osc52 yank
 let g:oscyank_term = 'default'
