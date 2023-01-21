@@ -250,7 +250,7 @@ nmap <leader>s      :setlocal invspell spell?<CR>
 nmap <leader>p      :set invpaste paste?<CR>
 
 " project search shortcuts
-nmap <C-f>          :FZF<CR>
+nmap <C-p>          :FZF<CR>
 nmap <C-b>          :Buffers<CR>
 nmap <C-s>s         :Rg<CR>
 
