@@ -105,13 +105,13 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/vim-airline/vim-airline'
     " plugins we only need on local machine
     if empty($SSH_CLIENT)
+        Plug 'https://github.com/christoomey/vim-tmux-navigator'
         Plug 'https://github.com/davidhalter/jedi-vim'
         Plug 'https://github.com/diepm/vim-rest-console'
         Plug 'https://github.com/lambdalisue/nerdfont.vim'
         Plug 'https://github.com/lambdalisue/fern-renderer-nerdfont.vim'
         Plug 'https://github.com/leafOfTree/vim-vue-plugin'
         Plug 'https://github.com/psliwka/vim-smoothie'
-        Plug 'https://github.com/tpope/vim-dadbod'
         Plug 'https://github.com/tpope/vim-dispatch'
         Plug 'https://github.com/ycm-core/YouCompleteMe'
     endif
@@ -274,6 +274,12 @@ nmap <silent>lj     :compiler eslint<CR>:Make! %<CR>
 nmap <silent>lJ     :compiler eslint<CR>:Make! $(git diff --name-only -- "*.vue" "*.js")<CR>
 nmap <silent>ls     :compiler shellcheck<CR>:Make! %<CR>
 
+" Window navigation
+nmap <C-j> <C-w><C-j>
+nmap <C-k> <C-w><C-k>
+nmap <C-l> <C-w><C-l>
+nmap <C-h> <C-w><C-h>
+
 " ctrl-c yank to clipboard
 xmap <C-c>          :OSCYank<CR>
 
@@ -281,17 +287,22 @@ xmap <C-c>          :OSCYank<CR>
 xmap <C-j>          :!python3 -mjson.tool --indent=2<CR>
 
 " keyboard shortcuts based on installed plugins
-if version >= 900
+if empty($SSH_CLIENT)
     " ctrl-t to toggle terminal
     nmap <C-t>      :1Multiterm<CR>
+    imap <C-t>      <Plug>(Multiterm)
     tmap <C-t>      <Plug>(Multiterm)
 
-    " ctrl-j for NodeJS
-    nmap <C-j>      :2Multiterm node<CR>
-    tmap <C-j>      <Plug>(Multiterm)
+    " ctrl-n for python1
+    nmap <C-i>      :2Multiterm python3<CR>
+    tmap <C-i>      <Plug>(Multiterm)
 
-    " ctrl-n for python3
-    nmap <C-n>      :3Multiterm python3<CR>
+    " ctrl-n for htop
+    nmap <C-x>      :3Multiterm htop<CR>
+    tmap <C-x>      <Plug>(Multiterm)
+
+    " ctrl-j for NodeJS
+    nmap <C-n>      :5Multiterm node<CR>
     tmap <C-n>      <Plug>(Multiterm)
 
     " ycm goto definition
