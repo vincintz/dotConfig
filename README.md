@@ -35,6 +35,7 @@ sudo apt update && sudo apt upgrade -y
 
 * Renames for ubuntu
    ```
+   mkdir -p $HOME/.local/bin/
    ln -s $(which batcat) $HOME/.local/bin/bat
    ln -s $(which fdfind) $HOME/.local/bin/fd
    ```
