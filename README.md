@@ -57,9 +57,6 @@ sudo apt update && sudo apt upgrade -y
    git clone https://github.com/tmux-plugins/tmux-resurrect ~/dotConfig/libs/tmux-resurrect
    ```
 
-* vim plugin dependenies
-  ```
-  ```
 * install YCM
   ```
   ( cd ~/.vim/plugged/YouCompleteMe/ && ./install.py --ts-completer )
