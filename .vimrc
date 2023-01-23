@@ -114,6 +114,7 @@ call plug#begin('~/.vim/plugged')
         Plug 'https://github.com/psliwka/vim-smoothie'
         Plug 'https://github.com/tpope/vim-dispatch'
         Plug 'https://github.com/ycm-core/YouCompleteMe'
+        " Plug 'https://github.com/Exafunction/codeium.vim'
     endif
 call plug#end()
 
@@ -288,25 +289,25 @@ xmap <C-j>          :!python3 -mjson.tool --indent=2<CR>
 
 " keyboard shortcuts based on installed plugins
 if empty($SSH_CLIENT)
-    " ctrl-t to toggle terminal
-    nmap <C-t>      :1Multiterm<CR>
-    imap <C-t>      <Plug>(Multiterm)
-    tmap <C-t>      <Plug>(Multiterm)
+    " ctrl-t/t to toggle terminal
+    nmap <C-t>t     :9Multiterm<CR>
+    imap <C-t>t     <Plug>(Multiterm)
+    nmap <C-t>      :9Multiterm<CR>
 
-    " ctrl-n for python1
-    nmap <C-i>      :2Multiterm python3<CR>
-    tmap <C-i>      <Plug>(Multiterm)
+    " ctrl-t/1 for htop
+    nmap <C-t>1     :1Multiterm htop<CR>
 
-    " ctrl-n for htop
-    nmap <C-x>      :3Multiterm htop<CR>
-    tmap <C-x>      <Plug>(Multiterm)
+    " ctrl-t/2 for python
+    nmap <C-t>2     :2Multiterm python3<CR>
 
-    " ctrl-j for NodeJS
-    nmap <C-n>      :5Multiterm node<CR>
-    tmap <C-n>      <Plug>(Multiterm)
+    " ctrl-t/3 for NodeJS
+    nmap <C-t>3     :3Multiterm node<CR>
 
     " ycm goto definition
     nmap <leader>d  :YcmCompleter GoToDefinition<CR>
+
+    " hide terminal
+    tmap <C-t>      <Plug>(Multiterm)
 
 else
     " ctrl-t to run terminal
