@@ -265,8 +265,8 @@ nmap <silent>gf     :GitFiles?<CR>
 nmap <silent>gs     :Git<CR>:resize 10<CR>
 nmap <silent>gb     :Git blame<CR><C-w><C-w>
 nmap <silent>gd     :Gdiffsplit<CR><C-w><C-w>
-nmap <silent>gh     :0GcLog<CR>
-nmap <silent>gH     :Commits<CR>
+nmap <silent>gh     :Commits!<CR>
+nmap <silent>gH     :0GcLog<CR>
 
 " Lint commands
 nmap <silent>lp     :compiler pylint<CR>:Make! %<CR>
