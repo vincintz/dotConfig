@@ -32,6 +32,7 @@ sudo apt update && sudo apt upgrade -y
    ```
    sudo apt install ncdu mc pspg
    ```
+   * manual install git-delta - https://dandavison.github.io/delta/installation.html
 
 * Renames for ubuntu
    ```

@@ -253,7 +253,7 @@ nmap <leader>p      :set invpaste paste?<CR>
 " project search shortcuts
 nmap <C-p>          :FZF<CR>
 nmap <C-b>          :Buffers<CR>
-nmap <C-s>s         :Rg<CR>
+nmap <C-s>          :Rg<CR>
 
 " Plugin shortcuts
 nmap <leader>\      :TagbarToggle<CR>
