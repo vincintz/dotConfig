@@ -16,12 +16,22 @@
 
 [merge]
     conflictstyle = diff3
+    tool = vimdiff
 
 [color]
     ui = true
 
 [core]
     pager = delta
+
+[pull]
+    ff = only
+
+[init]
+    defaultBranch = dev
+
+[gpg]
+    program = gpg
 
 [interactive]
     diffFilter = delta --color-only
