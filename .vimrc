@@ -266,7 +266,7 @@ nmap <silent>gs     :Git<CR>:resize 10<CR>
 nmap <silent>gb     :Git blame<CR><C-w><C-w>
 nmap <silent>gd     :Gdiffsplit<CR><C-w><C-w>
 nmap <silent>gh     :Commits!<CR>
-nmap <silent>gH     :0GcLog<CR>
+nmap <silent>gh     :0GcLog<CR>
 
 " Lint commands
 nmap <silent>lp     :compiler pylint<CR>:Make! %<CR>
@@ -285,7 +285,7 @@ nmap <C-h> <C-w><C-h>
 xmap <C-c>          :OSCYank<CR>
 
 " ctrl-j format json on visual mode
-xmap <C-j>          :!python3 -mjson.tool --indent=2<CR>
+xmap <leader>j      :!python3 -mjson.tool --indent=2<CR>
 
 " keyboard shortcuts based on installed plugins
 if empty($SSH_CLIENT)
