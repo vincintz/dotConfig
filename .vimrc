@@ -38,7 +38,7 @@ set undofile
 set undodir=~/.vim/undo/
 
 " use system clipboard
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
 
 " spit window to bottom
 set splitbelow splitright
