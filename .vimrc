@@ -218,7 +218,7 @@ endif
 
 " jump to the last position when reopening a file
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 endif
 
 " toggle quick fix window
@@ -227,6 +227,16 @@ function! ToggleQuickFix()
         Copen
     else
         cclose
+    endif
+endfunction
+
+" change file type
+function! ChangeFileType()
+    echo expand('%')
+    if &filetype == 'vimwiki' && match(expand('%'), ".rest") != -1
+        set filetype=rest
+    elseif &filetype == 'vimwiki' && match(expand('%'), ".sql") != -1
+        set filetype=sql
     endif
 endfunction
 
@@ -282,6 +292,9 @@ nmap <C-h> <C-w><C-h>
 
 " ctrl-c yank to clipboard
 xmap <C-c>          :OSCYank<CR>
+
+" ctrl-x to switch filetype if in vimwiki
+nmap <C-x>          :call ChangeFileType()<CR>
 
 " ctrl-j format json on visual mode
 xmap <leader>j      :!python3 -mjson.tool --indent=2<CR>
