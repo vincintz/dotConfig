@@ -111,6 +111,7 @@ call plug#begin('~/.vim/plugged')
         Plug 'https://github.com/lambdalisue/fern-renderer-nerdfont.vim'
         Plug 'https://github.com/leafOfTree/vim-vue-plugin'
         Plug 'https://github.com/psliwka/vim-smoothie'
+        Plug 'https://github.com/tpope/vim-dadbod'
         Plug 'https://github.com/tpope/vim-dispatch'
         Plug 'https://github.com/ycm-core/YouCompleteMe'
         " Plug 'https://github.com/Exafunction/codeium.vim'
@@ -150,7 +151,7 @@ if empty($SSH_CLIENT)
 
     " vim-rest-console settings
     let g:vrc_output_buffer_name = '_localhost_out.json'
-    let g:vrc_trigger = '<C-x>'
+    " let g:vrc_trigger = '<C-x>'
     let g:vrc_syntax_highlight_response = 1
     let g:vrc_auto_format_response_enabled = 1
     let b:vrc_response_default_content_type = 'application/json'
@@ -230,11 +231,14 @@ function! ToggleQuickFix()
     endif
 endfunction
 
-" change file type
-function! ChangeFileType()
-    echo expand('%')
-    if &filetype == 'vimwiki' && match(expand('%'), ".rest") != -1
+" Hanlder for overloaded super-key (c-x)
+function! HandleSuperKey()
+    if &filetype == 'rest'
         set filetype=rest
+        call VrcQuery()
+    elseif &filetype == 'vimwiki' && match(expand('%'), ".rest") != -1
+        set filetype=rest
+        call VrcQuery()
     elseif &filetype == 'vimwiki' && match(expand('%'), ".sql") != -1
         set filetype=sql
     endif
@@ -294,7 +298,7 @@ nmap <C-h> <C-w><C-h>
 xmap <C-c>          :OSCYank<CR>
 
 " ctrl-x to switch filetype if in vimwiki
-nmap <C-x>          :call ChangeFileType()<CR>
+nmap <C-x>          :call HandleSuperKey()<CR>
 
 " ctrl-j format json on visual mode
 xmap <leader>j      :!python3 -mjson.tool --indent=2<CR>
