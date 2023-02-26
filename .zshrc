@@ -27,5 +27,5 @@ elif [[ $OSTYPE == darwin* ]]; then
 # Source Linux configs
 elif [[ $OSTYPE == linux* ]]; then
     source $HOME/dotConfig/linux/bindkey.zsh
-    source $HOME/dotConfig/cygwin/alias.zsh
+    source $HOME/dotConfig/linux/alias.zsh
 fi
