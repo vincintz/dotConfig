@@ -98,10 +98,10 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/ojroques/vim-oscyank'  " Copy to clipboard from ssh session
     Plug 'https://github.com/rafi/awesome-vim-colorschemes'
     Plug 'https://github.com/tpope/vim-commentary'
+    Plug 'https://github.com/tpope/vim-dispatch'
     Plug 'https://github.com/tpope/vim-fugitive'
     Plug 'https://github.com/tpope/vim-unimpaired'
     Plug 'https://github.com/tpope/vim-surround'
-    Plug 'https://github.com/vimwiki/vimwiki'
     Plug 'https://github.com/vim-airline/vim-airline'
     " plugins we only need on local machine
     if empty($SSH_CLIENT)
@@ -112,7 +112,7 @@ call plug#begin('~/.vim/plugged')
         Plug 'https://github.com/leafOfTree/vim-vue-plugin'
         Plug 'https://github.com/psliwka/vim-smoothie'
         Plug 'https://github.com/tpope/vim-dadbod'
-        Plug 'https://github.com/tpope/vim-dispatch'
+        Plug 'https://github.com/vimwiki/vimwiki'
         Plug 'https://github.com/ycm-core/YouCompleteMe'
         " Plug 'https://github.com/Exafunction/codeium.vim'
     endif
@@ -140,18 +140,12 @@ if empty($SSH_CLIENT)
     let g:ycm_auto_trigger = 0
     let g:ycm_complete_in_strings = 0
 
-    " don't auto-show popup
-    let g:jedi#popup_on_dot = 0
-    let g:jedi#popup_select_first = 0
-    let g:jedi#completions_command = "<c-p>"
-
     " smooth scroll
     let g:smoothie_speed_constant_factor = 100
     let g:smoothie_speed_linear_factor = 30
 
     " vim-rest-console settings
     let g:vrc_output_buffer_name = '_localhost_out.json'
-    " let g:vrc_trigger = '<C-x>'
     let g:vrc_syntax_highlight_response = 1
     let g:vrc_auto_format_response_enabled = 1
     let b:vrc_response_default_content_type = 'application/json'
@@ -297,9 +291,6 @@ nmap <C-h> <C-w><C-h>
 " ctrl-c yank to clipboard
 xmap <C-c>          :OSCYank<CR>
 
-" ctrl-x to switch filetype if in vimwiki
-nmap <C-x>          :call HandleSuperKey()<CR>
-
 " ctrl-j format json on visual mode
 xmap <leader>j      :!python3 -mjson.tool --indent=2<CR>
 
@@ -324,6 +315,9 @@ if empty($SSH_CLIENT)
 
     " hide terminal
     tmap <C-t>      <Plug>(Multiterm)
+
+    " ctrl-x to switch filetype if in vimwiki
+    nmap <C-x>          :call HandleSuperKey()<CR>
 
 else
     " ctrl-t to run terminal
