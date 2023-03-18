@@ -278,6 +278,8 @@ nmap <silent>gh     :0GcLog<CR>
 " Lint commands
 nmap <silent>lp     :compiler pylint<CR>:Make! %<CR>
 nmap <silent>lP     :compiler pylint<CR>:Make! $(git diff --name-only -- "*.py")<CR>
+nmap <silent>lu     :set makeprg=ruff<CR>:Make! %<CR>
+nmap <silent>lU     :set makeprg=ruff<CR>:Make! $(git ls-files "*.py")<CR>
 nmap <silent>lj     :compiler eslint<CR>:Make! %<CR>
 nmap <silent>lJ     :compiler eslint<CR>:Make! $(git diff --name-only -- "*.vue" "*.js")<CR>
 nmap <silent>ls     :compiler shellcheck<CR>:Make! %<CR>
