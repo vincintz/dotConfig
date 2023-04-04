@@ -319,7 +319,7 @@ if empty($SSH_CLIENT)
     tmap <C-t>      <Plug>(Multiterm)
 
     " ctrl-x to switch filetype if in vimwiki
-    nmap <C-x>          :call HandleSuperKey()<CR>
+    nmap <C-x>      :call HandleSuperKey()<CR>
 
 else
     " ctrl-t to run terminal
