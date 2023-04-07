@@ -97,7 +97,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/mhinz/vim-signify'     " similar to vim-gitgutter
     Plug 'https://github.com/ojroques/vim-oscyank'  " Copy to clipboard from ssh session
     Plug 'https://github.com/rafi/awesome-vim-colorschemes'
-    Plug 'https://github.com/tpope/vim-commentary'
+    " Plug 'https://github.com/tpope/vim-commentary'
     Plug 'https://github.com/tpope/vim-dispatch'
     Plug 'https://github.com/tpope/vim-fugitive'
     Plug 'https://github.com/tpope/vim-unimpaired'
@@ -299,25 +299,19 @@ xmap <leader>j      :!python3 -mjson.tool --indent=2<CR>
 " keyboard shortcuts based on installed plugins
 if empty($SSH_CLIENT)
     " ctrl-t/t to toggle terminal
+    nmap <C-t><C-t> :9Multiterm<CR>
     nmap <C-t>t     :9Multiterm<CR>
-    imap <C-t>t     <Plug>(Multiterm)
     nmap <C-t>      :9Multiterm<CR>
-
     " ctrl-t/1 for htop
     nmap <C-t>1     :1Multiterm htop<CR>
-
     " ctrl-t/2 for python
     nmap <C-t>2     :2Multiterm python3<CR>
-
     " ctrl-t/3 for NodeJS
     nmap <C-t>3     :3Multiterm node<CR>
-
     " ycm goto definition
     nmap <leader>d  :YcmCompleter GoToDefinition<CR>
-
     " hide terminal
     tmap <C-t>      <Plug>(Multiterm)
-
     " ctrl-x to switch filetype if in vimwiki
     nmap <C-x>      :call HandleSuperKey()<CR>
 
