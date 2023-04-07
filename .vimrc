@@ -238,6 +238,9 @@ function! HandleSuperKey()
     endif
 endfunction
 
+" change leader key to space
+let mapleader = " "
+
 " reload vimrc
 nmap <leader>r      :source ~/.vimrc<CR>
 
@@ -249,7 +252,7 @@ nmap <leader>=      :resize +5<CR>
 nmap <leader>-      :resize -5<CR>
 
 " toggle highlight search
-nmap <leader>h      :set hls!<CR>
+nmap <leader>/      :set hls!<CR>
 
 " toggle spellcheck
 nmap <leader>s      :setlocal invspell spell?<CR>
@@ -285,10 +288,11 @@ nmap <silent>lJ     :compiler eslint<CR>:Make! $(git diff --name-only -- "*.vue"
 nmap <silent>ls     :compiler shellcheck<CR>:Make! %<CR>
 
 " Window navigation
-nmap <C-j> <C-w><C-j>
-nmap <C-k> <C-w><C-k>
-nmap <C-l> <C-w><C-l>
-nmap <C-h> <C-w><C-h>
+nmap <leader>j  <C-w><C-j>
+nmap <leader>k  <C-w><C-k>
+nmap <leader>l  <C-w><C-l>
+nmap <leader>h  <C-w><C-h>
+nmap <leader>w  <C-w><C-w>
 
 " ctrl-c yank to clipboard
 xmap <C-c>          :OSCYank<CR>
