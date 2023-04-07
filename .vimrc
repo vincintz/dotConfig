@@ -298,20 +298,19 @@ xmap <leader>j      :!python3 -mjson.tool --indent=2<CR>
 
 " keyboard shortcuts based on installed plugins
 if empty($SSH_CLIENT)
-    " ctrl-t/t to toggle terminal
+    " multi-term shortcuts
     nmap <C-t><C-t> :9Multiterm<CR>
     nmap <C-t>t     :9Multiterm<CR>
     nmap <C-t>      :9Multiterm<CR>
-    " ctrl-t/1 for htop
-    nmap <C-t>1     :1Multiterm htop<CR>
-    " ctrl-t/2 for python
-    nmap <C-t>2     :2Multiterm python3<CR>
-    " ctrl-t/3 for NodeJS
-    nmap <C-t>3     :3Multiterm node<CR>
+    nmap <C-t>1     :1Multiterm<CR>
+    nmap <C-t>2     :2Multiterm<CR>
+    nmap <C-t>3     :3Multiterm<CR>
+    nmap <C-t>4     :4Multiterm<CR>
+    tmap <C-t>      <Plug>(Multiterm)
+
     " ycm goto definition
     nmap <leader>d  :YcmCompleter GoToDefinition<CR>
-    " hide terminal
-    tmap <C-t>      <Plug>(Multiterm)
+
     " ctrl-x to switch filetype if in vimwiki
     nmap <C-x>      :call HandleSuperKey()<CR>
 
