@@ -97,7 +97,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/mhinz/vim-signify'     " similar to vim-gitgutter
     Plug 'https://github.com/ojroques/vim-oscyank'  " Copy to clipboard from ssh session
     Plug 'https://github.com/rafi/awesome-vim-colorschemes'
-    " Plug 'https://github.com/tpope/vim-commentary'
     Plug 'https://github.com/tpope/vim-dispatch'
     Plug 'https://github.com/tpope/vim-fugitive'
     Plug 'https://github.com/tpope/vim-unimpaired'
@@ -271,28 +270,17 @@ nmap <leader>q      :call ToggleQuickFix()<CR>
 nmap <leader>e      :Fern . -drawer -toggle -reveal=%<CR>
 
 " Git shortcuts
-nmap <silent>gf     :GitFiles?<CR>
 nmap <silent>gs     :Git<CR>:resize 10<CR>
 nmap <silent>gb     :Git blame<CR><C-w><C-w>
-nmap <silent>gd     :Gdiffsplit<CR><C-w><C-w>
+nmap <silent>gc     :Gdiffsplit<CR><C-w><C-w>
 nmap <silent>gh     :Commits!<CR>
-nmap <silent>gh     :0GcLog<CR>
 
 " Lint commands
-nmap <silent>lp     :compiler pylint<CR>:Make! %<CR>
-nmap <silent>lP     :compiler pylint<CR>:Make! $(git diff --name-only -- "*.py")<CR>
 nmap <silent>lu     :set makeprg=ruff<CR>:Make! %<CR>
 nmap <silent>lU     :set makeprg=ruff<CR>:Make! $(git ls-files "*.py")<CR>
 nmap <silent>lj     :compiler eslint<CR>:Make! %<CR>
 nmap <silent>lJ     :compiler eslint<CR>:Make! $(git diff --name-only -- "*.vue" "*.js")<CR>
 nmap <silent>ls     :compiler shellcheck<CR>:Make! %<CR>
-
-" Window navigation
-nmap <leader>j  <C-w><C-j>
-nmap <leader>k  <C-w><C-k>
-nmap <leader>l  <C-w><C-l>
-nmap <leader>h  <C-w><C-h>
-nmap <leader>w  <C-w><C-w>
 
 " ctrl-c yank to clipboard
 xmap <C-c>          :OSCYank<CR>
@@ -313,7 +301,7 @@ if empty($SSH_CLIENT)
     tmap <C-t>      <Plug>(Multiterm)
 
     " ycm goto definition
-    nmap <leader>d  :YcmCompleter GoToDefinition<CR>
+    nmap <silent>gd :YcmCompleter GoToDefinition<CR>
 
     " ctrl-x to switch filetype if in vimwiki
     nmap <C-x>      :call HandleSuperKey()<CR>
