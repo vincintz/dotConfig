@@ -2,8 +2,8 @@
 # bindkey -d # deletes all bindings
 # Ctrl+V, followed by the key combination desired to bind prints the code to the console.
 
-# Use emacs mode
-bindkey -e
+# Use vi mode
+bindkey -v
 
 # Home/End
 bindkey '^[[H'    beginning-of-line
