@@ -264,6 +264,10 @@ nmap <C-p>          :FZF<CR>
 nmap <C-b>          :Buffers<CR>
 nmap <C-s>          :Rg<CR>
 
+" tab shortcuts
+nmap <silent>tt     :tabnew<CR>
+nmap <silent>tq     :tabclose<CR>
+
 " Plugin shortcuts
 nmap <leader>\      :TagbarToggle<CR>
 nmap <leader>q      :call ToggleQuickFix()<CR>
@@ -271,8 +275,8 @@ nmap <leader>e      :Fern . -drawer -toggle -reveal=%<CR>
 
 " Git shortcuts
 nmap <silent>gs     :Git<CR>:resize 10<CR>
-nmap <silent>gb     :Git blame<CR><C-w><C-w>
-nmap <silent>gc     :Gdiffsplit<CR><C-w><C-w>
+nmap <silent>gb     :Git blame<CR>
+nmap <silent>gd     :Gdiffsplit<CR><C-w><C-w>
 nmap <silent>gh     :Commits!<CR>
 
 " Lint commands
@@ -301,7 +305,7 @@ if empty($SSH_CLIENT)
     tmap <C-t>      <Plug>(Multiterm)
 
     " ycm goto definition
-    nmap <silent>gd :YcmCompleter GoToDefinition<CR>
+    nmap <leader>d  :YcmCompleter GoToDefinition<CR>
 
     " ctrl-x to switch filetype if in vimwiki
     nmap <C-x>      :call HandleSuperKey()<CR>
