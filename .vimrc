@@ -287,7 +287,7 @@ nmap <silent>lJ     :compiler eslint<CR>:Make! $(git diff --name-only -- "*.vue"
 nmap <silent>ls     :compiler shellcheck<CR>:Make! %<CR>
 
 " ctrl-c yank to clipboard
-xmap <C-c>          :OSCYank<CR>
+xmap <C-c>          :OSCYankVisual<CR>
 
 " ctrl-j format json on visual mode
 xmap <leader>j      :!python3 -mjson.tool --indent=2<CR>
