@@ -9,7 +9,7 @@ window:
   padding:
     x: 10
     y: 8
-  decorations: none
+  decorations: None
   startup_mode: Maximized
   title: Terminal
   opacity: 1
@@ -40,13 +40,6 @@ colors:
 
 selection:
   save_to_clipboard: false
-
-shell:
-  program: /bin/zsh
-  args:
-    - --login
-    - -c
-    - "tmux attach -t ws || tmux new -s ws"
 
 hints:
   enabled:
