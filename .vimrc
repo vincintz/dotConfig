@@ -97,6 +97,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/mhinz/vim-signify'     " similar to vim-gitgutter
     Plug 'https://github.com/ojroques/vim-oscyank'  " Copy to clipboard from ssh session
     Plug 'https://github.com/rafi/awesome-vim-colorschemes'
+    Plug 'https://github.com/tpope/vim-commentary'
     Plug 'https://github.com/tpope/vim-dispatch'
     Plug 'https://github.com/tpope/vim-fugitive'
     Plug 'https://github.com/tpope/vim-unimpaired'
