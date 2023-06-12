@@ -86,23 +86,26 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-    Plug 'https://github.com/chengzeyi/multiterm.vim'
     Plug 'https://github.com/chr4/nginx.vim'
     Plug 'https://github.com/editorconfig/editorconfig-vim'
-    Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'https://github.com/junegunn/fzf.vim'
-    Plug 'https://github.com/lambdalisue/fern.vim'
-    Plug 'https://github.com/majutsushi/tagbar'
     Plug 'https://github.com/mattn/emmet-vim'
     Plug 'https://github.com/mhinz/vim-signify'     " similar to vim-gitgutter
     Plug 'https://github.com/ojroques/vim-oscyank'  " Copy to clipboard from ssh session
     Plug 'https://github.com/rafi/awesome-vim-colorschemes'
     Plug 'https://github.com/tpope/vim-commentary'
-    Plug 'https://github.com/tpope/vim-dispatch'
     Plug 'https://github.com/tpope/vim-fugitive'
     Plug 'https://github.com/tpope/vim-unimpaired'
     Plug 'https://github.com/tpope/vim-surround'
     Plug 'https://github.com/vim-airline/vim-airline'
+    " plugins for vim 9.0+
+    if version >= 900
+        Plug 'https://github.com/chengzeyi/multiterm.vim'
+        Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
+        Plug 'https://github.com/junegunn/fzf.vim'
+        Plug 'https://github.com/majutsushi/tagbar'
+        Plug 'https://github.com/lambdalisue/fern.vim'
+        Plug 'https://github.com/tpope/vim-dispatch'
+    endif
     " plugins we only need on local machine
     if empty($SSH_CLIENT)
         Plug 'https://github.com/christoomey/vim-tmux-navigator'
@@ -123,12 +126,20 @@ if vim_plug_just_installed
     :PlugInstall
 endif
 
-" fuzzy finder options
-let $FZF_DEFAULT_COMMAND = 'fd . --type=f --hidden --exclude=.git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
-let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=Nord --style=numbers --color=always --line-range :120 {}'"
-
 " osc52 yank
 let g:oscyank_term = 'default'
+
+" fuzzy finder options
+if version >= 900
+    let $FZF_DEFAULT_COMMAND = 'fd . --type=f --hidden --exclude=.git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
+    let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=Nord --style=numbers --color=always --line-range :120 {}'"
+
+    " project search shortcuts
+    nmap <C-p>          :FZF<CR>
+    nmap <C-b>          :Buffers<CR>
+    nmap <C-s>          :Rg<CR>
+
+endif
 
 " config for new plugins
 if empty($SSH_CLIENT)
@@ -259,11 +270,6 @@ nmap <leader>s      :setlocal invspell spell?<CR>
 
 " toggle paste
 nmap <leader>p      :set invpaste paste?<CR>
-
-" project search shortcuts
-nmap <C-p>          :FZF<CR>
-nmap <C-b>          :Buffers<CR>
-nmap <C-s>          :Rg<CR>
 
 " tab shortcuts
 nmap <silent>tt     :tabnew<CR>
