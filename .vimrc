@@ -131,7 +131,7 @@ let g:oscyank_term = 'default'
 
 " fuzzy finder options
 if version >= 900
-    let $FZF_DEFAULT_COMMAND = 'fd . --type=f --hidden --exclude=.git --exclude=log --exclude=node_modules --exclude=bower_components --exclude=vendor'
+    let $FZF_DEFAULT_COMMAND = 'fd . --type=f --hidden --exclude=.git --exclude=node_modules --exclude=bower_components --exclude=vendor'
     let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=Nord --style=numbers --color=always --line-range :120 {}'"
 
     " project search shortcuts
