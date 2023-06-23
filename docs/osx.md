@@ -4,7 +4,14 @@
 
 * https://brew.sh/
   ```
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)
+  (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/theo/.zprofile
+
+  brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt grep
+  brew install tmux
+  brew tap homebrew/cask-fonts
+  brew install --cask font-hack-nerd-font 
+  brew install --cask alacritty waterfox
   ```
 
 ## Install Node Version Manager
