@@ -6,12 +6,21 @@
   ```
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)
   (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/theo/.zprofile
+  ```
 
+  ```
   brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt grep
   brew install tmux
   brew tap homebrew/cask-fonts
   brew install --cask font-hack-nerd-font 
   brew install --cask alacritty waterfox
+  ```
+  
+  ```
+  brew reinstall python
+  brew install vim -vd protobuf
+  brew install vim -vd protobuf
+  /Users/theo/.vim/plugged/YouCompleteMe/third_party/ycmd/build.py --ts-completer --verbose
   ```
 
 ## Install Node Version Manager
