@@ -3,23 +3,33 @@
 ## Install Homebrew
 
 * https://brew.sh/
+
   ```
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)
+  softwareupdate --install-rosetta
+  ```
+
+  ```
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
   (echo; echo 'eval "$(/opt/homebrew/bin/brew shellenv)"') >> /Users/theo/.zprofile
   ```
 
   ```
-  brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt grep
-  brew install tmux
+  brew install coreutils findutils gnu-tar gnu-sed gawk gnutls gnu-indent gnu-getopt grep cmake
+  brew install tmux fd bat
   brew tap homebrew/cask-fonts
   brew install --cask font-hack-nerd-font 
-  brew install --cask alacritty waterfox
+  brew install --cask alacritty waterfox rectangle
+  brew install --cask install ferdium
   ```
-  
+
   ```
+  brew install cocoapods
   brew reinstall python
-  brew install vim -vd protobuf
-  brew install vim -vd protobuf
+  brew install macvim
+  brew install neofetch
+  ```
+
+  ```
   /Users/theo/.vim/plugged/YouCompleteMe/third_party/ycmd/build.py --ts-completer --verbose
   ```
 
