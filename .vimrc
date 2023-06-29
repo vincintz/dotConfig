@@ -97,6 +97,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/tpope/vim-unimpaired'
     Plug 'https://github.com/tpope/vim-surround'
     Plug 'https://github.com/vim-airline/vim-airline'
+
     " plugins for vim 9.0+
     if version >= 900
         Plug 'https://github.com/chengzeyi/multiterm.vim'
@@ -104,21 +105,27 @@ call plug#begin('~/.vim/plugged')
         Plug 'https://github.com/junegunn/fzf.vim'
         Plug 'https://github.com/majutsushi/tagbar'
         Plug 'https://github.com/lambdalisue/fern.vim'
+        Plug 'https://github.com/lambdalisue/fern-renderer-nerdfont.vim'
         Plug 'https://github.com/tpope/vim-dispatch'
     endif
+
+    if version >= 810
+        Plug 'https://github.com/psliwka/vim-smoothie'
+        Plug 'https://github.com/ycm-core/YouCompleteMe'
+    endif
+
     " plugins we only need on local machine
     if empty($SSH_CLIENT)
         Plug 'https://github.com/christoomey/vim-tmux-navigator'
         Plug 'https://github.com/diepm/vim-rest-console'
         Plug 'https://github.com/lambdalisue/nerdfont.vim'
-        Plug 'https://github.com/lambdalisue/fern-renderer-nerdfont.vim'
         Plug 'https://github.com/leafOfTree/vim-vue-plugin'
-        Plug 'https://github.com/psliwka/vim-smoothie'
+        Plug 'https://github.com/mechatroner/rainbow_csv'
         Plug 'https://github.com/tpope/vim-dadbod'
         Plug 'https://github.com/vimwiki/vimwiki'
-        Plug 'https://github.com/ycm-core/YouCompleteMe'
         " Plug 'https://github.com/Exafunction/codeium.vim'
     endif
+
 call plug#end()
 
 if vim_plug_just_installed
@@ -143,17 +150,22 @@ endif
 
 " config for new plugins
 if empty($SSH_CLIENT)
-    let g:fern#renderer = "nerdfont"
-    " YouCompleteMe config
-    let g:ycm_autoclose_preview_window_after_completion = 1
-    let g:ycm_autoclose_preview_window_after_insertion = 1
-    let g:ycm_auto_hover=''
-    let g:ycm_auto_trigger = 0
-    let g:ycm_complete_in_strings = 0
+    if version >= 900
+        let g:fern#renderer = "nerdfont"
+    endif
 
-    " smooth scroll
-    let g:smoothie_speed_constant_factor = 100
-    let g:smoothie_speed_linear_factor = 30
+    if version >= 810
+        " YouCompleteMe config
+        let g:ycm_autoclose_preview_window_after_completion = 1
+        let g:ycm_autoclose_preview_window_after_insertion = 1
+        let g:ycm_auto_hover=''
+        let g:ycm_auto_trigger = 0
+        let g:ycm_complete_in_strings = 0
+
+        " smooth scroll
+        let g:smoothie_speed_constant_factor = 100
+        let g:smoothie_speed_linear_factor = 30
+    endif
 
     " vim-rest-console settings
     let g:vrc_output_buffer_name = '_localhost_out.json'
@@ -230,7 +242,7 @@ endif
 " toggle quick fix window
 function! ToggleQuickFix()
     if empty(filter(getwininfo(), 'v:val.quickfix'))
-        Copen
+        copen
     else
         cclose
     endif
@@ -287,6 +299,7 @@ nmap <silent>gd     :Gdiffsplit<CR><C-w><C-w>
 nmap <silent>gh     :Commits!<CR>
 
 " Lint commands
+nmap <silent>lp     :compiler pylint<CR>:make %<CR>
 nmap <silent>lu     :set makeprg=ruff<CR>:Make! %<CR>
 nmap <silent>lU     :set makeprg=ruff<CR>:Make! $(git ls-files "*.py")<CR>
 nmap <silent>lj     :compiler eslint<CR>:Make! %<CR>
