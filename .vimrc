@@ -242,7 +242,7 @@ endif
 " toggle quick fix window
 function! ToggleQuickFix()
     if empty(filter(getwininfo(), 'v:val.quickfix'))
-        copen
+        Copen
     else
         cclose
     endif
