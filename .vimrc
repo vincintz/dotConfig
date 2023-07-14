@@ -138,6 +138,8 @@ let g:oscyank_term = 'default'
 
 " fuzzy finder options
 if version >= 900
+    let g:fern#renderer = "nerdfont"
+
     let $FZF_DEFAULT_COMMAND = 'fd . --type=f --hidden --exclude=.git --exclude=node_modules --exclude=bower_components --exclude=vendor'
     let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=Nord --style=numbers --color=always --line-range :120 {}'"
 
@@ -148,25 +150,22 @@ if version >= 900
 
 endif
 
+if version >= 810
+    " YouCompleteMe config
+    let g:ycm_autoclose_preview_window_after_completion = 1
+    let g:ycm_autoclose_preview_window_after_insertion = 1
+    let g:ycm_auto_hover=''
+    let g:ycm_auto_trigger = 0
+    let g:ycm_complete_in_strings = 0
+
+    " smooth scroll
+    let g:smoothie_speed_constant_factor = 100
+    let g:smoothie_speed_linear_factor = 30
+
+endif
+
 " config for new plugins
 if empty($SSH_CLIENT)
-    if version >= 900
-        let g:fern#renderer = "nerdfont"
-    endif
-
-    if version >= 810
-        " YouCompleteMe config
-        let g:ycm_autoclose_preview_window_after_completion = 1
-        let g:ycm_autoclose_preview_window_after_insertion = 1
-        let g:ycm_auto_hover=''
-        let g:ycm_auto_trigger = 0
-        let g:ycm_complete_in_strings = 0
-
-        " smooth scroll
-        let g:smoothie_speed_constant_factor = 100
-        let g:smoothie_speed_linear_factor = 30
-    endif
-
     " vim-rest-console settings
     let g:vrc_output_buffer_name = '_localhost_out.json'
     let g:vrc_syntax_highlight_response = 1
