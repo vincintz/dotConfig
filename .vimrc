@@ -144,9 +144,9 @@ if version >= 900
     let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=Nord --style=numbers --color=always --line-range :120 {}'"
 
     " project search shortcuts
-    nmap <C-p>          :FZF<CR>
-    nmap <C-b>          :Buffers<CR>
-    nmap <C-s>          :Rg<CR>
+    nmap <silent>ff     :FZF<CR>
+    nmap <silent>fb     :Buffers<CR>
+    nmap <silent>fs     :Rg<CR>
 
 endif
 
