@@ -145,6 +145,7 @@ if version >= 900
 
     " project search shortcuts
     nmap <silent>ff     :FZF<CR>
+    nmap <silent>fg     :FZF<CR>
     nmap <silent>fb     :Buffers<CR>
     nmap <silent>fs     :Rg<CR>
 
