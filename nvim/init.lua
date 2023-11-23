@@ -42,65 +42,89 @@ vim.opt.colorcolumn = "120"
 vim.opt.ruler = true
 vim.opt.scrolloff = 10
 
+vim.keymap.set('n', 'lp', "<cmd>compiler pylint<cr><cmd>make %<cr><cmd>copen<cr>")
+vim.keymap.set('n', 'lP', "<cmd>compiler pylint<cr><cmd>make $(git diff --name-only '**/*.py')<cr><cmd>copen<cr>")
+vim.keymap.set('n', 'lu', "<cmd>set makeprg=ruff<cr><cmd>make %<cr><cmd>copen<cr>")
+vim.keymap.set('n', 'lU', "<cmd>set makeprg=ruff<cr><cmd>make $(git ls-files '*.py')<cr><cmd>copen<cr>")
+vim.keymap.set('n', 'lj', "<cmd>compiler eslint<cr><cmd>make %<cr><cmd>copen<cr>")
+vim.keymap.set('n', 'lJ', "<cmd>compiler eslint<cr><cmd>make $(git ls-files '*.py')<cr><cmd>copen<cr>")
+vim.keymap.set('n', 'ls', "<cmd>compiler shellcheck<cr><cmd>make %<cr><cmd>copen<cr>")
+
+vim.cmd [[
+    command! Q q
+    command! Qa qa
+    command! W w
+    command! Wq wq
+]]
+
 -- plugins
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "folke/lazy.nvim.git",
+        "--branch=stable", -- latest stable release
+        lazypath,
+    })
 end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    "https://github.com/chr4/nginx.vim",
-    "https://github.com/editorconfig/editorconfig-vim",
-    "https://github.com/mattn/emmet-vim",
-    "https://github.com/mhinz/vim-signify",
+    "chr4/nginx.vim",
+    "editorconfig/editorconfig-vim",
+    "mattn/emmet-vim",
+    "mhinz/vim-signify",
     {
-        "https://github.com/rafi/awesome-vim-colorschemes",
+        "rafi/awesome-vim-colorschemes",
         config = function()
             vim.cmd.colorscheme "tender"
         end
     },
-    "https://github.com/tpope/vim-commentary",
+    "tpope/vim-commentary",
     {
-        "https://github.com/tpope/vim-fugitive",
+        "tpope/vim-fugitive",
         config = function()
             vim.keymap.set('n', 'gs', "<cmd>Git<cr><cmd>resize 10<cr>")
             vim.keymap.set('n', 'gb', "<cmd>Git blame<cr>")
             vim.keymap.set('n', 'gd', "<cmd>Gdiffsplit<cr><c-w><c-w>")
         end
     },
-    "https://github.com/tpope/vim-unimpaired",
-    "https://github.com/tpope/vim-surround",
-    "https://github.com/vim-airline/vim-airline",
-    "https://github.com/christoomey/vim-tmux-navigator",
-    "https://github.com/diepm/vim-rest-console",
-    "https://github.com/lambdalisue/nerdfont.vim",
-    "https://github.com/leafOfTree/vim-vue-plugin",
-    "https://github.com/mechatroner/rainbow_csv",
-    "https://github.com/tpope/vim-dadbod",
-    "https://github.com/vimwiki/vimwiki",
+    "tpope/vim-unimpaired",
+    "tpope/vim-surround",
+    "vim-airline/vim-airline",
+    "christoomey/vim-tmux-navigator",
+    "diepm/vim-rest-console",
+    "lambdalisue/nerdfont.vim",
+    "leafOfTree/vim-vue-plugin",
+    "mechatroner/rainbow_csv",
+    "tpope/vim-dadbod",
+    "vimwiki/vimwiki",
     -- new
     {
-        "https://github.com/nvim-telescope/telescope.nvim", tag = "0.1.4",
-        dependencies = { "nvim-lua/plenary.nvim" },
+        "nvim-telescope/telescope.nvim", branch = "0.1.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+            "nvim-tree/nvim-web-devicons",
+        },
         config = function()
-            local builtin = require('telescope.builtin')
+            local telescope = require("telescope")
+            local builtin = require("telescope.builtin")
+            telescope.load_extension("fzf")
+            -- keymaps
             vim.keymap.set('n', 'ff', builtin.find_files, {})
             vim.keymap.set('n', 'fg', builtin.git_files, {})
             vim.keymap.set('n', 'fs', builtin.live_grep, {})
             vim.keymap.set('n', 'fb', builtin.buffers, {})
             vim.keymap.set('n', 'fh', builtin.help_tags, {})
+            vim.keymap.set('n', 'fc', builtin.grep_string, {})
+
         end,
     },
     {
-        "https://github.com/nvim-tree/nvim-tree.lua",
+        "nvim-tree/nvim-tree.lua",
         version = "*",
         lazy = false,
         dependencies = {
@@ -112,7 +136,7 @@ require("lazy").setup({
         end,
     },
     {
-        "https://github.com/voldikss/vim-floaterm",
+        "voldikss/vim-floaterm",
         config = function()
             -- settings
             vim.g.floaterm_width = 0.85
@@ -127,7 +151,7 @@ require("lazy").setup({
         end
     },
     {
-        "https://github.com/ojroques/nvim-osc52",
+        "ojroques/nvim-osc52",
         config = function()
             require('osc52').setup {
                 max_length = 0,           -- Maximum length of selection (0 for no limit)
@@ -141,18 +165,16 @@ require("lazy").setup({
         end
     },
     {
-        "https://github.com/nvim-treesitter/nvim-treesitter",
+        "nvim-treesitter/nvim-treesitter",
     },
     {
-        "https://github.com/williamboman/mason.nvim",
+        "williamboman/mason.nvim",
         dependencies = {
             "williamboman/mason-lspconfig.nvim",
         },
         config = function()
             local mason = require("mason")
             local mason_lspconfig = require("mason-lspconfig")
-
-            -- enable mason and configure icons
             mason.setup({
                 ui = {
                     icons = {
@@ -162,16 +184,30 @@ require("lazy").setup({
                     },
                 },
             })
-
             mason_lspconfig.setup({
-                -- list of servers for mason to install
                 ensure_installed = {
                     "pyright",
                 },
-                -- auto-install configured servers (with lspconfig)
-                automatic_installation = true, -- not the same as ensure_installed
+                automatic_installation = true,
             })
 
+        end
+    },
+    {
+        "neovim/nvim-lspconfig",
+        config = function()
+            local lspconfig = require("lspconfig")
+            lspconfig.pyright.setup({
+            })
+        end
+    },
+    {
+        "rmagatti/auto-session",
+        config = function()
+            require("auto-session").setup {
+                log_level = "error",
+                auto_session_suppress_dirs = { "~/", "~/Documents", "~/Downloads", "/"},
+            }
         end
     },
 })
