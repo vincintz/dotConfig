@@ -1,19 +1,20 @@
--- settings
-vim.g.encoding = "utf-8"
+-- set leader key to space
 vim.g.mapleader = " "
-vim.opt.syntax = "ON"
+vim.g.maplocalleader = " "
 
-vim.opt.compatible = false
-vim.opt.mouse = ""
+-- system integration settings
+vim.opt.mouse = "a"
+vim.opt.clipboard = "unnamedplus"
 
--- tab settings
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.expandtab = true
+
+-- when scrolling, leave 10 rows
+vim.opt.scrolloff = 10
+vim.opt.sidescrolloff = 10
 
 -- line settings
 vim.opt.smartindent = true
 vim.opt.wrap = false
+vim.opt.colorcolumn = "120"
 
 -- line numbers
 vim.opt.number = true
@@ -25,29 +26,30 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.hlsearch = false
 
--- split location
+-- split options
 vim.opt.splitbelow = true
 vim.opt.splitright = true
+
+-- tab settings
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.bo.softtabstop = 2
 
 -- show invisible characters
 vim.opt.list = true
 vim.opt.listchars = {
-    tab = '>-',
-    trail = '.',
-    precedes = '<',
+  tab = '>-',
+  trail = '.',
+  precedes = '<',
 }
-
--- mark long lines
-vim.opt.colorcolumn = "120"
-vim.opt.ruler = true
-vim.opt.scrolloff = 10
 
 -- keymaps for common mistyped commands
 vim.cmd [[
-    command! Q q
-    command! Qa qa
-    command! W w
-    command! Wq wq
+  command! Q q
+  command! Qa qa
+  command! W w
+  command! Wq wq
 ]]
 
 -- external linters
