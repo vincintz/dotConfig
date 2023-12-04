@@ -306,6 +306,9 @@ nmap <silent>lj     :compiler eslint<CR>:Make! %<CR>
 nmap <silent>lJ     :compiler eslint<CR>:Make! $(git diff --name-only -- "*.vue" "*.js")<CR>
 nmap <silent>ls     :compiler shellcheck<CR>:Make! %<CR>
 
+nmap <tab>          :bnext<CR>
+nmap <s-tab>        :bprevious<CR>
+
 " ctrl-c yank to clipboard
 xmap <C-c>          :OSCYankVisual<CR>
 
