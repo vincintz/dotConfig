@@ -287,6 +287,11 @@ nmap <leader>p      :set invpaste paste?<CR>
 nmap <silent>tt     :tabnew<CR>
 nmap <silent>tq     :tabclose<CR>
 
+" buffer shortcuts
+nmap <silent>H      :bprevious<CR>
+nmap <silent>L      :bnext<CR>
+nmap <silent>X      :bdelete<CR>
+
 " Plugin shortcuts
 nmap <leader>\      :TagbarToggle<CR>
 nmap <leader>q      :call ToggleQuickFix()<CR>
