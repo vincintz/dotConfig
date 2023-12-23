@@ -298,10 +298,10 @@ nmap <leader>q      :call ToggleQuickFix()<CR>
 nmap <leader>e      :Fern . -drawer -toggle -reveal=%<CR>
 
 " Git shortcuts
-nmap <silent>gs     :Git<CR>:resize 10<CR>
-nmap <silent>gb     :Git blame<CR>
-nmap <silent>gd     :Gdiffsplit<CR><C-w><C-w>
-nmap <silent>gh     :Commits!<CR>
+nmap <silent>Gs     :Git<CR>:resize 10<CR>
+nmap <silent>Gb     :Git blame<CR>
+nmap <silent>Gd     :Gdiffsplit<CR><C-w><C-w>
+nmap <silent>Gh     :Commits!<CR>
 
 " Lint commands
 nmap <silent>lp     :compiler pylint<CR>:make %<CR>
