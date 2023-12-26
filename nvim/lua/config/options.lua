@@ -48,7 +48,7 @@ vim.opt.listchars = {
 vim.cmd [[
   command! Q q
   command! Qa qa
-  command! W w
+  command! W w!
   command! Wq wq
 ]]
 
