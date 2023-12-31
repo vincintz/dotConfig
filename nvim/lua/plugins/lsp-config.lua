@@ -21,6 +21,7 @@ return {
           "pyright",
           "lua_ls",
           "tsserver",
+          "html",
         },
         automatic_installation = true,
       })
@@ -29,19 +30,31 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
-      lspconfig.pyright.setup({})
-
-      vim.api.nvim_create_autocmd('LspAttach', {
-        group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-        callback = function(ev)
-          local opts = {}
-          vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-          vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-          vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-          vim.keymap.set({ 'n', 'v' }, '<space>ca', vim.lsp.buf.code_action, opts)
-        end,
+      lspconfig.pyright.setup({
+        capabilities = capabilities,
       })
+      lspconfig.tsserver.setup({
+        capabilites = capabilities,
+      })
+      lspconfig.html.setup({
+        capabilites = capabilities,
+      })
+      lspconfig.lua_ls.setup({
+        capabilites = capabilities,
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = { "vim" },
+            },
+          },
+        },
+      })
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
+      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
     end
   },
 }
