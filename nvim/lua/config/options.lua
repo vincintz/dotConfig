@@ -39,17 +39,17 @@ vim.bo.softtabstop = 2
 -- show invisible characters
 vim.opt.list = true
 vim.opt.listchars = {
-  tab = '>-',
-  trail = '.',
-  precedes = '<',
+    tab = '>-',
+    trail = '.',
+    precedes = '<',
 }
 
 -- keymaps for common mistyped commands
 vim.cmd [[
-  command! Q q
-  command! Qa qa
-  command! W w!
-  command! Wq wq
+    command! Q q
+    command! Qa qa
+    command! W w!
+    command! Wq wq
 ]]
 
 -- external linters
