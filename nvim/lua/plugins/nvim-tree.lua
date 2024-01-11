@@ -12,6 +12,9 @@ return {
                     enable = true,
                 },
                 filters = { custom = { "^.git$", "__pycache__" } },
+                view = {
+                    side = "right",
+                },
             }
             vim.keymap.set('n', '<leader>e', "<cmd>NvimTreeToggle<cr>")
 
