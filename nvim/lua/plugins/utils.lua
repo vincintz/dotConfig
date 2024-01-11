@@ -1,14 +1,9 @@
 return {
-    -- old vim
     "christoomey/vim-tmux-navigator",
     "diepm/vim-rest-console",
     "editorconfig/editorconfig-vim",
     "mechatroner/rainbow_csv",
-    "mattn/emmet-vim",
     "tpope/vim-commentary",
-    "tpope/vim-unimpaired",
-    "tpope/vim-surround",
-    "tpope/vim-dadbod",
     "vimwiki/vimwiki",
     {
         "rmagatti/auto-session",
@@ -18,5 +13,18 @@ return {
                 auto_session_suppress_dirs = { "~/", "~/Documents", "~/Downloads", "/"},
             }
         end
+    },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        main = "ibl",
+        opts = {}
+    },
+    {
+        "hedyhli/outline.nvim",
+        config = function()
+            vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
+            require("outline").setup {
+            }
+        end,
     },
 }

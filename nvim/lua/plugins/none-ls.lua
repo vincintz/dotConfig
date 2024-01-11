@@ -13,7 +13,5 @@ return {
                 null_ls.builtins.diagnostics.shellcheck,
             }
         })
-
-        vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
     end,
 }

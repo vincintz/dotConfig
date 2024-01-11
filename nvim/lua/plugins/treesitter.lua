@@ -16,11 +16,11 @@ return {
         config = function()
             require("treesitter-context").setup({
                 enable = true,
-                max_lines = 0,
+                max_lines = 2,
                 min_window_height = 0,
                 line_numbers = true,
-                multiline_threshold = 5,
-                trim_scope = "outer",
+                multiline_threshold = 2,
+                trim_scope = "inner",
                 mode = "cursor",
                 separator = nil,
                 zindex = 20,
