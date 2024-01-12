@@ -11,21 +11,4 @@ return {
             })
         end,
     },
-    {
-        "nvim-treesitter/nvim-treesitter-context",
-        config = function()
-            require("treesitter-context").setup({
-                enable = true,
-                max_lines = 2,
-                min_window_height = 0,
-                line_numbers = true,
-                multiline_threshold = 2,
-                trim_scope = "inner",
-                mode = "cursor",
-                separator = nil,
-                zindex = 20,
-                on_attach = nil,
-            })
-        end
-    },
 }

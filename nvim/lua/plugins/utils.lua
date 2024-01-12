@@ -23,8 +23,20 @@ return {
         "hedyhli/outline.nvim",
         config = function()
             vim.keymap.set("n", "<leader>o", "<cmd>Outline<CR>", { desc = "Toggle Outline" })
-            require("outline").setup {
-            }
+            require("outline").setup {}
+        end,
+    },
+    {
+        "utilyre/barbecue.nvim",
+        name = "barbecue",
+        version = "*",
+        dependencies = {
+            "SmiteshP/nvim-navic",
+            "nvim-tree/nvim-web-devicons",
+        },
+        config = function()
+            vim.keymap.set("n", "<leader>p", "<cmd>Barbecue toggle<CR>", { desc = "Toggle Breadcrumbs" })
+            require("barbecue").setup {}
         end,
     },
 }
