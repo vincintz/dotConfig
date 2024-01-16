@@ -62,6 +62,6 @@ vim.keymap.set('n', 'lJ', "<cmd>compiler eslint<cr><cmd>make $(git ls-files '*.p
 vim.keymap.set('n', 'ls', "<cmd>compiler shellcheck<cr><cmd>make %<cr><cmd>copen<cr>")
 
 -- buffer navigation
-vim.keymap.set('n', 'H', "<cmd>bprevious<cr>")
-vim.keymap.set('n', 'L', "<cmd>bnext<cr>")
+vim.keymap.set('n', 'K', "<cmd>bprevious<cr>")
+vim.keymap.set('n', 'J', "<cmd>bnext<cr>")
 vim.keymap.set('n', 'X', "<cmd>bdelete<cr>")
