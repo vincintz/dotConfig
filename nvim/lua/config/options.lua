@@ -56,7 +56,7 @@ vim.cmd [[
 vim.keymap.set('n', 'lp', "<cmd>compiler pylint<cr><cmd>make %<cr><cmd>copen<cr>")
 vim.keymap.set('n', 'lP', "<cmd>compiler pylint<cr><cmd>make $(git diff --name-only '**/*.py')<cr><cmd>copen<cr>")
 vim.keymap.set('n', 'lu', "<cmd>set makeprg=ruff<cr><cmd>make %<cr><cmd>copen<cr>")
-vim.keymap.set('n', 'lU', "<cmd>set makeprg=ruff<cr><cmd>make $(git ls-files '*.py')<cr><cmd>copen<cr>")
+vim.keymap.set('n', 'lU', "<cmd>set makeprg=ruff<cr><cmd>make $(git diff --name-only '**/*.py')<cr><cmd>copen<cr>")
 vim.keymap.set('n', 'lj', "<cmd>compiler eslint<cr><cmd>make %<cr><cmd>copen<cr>")
 vim.keymap.set('n', 'lJ', "<cmd>compiler eslint<cr><cmd>make $(git ls-files '*.py')<cr><cmd>copen<cr>")
 vim.keymap.set('n', 'ls', "<cmd>compiler shellcheck<cr><cmd>make %<cr><cmd>copen<cr>")
