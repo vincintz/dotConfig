@@ -53,13 +53,13 @@ vim.cmd [[
 ]]
 
 -- external linters
-vim.keymap.set('n', 'lp', "<cmd>compiler pylint<cr><cmd>make %<cr><cmd>copen<cr>")
-vim.keymap.set('n', 'lP', "<cmd>compiler pylint<cr><cmd>make $(git diff --name-only '**/*.py')<cr><cmd>copen<cr>")
-vim.keymap.set('n', 'lu', "<cmd>set makeprg=ruff<cr><cmd>make %<cr><cmd>copen<cr>")
-vim.keymap.set('n', 'lU', "<cmd>set makeprg=ruff<cr><cmd>make $(git diff --name-only '**/*.py')<cr><cmd>copen<cr>")
-vim.keymap.set('n', 'lj', "<cmd>compiler eslint<cr><cmd>make %<cr><cmd>copen<cr>")
-vim.keymap.set('n', 'lJ', "<cmd>compiler eslint<cr><cmd>make $(git ls-files '*.py')<cr><cmd>copen<cr>")
-vim.keymap.set('n', 'ls', "<cmd>compiler shellcheck<cr><cmd>make %<cr><cmd>copen<cr>")
+vim.keymap.set('n', 'Lp', "<cmd>compiler pylint<cr><cmd>make %<cr><cmd>copen<cr>")
+vim.keymap.set('n', 'LP', "<cmd>compiler pylint<cr><cmd>make $(git diff --name-only '**/*.py')<cr><cmd>copen<cr>")
+vim.keymap.set('n', 'Lu', "<cmd>set makeprg=ruff<cr><cmd>make %<cr><cmd>copen<cr>")
+vim.keymap.set('n', 'LU', "<cmd>set makeprg=ruff<cr><cmd>make $(git diff --name-only '**/*.py')<cr><cmd>copen<cr>")
+vim.keymap.set('n', 'Lj', "<cmd>compiler eslint<cr><cmd>make %<cr><cmd>copen<cr>")
+vim.keymap.set('n', 'LJ', "<cmd>compiler eslint<cr><cmd>make $(git ls-files '*.py')<cr><cmd>copen<cr>")
+vim.keymap.set('n', 'Ls', "<cmd>compiler shellcheck<cr><cmd>make %<cr><cmd>copen<cr>")
 
 -- buffer navigation
 vim.keymap.set('n', 'K', "<cmd>bprevious<cr>")
