@@ -1,9 +1,10 @@
 return {
     {
-        "rafi/awesome-vim-colorschemes",
+        "catppuccin/nvim",
+        name = "catppuccin",
         priority = 1000,
         config = function()
-            vim.cmd.colorscheme "gruvbox"
+            vim.cmd.colorscheme "catppuccin"
         end
     },
     {
@@ -12,7 +13,7 @@ return {
             "nvim-tree/nvim-web-devicons",
             config = function()
                 require("lualine").setup({
-                    options = { theme = "gruvbox" }
+                    options = { theme = "catppuccin" }
                 })
             end
         },
