@@ -1,21 +1,23 @@
 return {
     {
+        "rebelot/kanagawa.nvim",
+        priority = 1000,
+    },
+    {
         "catppuccin/nvim",
         name = "catppuccin",
         priority = 1000,
-        config = function()
-            vim.cmd.colorscheme "catppuccin"
-        end
     },
     {
         "nvim-lualine/lualine.nvim",
         dependencies = {
             "nvim-tree/nvim-web-devicons",
-            config = function()
-                require("lualine").setup({
-                    options = { theme = "catppuccin" }
-                })
-            end
         },
-    }
+        config = function()
+            vim.cmd.colorscheme "kanagawa"
+            require("lualine").setup({
+                options = { theme = "kanagawa" }
+            })
+        end
+    },
 }
