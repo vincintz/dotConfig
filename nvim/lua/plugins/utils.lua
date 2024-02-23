@@ -12,6 +12,9 @@ return {
                 log_level = "error",
                 auto_session_suppress_dirs = { "~/", "~/Documents", "~/Downloads", "/"},
             }
+            vim.keymap.set("n", "<leader>s", require("auto-session.session-lens").search_session, {
+                noremap = true,
+            })
         end
     },
     {
