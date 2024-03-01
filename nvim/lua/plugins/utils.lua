@@ -1,3 +1,5 @@
+vim.g.user_emmet_leader_key = "<C-m>"
+
 return {
     "christoomey/vim-tmux-navigator",
     "diepm/vim-rest-console",
@@ -5,6 +7,8 @@ return {
     "mechatroner/rainbow_csv",
     "tpope/vim-commentary",
     "vimwiki/vimwiki",
+    "AndrewRadev/tagalong.vim",
+    "mattn/emmet-vim",
     {
         "rmagatti/auto-session",
         config = function()

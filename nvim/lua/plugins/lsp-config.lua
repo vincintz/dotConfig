@@ -52,6 +52,9 @@ return {
                     ".eslintrc.json"
                 ),
             })
+            lspconfig.emmet_language_server.setup({
+                filetypes = { "css", "html", "javascript", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact" }
+            })
             lspconfig.lua_ls.setup({
                 capabilites = capabilities,
                 settings = {
