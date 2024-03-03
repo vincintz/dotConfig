@@ -1,4 +1,4 @@
-vim.g.user_emmet_leader_key = "<C-m>"
+vim.g.user_emmet_leader_key = "<C-n>"
 
 return {
     "christoomey/vim-tmux-navigator",
