@@ -44,6 +44,7 @@ return {
         config = function()
             vim.keymap.set("n", "<leader>p", "<cmd>Barbecue toggle<CR>", { desc = "Toggle Breadcrumbs" })
             require("barbecue").setup {}
+            require("barbecue.ui").toggle(false)
         end,
     },
     {

@@ -1,12 +1,22 @@
 return {
     {
-        "tpope/vim-fugitive",
+        "NeogitOrg/neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "sindrets/diffview.nvim",
+            "nvim-telescope/telescope.nvim",
+        },
         config = function()
-            vim.opt.diffopt:append {"iwhiteall", "vertical"}
-            vim.keymap.set('n', 'gs', "<cmd>Git<cr><cmd>resize 10<cr>")
-            vim.keymap.set('n', 'gb', "<cmd>Git blame<cr>")
-            vim.keymap.set('n', 'gd', "<cmd>Gdiffsplit<cr><c-w><c-w>")
+            require("neogit").setup({})
+            vim.keymap.set('n', 'gs', "<cmd>Neogit kind=split<cr><cmd>resize 10<cr>")
+            vim.keymap.set('n', 'gd', "<cmd>DiffviewOpen<cr>")
         end
     },
-    "mhinz/vim-signify",
+    {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("gitsigns").setup()
+            vim.keymap.set('n', 'gb', "<cmd>Git blame<cr>")
+        end
+    },
 }
