@@ -1,15 +1,9 @@
 return {
     {
-        "NeogitOrg/neogit",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "sindrets/diffview.nvim",
-            "nvim-telescope/telescope.nvim",
-        },
+      "tpope/vim-fugitive",
         config = function()
-            require("neogit").setup({})
-            vim.keymap.set('n', 'gs', "<cmd>Neogit kind=split<cr><cmd>resize 10<cr>")
-            vim.keymap.set('n', 'gd', "<cmd>DiffviewOpen<cr>")
+            vim.keymap.set('n', 'gs', "<cmd>Git<cr><cmd>resize 10<cr>")
+            vim.keymap.set('n', 'gd', "<cmd>Gdiffsplit<cr>")
         end
     },
     {
