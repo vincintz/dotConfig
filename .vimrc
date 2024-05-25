@@ -111,7 +111,6 @@ call plug#begin('~/.vim/plugged')
 
     if version >= 810
         Plug 'https://github.com/psliwka/vim-smoothie'
-        Plug 'https://github.com/ycm-core/YouCompleteMe'
     endif
 
     " plugins we only need on local machine
@@ -152,13 +151,6 @@ if version >= 900
 endif
 
 if version >= 810
-    " YouCompleteMe config
-    let g:ycm_autoclose_preview_window_after_completion = 1
-    let g:ycm_autoclose_preview_window_after_insertion = 1
-    let g:ycm_auto_hover=''
-    let g:ycm_auto_trigger = 0
-    let g:ycm_complete_in_strings = 0
-
     " smooth scroll
     let g:smoothie_speed_constant_factor = 100
     let g:smoothie_speed_linear_factor = 30
@@ -328,9 +320,6 @@ if empty($SSH_CLIENT)
     nmap <C-t>3     :3Multiterm<CR>
     nmap <C-t>4     :4Multiterm<CR>
     tmap <C-t>      <Plug>(Multiterm)
-
-    " ycm goto definition
-    nmap <leader>d  :YcmCompleter GoToDefinition<CR>
 
     " ctrl-x to switch filetype if in vimwiki
     nmap <C-x>      :call HandleSuperKey()<CR>

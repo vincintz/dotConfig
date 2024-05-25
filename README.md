@@ -11,7 +11,7 @@ sudo apt update && sudo apt upgrade -y
 * Alacritty
    ```
    sudo add-apt-repository ppa:mmstick76/alacritty
-   sudo apt install -y  alacritty
+   sudo apt install -y alacritty
    ```
 
 * Latest vim with clipboard support
@@ -22,7 +22,7 @@ sudo apt update && sudo apt upgrade -y
 
 * Dev Essentials
    ```
-   sudo apt install -y zsh tmux
+   sudo apt install -y zsh tmux fzf
    sudo apt install -y curl net-tools
    sudo apt install -y build-essential cmake python3-dev mysql-client
    sudo apt install -y ripgrep fd-find bat exuberant-ctags shellcheck
@@ -30,7 +30,7 @@ sudo apt update && sudo apt upgrade -y
 
 * Useful utilities
    ```
-   sudo apt install ncdu mc pspg
+   sudo apt install -y ncdu mc pspg
    ```
    * manual install git-delta - https://dandavison.github.io/delta/installation.html
 

@@ -123,14 +123,21 @@ parse_git_branch() {
 
 export PS1="[\$(date +%H:%M:%S.%3N)] \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$(parse_git_branch) $ "
 
-# useful alias
-alias vim='vim -u $HOME/dotConfig/.vimrc'
-alias view='view -u $HOME/dotConfig/.vimrc'
-alias vidiff='vimdiff -u $HOME/dotConfig/.vimrc'
 alias ls='ls --color --group-directories-first'
 alias grep='grep --color=auto'
-alias myip="curl https://ifconfig.me; echo"
-alias tree="tree -C | less -r"
-alias ncdu="ncdu --color=dark"
-alias mysql="mysql --pager='pspg -X -F' --safe-updates --select-limit=500"
 
+# vagrant/wsl environment variables
+export VAGRANT_WSL_ENABLE_WINDOWS_ACCESS="1"
+export PATH="$PATH:/mnt/c/Program Files/Oracle/VirtualBox"
+
+# pyenv environment variables
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if command -v pyenv 1>/dev/null 2>&1; then
+ eval "$(pyenv init -)"
+fi
+
+# nvm environment variables
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
