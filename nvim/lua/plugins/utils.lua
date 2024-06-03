@@ -9,18 +9,18 @@ return {
     "vimwiki/vimwiki",
     "AndrewRadev/tagalong.vim",
     "mattn/emmet-vim",
-    {
-        "rmagatti/auto-session",
-        config = function()
-            require("auto-session").setup {
-                log_level = "error",
-                auto_session_suppress_dirs = { "~/", "~/Documents", "~/Downloads", "/"},
-            }
-            vim.keymap.set("n", "<leader>s", require("auto-session.session-lens").search_session, {
-                noremap = true,
-            })
-        end
-    },
+    -- {
+    --     "rmagatti/auto-session",
+    --     config = function()
+    --         require("auto-session").setup {
+    --             log_level = "error",
+    --             auto_session_suppress_dirs = { "~/", "~/Documents", "~/Downloads", "/"},
+    --         }
+    --         vim.keymap.set("n", "<leader>s", require("auto-session.session-lens").search_session, {
+    --             noremap = true,
+    --         })
+    --     end
+    -- },
     {
         "lukas-reineke/indent-blankline.nvim",
         main = "ibl",

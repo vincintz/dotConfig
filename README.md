@@ -29,6 +29,11 @@ sudo apt update && sudo apt upgrade -y
    sudo apt install -y build-essential cmake python3-dev mysql-client
    ```
 
+* Python3 tools
+  ```
+  sudo apt install -y isort black
+  ```
+
 * Useful utilities
    ```
    sudo apt install -y ncdu mc pspg

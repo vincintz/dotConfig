@@ -99,31 +99,26 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/vim-airline/vim-airline'
 
     " plugins for vim 9.0+
-    if version >= 900
-        Plug 'https://github.com/chengzeyi/multiterm.vim'
-        Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
-        Plug 'https://github.com/junegunn/fzf.vim'
-        Plug 'https://github.com/majutsushi/tagbar'
-        Plug 'https://github.com/lambdalisue/fern.vim'
-        Plug 'https://github.com/lambdalisue/fern-renderer-nerdfont.vim'
-        Plug 'https://github.com/tpope/vim-dispatch'
-    endif
-
-    if version >= 810
-        Plug 'https://github.com/psliwka/vim-smoothie'
-    endif
+    Plug 'https://github.com/psliwka/vim-smoothie'
+    Plug 'https://github.com/chengzeyi/multiterm.vim'
+    Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
+    Plug 'https://github.com/junegunn/fzf.vim'
+    Plug 'https://github.com/majutsushi/tagbar'
+    Plug 'https://github.com/lambdalisue/fern.vim'
+    Plug 'https://github.com/lambdalisue/fern-renderer-nerdfont.vim'
+    Plug 'https://github.com/tpope/vim-dispatch'
+    Plug 'https://github.com/dense-analysis/ale'
 
     " plugins we only need on local machine
-    if empty($SSH_CLIENT)
-        Plug 'https://github.com/christoomey/vim-tmux-navigator'
-        Plug 'https://github.com/diepm/vim-rest-console'
-        Plug 'https://github.com/lambdalisue/nerdfont.vim'
-        Plug 'https://github.com/leafOfTree/vim-vue-plugin'
-        Plug 'https://github.com/mechatroner/rainbow_csv'
-        Plug 'https://github.com/tpope/vim-dadbod'
-        Plug 'https://github.com/vimwiki/vimwiki'
-        " Plug 'https://github.com/Exafunction/codeium.vim'
-    endif
+    Plug 'https://github.com/christoomey/vim-tmux-navigator'
+    Plug 'https://github.com/diepm/vim-rest-console'
+    Plug 'https://github.com/lambdalisue/nerdfont.vim'
+    Plug 'https://github.com/mechatroner/rainbow_csv'
+    Plug 'https://github.com/tpope/vim-dadbod'
+    Plug 'https://github.com/kristijanhusak/vim-dadbod-completion'
+    Plug 'https://github.com/kristijanhusak/vim-dadbod-ui'
+    Plug 'https://github.com/vimwiki/vimwiki'
+    " Plug 'https://github.com/Exafunction/codeium.vim'
 
 call plug#end()
 
@@ -136,47 +131,46 @@ endif
 let g:oscyank_term = 'default'
 
 " fuzzy finder options
-if version >= 900
-    let g:fern#renderer = "nerdfont"
+let g:fern#renderer = "nerdfont"
+let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=Nord --color=always --line-range :120 {}'"
 
-    "let $FZF_DEFAULT_COMMAND = 'fd . --type=f --hidden --exclude=.git --exclude=node_modules --exclude=bower_components --exclude=vendor'
-    let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=Nord --style=numbers --color=always --line-range :120 {}'"
+" project search shortcuts
+nmap <silent>ff     :FZF<CR>
+nmap <silent>fg     :FZF<CR>
+nmap <silent>fb     :Buffers<CR>
+nmap <silent>fs     :Rg<CR>
 
-    " project search shortcuts
-    nmap <silent>ff     :FZF<CR>
-    nmap <silent>fg     :FZF<CR>
-    nmap <silent>fb     :Buffers<CR>
-    nmap <silent>fs     :Rg<CR>
+augroup FernGroup
+  autocmd!
+  autocmd FileType fern setlocal norelativenumber | setlocal nonumber
+augroup END
 
+let g:ale_fixers = {
+    \ 'python': ['black', 'isort'],
+    \ }
+let g:ale_fix_on_save = 1
+
+" smooth scroll
+let g:smoothie_speed_constant_factor = 100
+let g:smoothie_speed_linear_factor = 30
+
+" extra config
+" vim-rest-console settings
+let g:vrc_output_buffer_name = '_localhost_out.json'
+let g:vrc_syntax_highlight_response = 1
+let g:vrc_auto_format_response_enabled = 1
+let b:vrc_response_default_content_type = 'application/json'
+let g:vrc_curl_opts = {
+            \   '--silent': ''
+            \}
+let g:vrc_auto_format_response_patterns = {
+            \   'json': 'python3 -mjson.tool --indent=2',
+            \}
+if !exists('g:multiterm_opts')
+    let g:multiterm_opts = {}
 endif
-
-if version >= 810
-    " smooth scroll
-    let g:smoothie_speed_constant_factor = 100
-    let g:smoothie_speed_linear_factor = 30
-
-endif
-
-" config for new plugins
-if empty($SSH_CLIENT)
-    " vim-rest-console settings
-    let g:vrc_output_buffer_name = '_localhost_out.json'
-    let g:vrc_syntax_highlight_response = 1
-    let g:vrc_auto_format_response_enabled = 1
-    let b:vrc_response_default_content_type = 'application/json'
-    let g:vrc_curl_opts = {
-                \   '--silent': ''
-                \}
-    let g:vrc_auto_format_response_patterns = {
-                \   'json': 'python3 -mjson.tool --indent=2',
-                \}
-    if !exists('g:multiterm_opts')
-        let g:multiterm_opts = {}
-    endif
-    let g:multiterm_opts.height = '&lines - 2'
-    let g:multiterm_opts.width = '&columns - 2'
-
-endif
+let g:multiterm_opts.height = '&lines - 2'
+let g:multiterm_opts.width = '&columns - 2'
 
 " vim-signify async update
 set updatetime=500
@@ -288,6 +282,7 @@ nmap <silent>X      :bdelete<CR>
 nmap <leader>\      :TagbarToggle<CR>
 nmap <leader>q      :call ToggleQuickFix()<CR>
 nmap <leader>e      :Fern . -drawer -toggle -reveal=%<CR>
+nmap <leader>d      :tabnew<CR>:DBUI<CR>
 
 " Git shortcuts
 nmap <silent>gs     :Git<CR>:resize 10<CR>

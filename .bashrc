@@ -116,13 +116,12 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# return git branch info for prompt
-parse_git_branch() {
-    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
-}
+# history improvements
+export HISTSIZE=3000
+export HISTCONTROL=$HISTCONTROL:ignorespace
+export HISTCONTROL=$HISTCONTROL:ignoredups
 
-export PS1="[\$(date +%H:%M:%S.%3N)] \[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$(parse_git_branch) $ "
-
+# alias
 alias ls='ls --color --group-directories-first'
 alias grep='grep --color=auto'
 
@@ -141,3 +140,14 @@ fi
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# minikube autocomplete
+source <(minikube completion bash)
+source <(kubectl completion bash)
+
+# poetry autocomplete
+source <(poetry completions bash)
+
+# prompt
+eval "$(starship init bash)"
+
