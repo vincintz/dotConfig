@@ -148,6 +148,11 @@ source <(kubectl completion bash)
 # poetry autocomplete
 source <(poetry completions bash)
 
-# prompt
+# fzf key bindings
+source /usr/share/doc/fzf/examples/key-bindings.bash
+
+# fancy prompt
 eval "$(starship init bash)"
 
+# better cd
+eval "$(zoxide init bash)"
