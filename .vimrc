@@ -134,16 +134,31 @@ let g:oscyank_term = 'default'
 let g:fern#renderer = "nerdfont"
 let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=Nord --color=always --line-range :120 {}'"
 
+" vimwiki url folding
+let g:vimwiki_url_maxsave=0
+let g:indentLine_concealcursor=""
+let g:indentLine_conceallevel=2
+
 " project search shortcuts
 nmap <silent>ff     :FZF<CR>
 nmap <silent>fg     :FZF<CR>
 nmap <silent>fb     :Buffers<CR>
 nmap <silent>fs     :Rg<CR>
 
+" Accept common typos
+command! Q q
+command! Qa qa
+command! W w
+command! Wq wq
+
 augroup FernGroup
   autocmd!
   autocmd FileType fern setlocal norelativenumber | setlocal nonumber
 augroup END
+
+autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
+autocmd FileType python setlocal ts=4 sts=4 sw=4
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2
 
 let g:ale_fixers = {
     \ 'python': ['black', 'isort'],
@@ -161,11 +176,11 @@ let g:vrc_syntax_highlight_response = 1
 let g:vrc_auto_format_response_enabled = 1
 let b:vrc_response_default_content_type = 'application/json'
 let g:vrc_curl_opts = {
-            \   '--silent': ''
-            \}
+    \   '--silent': ''
+    \}
 let g:vrc_auto_format_response_patterns = {
-            \   'json': 'python3 -mjson.tool --indent=2',
-            \}
+    \   'json': 'python3 -mjson.tool --indent=2',
+    \}
 if !exists('g:multiterm_opts')
     let g:multiterm_opts = {}
 endif
@@ -190,34 +205,21 @@ else
     syntax on
 endif
 
-" vimwiki url folding
-let g:vimwiki_url_maxsave=0
-let g:indentLine_concealcursor=""
-let g:indentLine_conceallevel=2
-
-" Accept common typos
-command! Q q
-command! Qa qa
-command! W w
-command! Wq wq
-
 if !exists("colors_name") || colors_name == 'default'
     " some colors
     hi LineNr       ctermfg=darkgray    ctermbg=black
     hi SpecialKey   ctermfg=darkgray
     hi ColorColumn  ctermbg=black
-
     " diff colors
     hi DiffAdd      term=bold       ctermfg=235     ctermbg=114
     hi DiffDelete   term=bold       ctermfg=9       ctermbg=224
     hi DiffText     term=reverse    ctermfg=235     ctermbg=180
-
     " search result
     hi Search       ctermbg=239     ctermfg=white
-
     " visual mode
     hi Visual       ctermbg=239     ctermfg=245
-
+else
+    hi Normal guibg=NONE ctermbg=NONE
 endif
 
 " jump to the last position when reopening a file
@@ -228,7 +230,7 @@ endif
 " toggle quick fix window
 function! ToggleQuickFix()
     if empty(filter(getwininfo(), 'v:val.quickfix'))
-        Copen
+        copen
     else
         cclose
     endif
@@ -272,15 +274,17 @@ nmap <leader>p      :set invpaste paste?<CR>
 " tab shortcuts
 nmap <silent>tt     :tabnew<CR>
 nmap <silent>tq     :tabclose<CR>
+nmap <silent>tj     :tabnext<CR>
+nmap <silent>tk     :tabprevious<CR>
 
 " buffer shortcuts
-nmap <silent>H      :bprevious<CR>
-nmap <silent>L      :bnext<CR>
+nmap <leader>k      :bprevious<CR>
+nmap <leader>j      :bnext<CR>
 nmap <silent>X      :bdelete<CR>
 
 " Plugin shortcuts
 nmap <leader>\      :TagbarToggle<CR>
-nmap <leader>q      :call ToggleQuickFix()<CR>
+nmap <leader>c      :call ToggleQuickFix()<CR>
 nmap <leader>e      :Fern . -drawer -toggle -reveal=%<CR>
 nmap <leader>d      :tabnew<CR>:DBUI<CR>
 
@@ -298,29 +302,26 @@ nmap <silent>Lj     :compiler eslint<CR>:Make! %<CR>
 nmap <silent>LJ     :compiler eslint<CR>:Make! $(git diff --name-only -- "*.vue" "*.js")<CR>
 nmap <silent>Ls     :compiler shellcheck<CR>:Make! %<CR>
 
+nmap <C-d>      <C-d>zz
+nmap <C-u>      <C-u>zz
+nmap <silent>n  nzz
+nmap <silent>N  Nzz
+
 " ctrl-c yank to clipboard
-xmap <C-c>          :OSCYankVisual<CR>
+xmap <C-c>      :OSCYankVisual<CR>
 
 " ctrl-j format json on visual mode
-xmap <leader>j      :!python3 -mjson.tool --indent=2<CR>
+xmap <leader>j  :!python3 -mjson.tool --indent=2<CR>
 
-" keyboard shortcuts based on installed plugins
-if empty($SSH_CLIENT)
-    " multi-term shortcuts
-    nmap <C-t><C-t> :9Multiterm<CR>
-    nmap <C-t>t     :9Multiterm<CR>
-    nmap <C-t>      :9Multiterm<CR>
-    nmap <C-t>1     :1Multiterm<CR>
-    nmap <C-t>2     :2Multiterm<CR>
-    nmap <C-t>3     :3Multiterm<CR>
-    nmap <C-t>4     :4Multiterm<CR>
-    tmap <C-t>      <Plug>(Multiterm)
+" multi-term shortcuts
+nmap <C-t><C-t> :9Multiterm<CR>
+nmap <C-t>t     :9Multiterm<CR>
+nmap <C-t>      :9Multiterm<CR>
+nmap <C-t>1     :1Multiterm<CR>
+nmap <C-t>2     :2Multiterm<CR>
+nmap <C-t>3     :3Multiterm<CR>
+nmap <C-t>4     :4Multiterm<CR>
+tmap <C-t>      <Plug>(Multiterm)
 
-    " ctrl-x to switch filetype if in vimwiki
-    nmap <C-x>      :call HandleSuperKey()<CR>
-
-else
-    " ctrl-t to run terminal
-    nmap <C-t>      :terminal<CR>
-
-endif
+" ctrl-x to switch filetype if in vimwiki
+nmap <C-x>      :call HandleSuperKey()<CR>
