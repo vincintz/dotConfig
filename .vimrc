@@ -1,20 +1,12 @@
-" do not require full VI compatability
 set nocompatible
-
-" set file encoding
 set encoding=utf-8
-
-" allow hidden buffers
-set hidden
+set hidden              " allow hidden buffers
 
 " tab key settings
 set tabstop=4 softtabstop=4
 set shiftwidth=4
 set expandtab
 set smartindent
-
-" don't auto-comment next line
-set formatoptions-=cro
 
 " line number
 set number
@@ -60,12 +52,13 @@ set ruler
 set scrolloff=2
 
 " better backup, swap and undos storage for vim
-set directory=~/.vim/dirs/tmp     " directory to place swap files in
-set backup                        " make backup files
-set backupdir=~/.vim/dirs/backups " where to put backup files
-set undofile                      " persistent undos - undo after you re-open the file
+set directory=~/.vim/dirs/tmp       " directory to place swap files in
+set backup                          " make backup files
+set backupdir=~/.vim/dirs/backups   " where to put backup files
+set undofile                        " persistent undos - undo after you re-open the file
 set undodir=~/.vim/dirs/undos
 set viminfo+=n~/.vim/dirs/viminfo
+set diffopt+=vertical               " diffsplit vertical
 
 " create needed directories if they don't exist
 if !isdirectory(&backupdir)
@@ -77,6 +70,29 @@ endif
 if !isdirectory(&undodir)
     call mkdir(&undodir, "p")
 endif
+
+" Accept common typos
+command! Q q
+command! Qa qa
+command! W w
+command! Wq wq
+
+autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
+autocmd FileType python setlocal ts=4 sts=4 sw=4
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2
+autocmd FileType * set formatoptions-=cro  " don't auto-comment next line
+" jump to the last position when reopening a file
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+" automatically open the quickfix window
+augroup myvimrc
+    autocmd!
+    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd QuickFixCmdPost l*    lwindow
+augroup END
+
+" ----------------------------------------------------------
+" Plugins
+" ----------------------------------------------------------
 
 " Install vim-plug if not found
 let vim_plug_just_installed = 0
@@ -131,35 +147,25 @@ endif
 let g:oscyank_term = 'default'
 
 " fuzzy finder options
-let g:fern#renderer = "nerdfont"
 let $FZF_DEFAULT_OPTS = "--reverse --preview 'bat --theme=Nord --color=always --line-range :120 {}'"
+nmap <silent>ff     :FZF<CR>
+nmap <silent>fg     :FZF<CR>
+nmap <silent>fb     :Buffers<CR>
+nmap <silent>fs     :Rg<CR>
 
 " vimwiki url folding
 let g:vimwiki_url_maxsave=0
 let g:indentLine_concealcursor=""
 let g:indentLine_conceallevel=2
 
-" project search shortcuts
-nmap <silent>ff     :FZF<CR>
-nmap <silent>fg     :FZF<CR>
-nmap <silent>fb     :Buffers<CR>
-nmap <silent>fs     :Rg<CR>
-
-" Accept common typos
-command! Q q
-command! Qa qa
-command! W w
-command! Wq wq
-
+" fern.vim drawer settings
+let g:fern#renderer = "nerdfont"
 augroup FernGroup
   autocmd!
   autocmd FileType fern setlocal norelativenumber | setlocal nonumber
 augroup END
 
-autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
-autocmd FileType python setlocal ts=4 sts=4 sw=4
-autocmd FileType javascript setlocal ts=2 sts=2 sw=2
-
+" ale settings
 let g:ale_fixers = {
     \ 'python': ['black', 'isort'],
     \ }
@@ -190,47 +196,22 @@ let g:multiterm_opts.width = '&columns - 2'
 " vim-signify async update
 set updatetime=500
 
-" diffsplit vertical
-set diffopt+=vertical
-
-" Color settings
-" set t_Co=256
-set background=dark
-silent! colorscheme tender
-
-" Enable syntax highlighting
-if &diff
-    syntax off
-else
-    syntax on
-endif
-
-if !exists("colors_name") || colors_name == 'default'
-    " some colors
-    hi LineNr       ctermfg=darkgray    ctermbg=black
-    hi SpecialKey   ctermfg=darkgray
-    hi ColorColumn  ctermbg=black
-    " diff colors
-    hi DiffAdd      term=bold       ctermfg=235     ctermbg=114
-    hi DiffDelete   term=bold       ctermfg=9       ctermbg=224
-    hi DiffText     term=reverse    ctermfg=235     ctermbg=180
-    " search result
-    hi Search       ctermbg=239     ctermfg=white
-    " visual mode
-    hi Visual       ctermbg=239     ctermfg=245
-else
-    hi Normal guibg=NONE ctermbg=NONE
-endif
-
-" jump to the last position when reopening a file
-if has("autocmd")
-    au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-endif
-
+" ----------------------------------------------------------
+" Keyboard remaps
+" ----------------------------------------------------------
 " toggle quick fix window
 function! ToggleQuickFix()
     if empty(filter(getwininfo(), 'v:val.quickfix'))
         copen
+    else
+        cclose
+    endif
+endfunction
+
+" toggle quick fix window
+function! ToggleDispatchQuickFix()
+    if empty(filter(getwininfo(), 'v:val.quickfix'))
+        Copen
     else
         cclose
     endif
@@ -252,23 +233,12 @@ endfunction
 " change leader key to space
 let mapleader = " "
 
-" reload vimrc
 nmap <leader>r      :source ~/.vimrc<CR>
-
-" set relative number
 nmap <leader>;      :set invrelativenumber relativenumber?<CR>
-
-" window resize
 nmap <leader>=      :resize +5<CR>
 nmap <leader>-      :resize -5<CR>
-
-" toggle highlight search
 nmap <leader>/      :set hls!<CR>
-
-" toggle spellcheck
 nmap <leader>s      :setlocal invspell spell?<CR>
-
-" toggle paste
 nmap <leader>p      :set invpaste paste?<CR>
 
 " tab shortcuts
@@ -278,13 +248,20 @@ nmap <silent>tn     :tabnext<CR>
 nmap <silent>tp     :tabprevious<CR>
 
 " buffer shortcuts
-nmap <leader>k      :bprevious<CR>
-nmap <leader>j      :bnext<CR>
+nmap <silent>K      :bprevious<CR>
+nmap <silent>J      :bnext<CR>
 nmap <silent>X      :bdelete<CR>
+
+" re-center screen on big jumps
+nmap <C-d>      <C-d>zz
+nmap <C-u>      <C-u>zz
+nmap <silent>n  nzz
+nmap <silent>N  Nzz
 
 " Plugin shortcuts
 nmap <leader>\      :TagbarToggle<CR>
 nmap <leader>c      :call ToggleQuickFix()<CR>
+nmap <leader>C      :call ToggleDispatchQuickFix()<CR>
 nmap <leader>e      :Fern . -drawer -toggle -reveal=%<CR>
 nmap <leader>d      :tabnew<CR>:DBUI<CR>
 
@@ -301,11 +278,6 @@ nmap <silent>LU     :set makeprg=ruff<CR>:Make! $(git ls-files "*.py")<CR>
 nmap <silent>Lj     :compiler eslint<CR>:Make! %<CR>
 nmap <silent>LJ     :compiler eslint<CR>:Make! $(git diff --name-only -- "*.vue" "*.js")<CR>
 nmap <silent>Ls     :compiler shellcheck<CR>:Make! %<CR>
-
-nmap <C-d>      <C-d>zz
-nmap <C-u>      <C-u>zz
-nmap <silent>n  nzz
-nmap <silent>N  Nzz
 
 " ctrl-c yank to clipboard
 xmap <C-c>      :OSCYankVisual<CR>
@@ -325,3 +297,9 @@ tmap <C-t>      <Plug>(Multiterm)
 
 " ctrl-x to switch filetype if in vimwiki
 nmap <C-x>      :call HandleSuperKey()<CR>
+
+" ----------------------------------------------------------
+" Theme
+" ----------------------------------------------------------
+set background=dark
+silent! colorscheme tender
