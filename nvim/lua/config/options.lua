@@ -6,7 +6,6 @@ vim.g.maplocalleader = " "
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 
-
 -- when scrolling, leave 10 rows
 vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 10

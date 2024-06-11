@@ -11,7 +11,7 @@ sudo apt update && sudo apt upgrade -y
 * Alacritty
    ```
    sudo add-apt-repository ppa:mmstick76/alacritty
-   sudo apt install -y  alacritty
+   sudo apt install -y alacritty
    ```
 
 * Latest vim with clipboard support
@@ -22,46 +22,23 @@ sudo apt update && sudo apt upgrade -y
 
 * Dev Essentials
    ```
-   sudo apt install -y zsh tmux
-   sudo apt install -y curl net-tools
-   sudo apt install -y build-essential cmake python3-dev mysql-client
+   sudo apt install -y zsh tmux fzf nala
+   sudo apt install -y curl net-tools nmap
    sudo apt install -y ripgrep fd-find bat exuberant-ctags shellcheck
+
+   sudo apt install -y build-essential cmake python3-dev mysql-client
    ```
+
+* Python3 tools
+  ```
+  sudo apt install -y isort black
+  ```
 
 * Useful utilities
    ```
-   sudo apt install ncdu mc pspg
+   sudo apt install -y ncdu mc pspg
    ```
    * manual install git-delta - https://dandavison.github.io/delta/installation.html
-
-* Renames for ubuntu
-   ```
-   mkdir -p $HOME/.local/bin/
-   ln -s $(which batcat) $HOME/.local/bin/bat
-   ln -s $(which fdfind) $HOME/.local/bin/fd
-   ```
-
-## Install Plugins
-
-* zsh plugins
-   ```
-   mkdir -p $HOME/dotConfig/libs 2>/dev/null ; cd $_
-   git clone https://github.com/Tarrasch/zsh-autoenv
-   git clone https://github.com/zsh-users/zsh-syntax-highlighting
-   git clone https://github.com/zsh-users/zsh-autosuggestions
-   git clone https://github.com/zsh-users/zsh-history-substring-search
-   ```
-
-* tmux plugins
-   ```
-   git clone https://github.com/soyuka/tmux-current-pane-hostname ~/dotConfig/libs/tmux-current-pane-hostname
-   git clone https://github.com/tmux-plugins/tmux-resurrect ~/dotConfig/libs/tmux-resurrect
-   ```
-
-* install YCM
-  ```
-  ( cd ~/.vim/plugged/YouCompleteMe/ && ./install.py --ts-completer )
-  ```
 
 ## Set Git configs
 
@@ -91,3 +68,20 @@ ln -s $HOME/dotConfig/.zshenv $HOME/.zshenv
 ln -s $HOME/dotConfig/.tmux.conf $HOME/.tmux.conf
 ln -s $HOME/dotConfig/.vimrc $HOME/.vimrc
 ```
+
+## Install Plugins
+
+* zsh plugins
+   ```
+   mkdir -p $HOME/dotConfig/libs 2>/dev/null ; cd $_
+   git clone https://github.com/Tarrasch/zsh-autoenv
+   git clone https://github.com/zsh-users/zsh-syntax-highlighting
+   git clone https://github.com/zsh-users/zsh-autosuggestions
+   git clone https://github.com/zsh-users/zsh-history-substring-search
+   ```
+
+* tmux plugins
+   ```
+   git clone https://github.com/soyuka/tmux-current-pane-hostname ~/dotConfig/libs/tmux-current-pane-hostname
+   git clone https://github.com/tmux-plugins/tmux-resurrect ~/dotConfig/libs/tmux-resurrect
+   ```
