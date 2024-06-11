@@ -103,7 +103,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/chengzeyi/multiterm.vim'
     Plug 'https://github.com/junegunn/fzf', { 'do': { -> fzf#install() } }
     Plug 'https://github.com/junegunn/fzf.vim'
-    Plug 'https://github.com/majutsushi/tagbar'
+    Plug 'https://github.com/preservim/tagbar'
     Plug 'https://github.com/lambdalisue/fern.vim'
     Plug 'https://github.com/lambdalisue/fern-renderer-nerdfont.vim'
     Plug 'https://github.com/tpope/vim-dispatch'
@@ -274,8 +274,8 @@ nmap <leader>p      :set invpaste paste?<CR>
 " tab shortcuts
 nmap <silent>tt     :tabnew<CR>
 nmap <silent>tq     :tabclose<CR>
-nmap <silent>tj     :tabnext<CR>
-nmap <silent>tk     :tabprevious<CR>
+nmap <silent>tn     :tabnext<CR>
+nmap <silent>tp     :tabprevious<CR>
 
 " buffer shortcuts
 nmap <leader>k      :bprevious<CR>
