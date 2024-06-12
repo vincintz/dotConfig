@@ -85,6 +85,7 @@ echo "=========================================
       Create links to config
       =========================================" | xargs
 mkdir -p "$HOME/.config"
+mkdir -p "$BOOTSTRAP_PATH/bak"
 if git remote > /dev/null; then
     mkdir -p "$BOOTSTRAP_PATH/bak"
     mv "$HOME/.bashrc" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
