@@ -89,10 +89,10 @@ mkdir -p "$BOOTSTRAP_PATH/bak"
 if git remote > /dev/null; then
     mkdir -p "$BOOTSTRAP_PATH/bak"
     mv "$HOME/.bashrc" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
-    mv "$HOME/.vimrc" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
+    mv "$HOME/.vim/vimrc" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
     mv "$HOME/.config/tmux/tmux.conf" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
     ln -s "$DOTCONFIG_PATH/.bashrc" "$HOME/.bashrc"
-    ln -s "$DOTCONFIG_PATH/.vimrc"  "$HOME/.vimrc"
+    ln -s "$DOTCONFIG_PATH/.vim/vimrc" "$HOME/.vim/vimrc"
     mkdir -p "$HOME/.config/tmux"
     ln -s "$DOTCONFIG_PATH/.config/tmux/tmux.conf" "$HOME/.config/tmux/"
     if command -v alacritty > /dev/null; then
