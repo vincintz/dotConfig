@@ -107,9 +107,9 @@ echo "=========================================
       =========================================" | xargs
 mkdir "$FONTS_PATH"
 
+cd "$FONTS_PATH" || (echo -e "Invalid path to script\n"; exit)
 for FONT in $FONTS_LIST; do
-    cd "$BOOTSTRAP_PATH/bak" || (echo -e "Invalid path to script\n"; exit)
     curl -OL "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$FONT.tar.xz"
-    cd "$FONTS_PATH" || (echo -e "Invalid path to script\n"; exit)
-    tar xf "$BOOTSTRAP_PATH/bak/$FONT.tar.xz" --wildcards "*.?tf"
+    tar xf "$FONT.tar.xz" --wildcards "*.?tf"
+    rm "$FONT.tar.xz"
 done
