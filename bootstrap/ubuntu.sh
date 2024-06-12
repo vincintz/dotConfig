@@ -84,6 +84,7 @@ fi
 echo "=========================================
       Create links to config
       =========================================" | xargs
+mkdir -p "$HOME/.config"
 if git remote > /dev/null; then
     mkdir -p "$BOOTSTRAP_PATH/bak"
     mv "$HOME/.bashrc" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
@@ -91,10 +92,12 @@ if git remote > /dev/null; then
     mv "$HOME/.config/tmux/tmux.conf" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
     ln -s "$DOTCONFIG_PATH/.bashrc" "$HOME/.bashrc"
     ln -s "$DOTCONFIG_PATH/.vimrc"  "$HOME/.vimrc"
+    mkdir -p "$HOME/.config/tmux"
     ln -s "$DOTCONFIG_PATH/.config/tmux/tmux.conf" "$HOME/.config/tmux/"
     if command -v alacritty > /dev/null; then
         mv "$HOME/.config/alacritty/alacritty.toml" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
-        ln -s "$DOTCONFIG_PATH/.config/alacritty/alacritty.toml" ~/.config/alacritty/
+        mkdir -p "$HOME/.config/alacritty"
+        ln -s "$DOTCONFIG_PATH/.config/alacritty/alacritty.toml" "$HOME/.config/alacritty/"
     fi
 fi
 
