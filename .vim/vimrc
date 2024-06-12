@@ -77,19 +77,6 @@ command! Qa qa
 command! W w
 command! Wq wq
 
-autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
-autocmd FileType python setlocal ts=4 sts=4 sw=4
-autocmd FileType javascript setlocal ts=2 sts=2 sw=2
-autocmd FileType * set formatoptions-=cro  " don't auto-comment next line
-" jump to the last position when reopening a file
-autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-" automatically open the quickfix window
-augroup myvimrc
-    autocmd!
-    autocmd QuickFixCmdPost [^l]* cwindow
-    autocmd QuickFixCmdPost l*    lwindow
-augroup END
-
 " ----------------------------------------------------------
 " Plugins
 " ----------------------------------------------------------
@@ -299,7 +286,27 @@ tmap <C-t>      <Plug>(Multiterm)
 nmap <C-x>      :call HandleSuperKey()<CR>
 
 " ----------------------------------------------------------
+" Standard actions based on filetype
+" ----------------------------------------------------------
+autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
+autocmd FileType python setlocal ts=4 sts=4 sw=4
+autocmd FileType javascript setlocal ts=2 sts=2 sw=2
+autocmd FileType * set formatoptions-=cro  " don't auto-comment next line
+" jump to the last position when reopening a file
+autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+" automatically open the quickfix window
+augroup myvimrc
+    autocmd!
+    autocmd QuickFixCmdPost [^l]* cwindow
+    autocmd QuickFixCmdPost l*    lwindow
+augroup END
+
+" ----------------------------------------------------------
 " Theme
 " ----------------------------------------------------------
 set background=dark
 silent! colorscheme tender
+
+if exists("colors_name") || colors_name == 'default'
+    hi Normal guibg=NONE ctermbg=NONE
+endif
