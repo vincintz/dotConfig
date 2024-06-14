@@ -58,7 +58,10 @@ set backupdir=~/.vim/dirs/backups   " where to put backup files
 set undofile                        " persistent undos - undo after you re-open the file
 set undodir=~/.vim/dirs/undos
 set viminfo+=n~/.vim/dirs/viminfo
+
+" misc settings
 set diffopt+=vertical               " diffsplit vertical
+set wildignore+=**/.git/**,**/node_modules/**   " exclude these dirs
 
 " create needed directories if they don't exist
 if !isdirectory(&backupdir)

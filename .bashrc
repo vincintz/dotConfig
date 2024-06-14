@@ -21,12 +21,14 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
+# Auto-complete
+source /etc/bash_completion
+
 # Node Version Manager (nvm)
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 
-# Auto-complete
 [ -x "$(command -v minikube)" ] && eval "$(minikube completion bash)"
 [ -x "$(command -v kubectl)"  ] && eval "$(kubectl completion bash)"
 [ -x "$(command -v poetry)"   ] && eval "$(poetry completions bash)"
