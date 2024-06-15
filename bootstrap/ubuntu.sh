@@ -16,7 +16,7 @@ echo "=========================================
       =========================================" | xargs
 sudo apt install -y tmux vim fzf nala
 sudo apt install -y curl net-tools nmap
-sudo apt install -y starship zoxide
+sudo apt install -y zoxide
 
 echo "=========================================
       Install more dev apps
@@ -40,10 +40,14 @@ echo "=========================================
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 
 echo "=========================================
+      Install starship (prompt)
+      =========================================" | xargs
+curl -sS https://starship.rs/install.sh | sh
+
+echo "=========================================
       Install Linters
       =========================================" | xargs
 sudo apt install -y shellcheck
-
 
 echo "=========================================
       Install TMux Plugin Manager (tpm)
@@ -81,6 +85,7 @@ echo "=========================================
       Create links to config
       =========================================" | xargs
 mkdir -p "$HOME/.config"
+mkdir -p "$HOME/.vim"
 mkdir -p "$BOOTSTRAP_PATH/bak"
 if git remote > /dev/null; then
     mkdir -p "$BOOTSTRAP_PATH/bak"

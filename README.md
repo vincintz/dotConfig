@@ -15,13 +15,9 @@
     ```
 
 ### Bootstrap the config
-1. Clone repo for editing
+1. Clone repo
     ```
     git -C $HOME clone git@github.com:vincintz/dotConfig.git
-    ```
-    * or
-    ```
-    git -C $HOME clone https://github.com/vincintz/dotConfig.git
     ```
 2. Run bootstrap command
     ```
