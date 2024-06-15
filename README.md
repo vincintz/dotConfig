@@ -10,6 +10,7 @@
 2. Git is updated with the correct credentials
     ```
     sudo apt install git
+    ssh-keygen -t ed25519 -C "vincintz@yahoo.com"
     git config --global user.name "Theo Reyes"
     git config --global user.email "vincintz@yahoo.com"
     ```
