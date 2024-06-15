@@ -11,19 +11,12 @@ echo "=========================================
       =========================================" | xargs
 sudo apt update && sudo apt upgrade -y
 
-
-if [ -z "$WSL_DISTRO_NAME" ]; then
-  echo "=========================================
-        Install GUI Apps apps
-        =========================================" | xargs
-  sudo apt install -y alacritty
-fi
-
 echo "=========================================
       Install essential dev apps
       =========================================" | xargs
 sudo apt install -y tmux vim fzf nala
 sudo apt install -y curl net-tools nmap
+sudo apt install -y starship zoxide
 
 echo "=========================================
       Install more dev apps
