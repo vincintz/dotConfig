@@ -133,6 +133,9 @@ if vim_plug_just_installed
     :PlugInstall
 endif
 
+" editor config
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
 " osc52 yank
 let g:oscyank_term = 'default'
 
