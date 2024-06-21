@@ -91,16 +91,24 @@ mkdir -p "$BOOTSTRAP_PATH/bak"
 if git remote > /dev/null; then
     mkdir -p "$BOOTSTRAP_PATH/bak"
     mv "$HOME/.bashrc" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
-    mv "$HOME/.vim/vimrc" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
-    mv "$HOME/.config/tmux/tmux.conf" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
-    ln -s "$DOTCONFIG_PATH/.bashrc" "$HOME/.bashrc"
-    ln -s "$DOTCONFIG_PATH/.vim/vimrc" "$HOME/.vim/vimrc"
-    mkdir -p "$HOME/.config/tmux"
-    ln -s "$DOTCONFIG_PATH/.config/tmux/tmux.conf" "$HOME/.config/tmux/"
+    mv "$HOME/.bash_profile" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
+    mv "$HOME/.tmux.conf" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
+    mv "$HOME/.vimrc" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
+    mv "$HOME/.editorconfig" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
+    ln -s "$DOTCONFIG_PATH/bash/.bashrc" "$HOME"
+    cp "$DOTCONFIG_PATH/bash/.bash_profile" "$HOME"
+    ln -s "$DOTCONFIG_PATH/tmux/.tmux.conf" "$HOME"
+    ln -s "$DOTCONFIG_PATH/vim/.vimrc" "$HOME"
+    ln -s "$DOTCONFIG_PATH/vim/.editorconfig" "$HOME"
     if command -v alacritty > /dev/null; then
         mv "$HOME/.config/alacritty/alacritty.toml" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
         mkdir -p "$HOME/.config/alacritty"
-        ln -s "$DOTCONFIG_PATH/.config/alacritty/alacritty.toml" "$HOME/.config/alacritty/"
+        ln -s "$DOTCONFIG_PATH/alacritty/.config/alacritty/alacritty.toml" "$HOME/.config/alacritty/"
+    fi
+    if command -v mc > /dev/null; then
+        mv "$HOME/.config/mc/ini" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
+        mkdir -p "$HOME/.config/mc"
+        ln -s "$DOTCONFIG_PATH/mc/.config/mcy/ini" "$HOME/.config/mc/"
     fi
 fi
 
