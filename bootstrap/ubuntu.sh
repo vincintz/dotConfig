@@ -25,6 +25,7 @@ sudo apt install -y ripgrep fd-find bat exuberant-ctags
 sudo apt install -y ncdu mc pspg
 sudo apt install -y tldr && tldr update
 
+mkdir -p "$HOME/.local/bin"
 ln -s "$(command -v batcat)" "$HOME/.local/bin/bat"
 ln -s "$(command -v fdfind)" "$HOME/.local/bin/fd"
 
