@@ -43,7 +43,9 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 echo "=========================================
       Install starship (prompt)
       =========================================" | xargs
-curl -sS https://starship.rs/install.sh | sh
+if ! command -v starship > /dev/null; then
+    curl -sS https://starship.rs/install.sh | sh
+fi
 
 echo "=========================================
       Install Linters
