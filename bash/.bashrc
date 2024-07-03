@@ -7,12 +7,14 @@ esac
 # Command history settings
 export HISTCONTROL=$HISTCONTROL:ignorespace
 export HISTCONTROL=$HISTCONTROL:ignoredups
+export HISTCONTROL=$HISTCONTROL:erasedups
 export HISTSIZE=10000
-export HISTFILESIZE=10000
+export HISTFILESIZE=$HISTSIZE
 shopt -s histappend
 
 # check the window size after each command
 shopt -s checkwinsize
+shopt -s histappend
 
 # Enable colors
 alias ls='ls --color=auto --group-directories-first'
