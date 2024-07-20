@@ -18,7 +18,7 @@ charset = utf-8
 indent_style = space
 indent_size = 4
 
-[*.py]
+[*.js*]
 charset = utf-8
 indent_style = space
 indent_size = 2

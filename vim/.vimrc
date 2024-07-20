@@ -103,6 +103,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/tpope/vim-unimpaired'
     Plug 'https://github.com/tpope/vim-surround'
     Plug 'https://github.com/vim-airline/vim-airline'
+    Plug 'https://github.com/christianrondeau/vim-base64'
 
     " plugins for vim 9.0+
     Plug 'https://github.com/psliwka/vim-smoothie'
@@ -182,6 +183,10 @@ let g:vrc_auto_format_response_patterns = {
     \}
 " vim-signify async update
 set updatetime=500
+
+" TODO: generalize
+set wildignore+=client/dist/**
+set wildignore+=*.xz,*.txz,*.tbz
 
 " ----------------------------------------------------------
 " Keyboard remaps
