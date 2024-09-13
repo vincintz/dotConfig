@@ -186,6 +186,7 @@ set updatetime=500
 
 " TODO: generalize
 set wildignore+=client/dist/**
+set wildignore+=client/dist-staging/**
 set wildignore+=*.xz,*.txz,*.tbz
 
 " ----------------------------------------------------------
