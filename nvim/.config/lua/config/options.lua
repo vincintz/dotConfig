@@ -43,6 +43,8 @@ vim.opt.listchars = {
     precedes = '<',
 }
 
+vim.opt.wildignore:append{'.git', 'node_modules', 'dist'}
+
 -- keymaps for common mistyped commands
 vim.cmd [[
     command! Q q
