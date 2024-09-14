@@ -1,23 +1,29 @@
 return {
-    {
-        "nvim-telescope/telescope.nvim",
-        branch = "0.1.x",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-            "nvim-tree/nvim-web-devicons",
-        },
-        config = function()
-            local telescope = require("telescope")
-            local builtin = require("telescope.builtin")
-            -- telescope.load_extension("fzf")
-            -- keymaps
-            vim.keymap.set("n", "fg", builtin.git_files, {})
-            vim.keymap.set("n", "fs", builtin.live_grep, {})
-            vim.keymap.set("n", "fb", builtin.buffers, {})
-            vim.keymap.set("n", "fh", builtin.help_tags, {})
-            vim.keymap.set("n", "fc", builtin.grep_string, {})
-            vim.keymap.set("n", "ff", builtin.find_files, {})
-        end,
+  {
+    "nvim-telescope/telescope.nvim",
+    branch = "0.1.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      "nvim-tree/nvim-web-devicons",
     },
+    config = function()
+      require("telescope").setup {
+        pickers = {
+          live_grep = {
+            additional_args = function()
+              return {"--hidden"}
+            end
+          },
+        },
+      }
+      -- keymaps
+      vim.keymap.set("n", "fg", "<cmd>Telescope git_files<cr>")
+      vim.keymap.set("n", "fs", "<cmd>Telescope live_grep hidden=true<cr>")
+      vim.keymap.set("n", "fb", "<cmd>Telescope buffers<cr>")
+      vim.keymap.set("n", "fh", "<cmd>Telescope help_tags<cr>")
+      vim.keymap.set("n", "fc", "<cmd>Telescope grep_string<cr>")
+      vim.keymap.set("n", "ff", "<cmd>Telescope find_files hidden=true<cr>")
+    end,
+  },
 }
