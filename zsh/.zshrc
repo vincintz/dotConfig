@@ -8,7 +8,6 @@ done
 # Source common configs
 source $HOME/dotConfig/zsh/common/history.zsh
 source $HOME/dotConfig/zsh/common/bindkey.zsh
-source $HOME/dotConfig/zsh/common/prompt.zsh
 source $HOME/dotConfig/zsh/common/alias.zsh
 source $HOME/dotConfig/zsh/common/options.zsh
 source $HOME/dotConfig/zsh/common/autocomplete.zsh
