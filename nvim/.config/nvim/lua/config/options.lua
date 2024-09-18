@@ -44,6 +44,7 @@ vim.opt.listchars = {
 }
 
 vim.opt.wildignore:append{'.git', 'node_modules', 'dist'}
+vim.opt.diffopt:append{'vertical'}
 
 -- keymaps for common mistyped commands
 vim.cmd [[
@@ -66,3 +67,6 @@ vim.keymap.set('n', 'Ls', "<cmd>compiler shellcheck<cr><cmd>make %<cr><cmd>copen
 vim.keymap.set('n', 'K', "<cmd>bprevious<cr>")
 vim.keymap.set('n', 'J', "<cmd>bnext<cr>")
 vim.keymap.set('n', 'X', "<cmd>bdelete<cr>")
+
+-- visual mode mappings
+vim.keymap.set('v', '<leader>j', ":'<,'>!jq<cr>")
