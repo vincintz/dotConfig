@@ -32,6 +32,7 @@ return {
             local capabilities = require("cmp_nvim_lsp").default_capabilities()
             local lspconfig = require("lspconfig")
             local util = require 'lspconfig.util'
+            require 'lspconfig'.pyright.setup{}
             lspconfig.ts_ls.setup({
                 capabilites = capabilities,
             })
