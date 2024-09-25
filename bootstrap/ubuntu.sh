@@ -33,6 +33,7 @@ echo "=========================================
       Install Python Tools
       =========================================" | xargs
 sudo apt install -y python3-poetry
+sudo apt install -y python3-venv
 sudo apt install -y isort black
 
 echo "=========================================

@@ -174,12 +174,12 @@ let g:smoothie_speed_linear_factor = 30
 let g:vrc_output_buffer_name = '_localhost_out.json'
 let g:vrc_syntax_highlight_response = 1
 let g:vrc_auto_format_response_enabled = 1
-let b:vrc_response_default_content_type = 'application/json'
+let g:vrc_response_default_content_type = 'application/json'
 let g:vrc_curl_opts = {
     \   '--silent': ''
     \}
 let g:vrc_auto_format_response_patterns = {
-    \   'json': 'python3 -mjson.tool --indent=2',
+    \   'json': 'jq',
     \}
 " vim-signify async update
 set updatetime=500
@@ -259,10 +259,8 @@ nmap <leader>e      :Fern . -drawer -toggle -reveal=%<CR>
 nmap <leader>d      :tabnew<CR>:DBUI<CR>
 
 " Git shortcuts
-nmap <silent>gs     :Git<CR>:resize 10<CR>
+nmap <silent>gt     :Git<CR>:resize 10<CR>
 nmap <silent>gb     :Git blame<CR>
-nmap <silent>gd     :Gdiffsplit<CR><C-w><C-w>
-nmap <silent>gh     :Commits!<CR>
 
 " Lint commands
 nmap <silent>Lp     :compiler pylint<CR>:make %<CR>

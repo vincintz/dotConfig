@@ -1,16 +1,35 @@
 return {
-    {
-      "tpope/vim-fugitive",
-        config = function()
-            vim.keymap.set('n', 'gs', "<cmd>Git<cr><cmd>resize 10<cr>")
-            vim.keymap.set('n', 'gd', "<cmd>Gdiffsplit<cr>")
-        end
-    },
-    {
-        "lewis6991/gitsigns.nvim",
-        config = function()
-            require("gitsigns").setup()
-            vim.keymap.set('n', 'gb', "<cmd>Git blame<cr>")
-        end
-    },
+  {
+    "tpope/vim-fugitive",
+    config = function()
+      vim.api.nvim_exec([[
+        function! ToggleGitStatus()
+          echo &l:filetype
+          if &l:filetype == 'fugitive'
+            close
+          else
+            Git
+            resize 10
+          endif
+        endfunction
+
+        function! ToggleGitBlame()
+          if &l:filetype == 'fugitiveblame'
+            close
+          else
+            G blame
+          endif
+        endfunction
+      ]], false)
+
+      vim.keymap.set('n', 'gt', "<cmd>call ToggleGitStatus()<cr>")
+      vim.keymap.set('n', 'gb', "<cmd>call ToggleGitBlame()<CR>")
+    end
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    config = function()
+      require("gitsigns").setup()
+    end
+  },
 }
