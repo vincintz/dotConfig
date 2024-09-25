@@ -22,7 +22,8 @@ return {
         endfunction
       ]], false)
 
-      vim.keymap.set('n', 'gt', "<cmd>call ToggleGitStatus()<cr>")
+      vim.keymap.set('n', 'gs', "<cmd>call ToggleGitStatus()<cr>")
+      vim.keymap.set('n', 'gS', "<cmd>call ToggleGitStatus()<cr>")
       vim.keymap.set('n', 'gb', "<cmd>call ToggleGitBlame()<CR>")
     end
   },
