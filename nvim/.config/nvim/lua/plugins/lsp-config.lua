@@ -63,10 +63,9 @@ return {
           },
         },
       })
-      vim.keymap.set("n", "KK", vim.lsp.buf.hover, {})
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
       vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
-      vim.keymap.set("n", "Kk", vim.lsp.buf.code_action, {})
 
       local sign = function(opts)
         vim.fn.sign_define(opts.name, {
