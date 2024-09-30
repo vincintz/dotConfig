@@ -210,6 +210,27 @@ function! ToggleDispatchQuickFix()
     endif
 endfunction
 
+" toggle git status
+function! ToggleGitStatus()
+    echo &l:filetype
+    if &l:filetype == 'fugitive'
+        close
+    else
+        Git
+        resize 10
+    endif
+endfunction
+
+" toggle git blame
+function! ToggleGitBlame()
+    if &l:filetype == 'fugitiveblame'
+        close
+    else
+        G blame
+    endif
+endfunction
+
+
 " Hanlder for overloaded super-key (c-x)
 function! HandleSuperKey()
     if &filetype == 'rest'
@@ -259,8 +280,8 @@ nmap <leader>e      :Fern . -drawer -toggle -reveal=%<CR>
 nmap <leader>d      :tabnew<CR>:DBUI<CR>
 
 " Git shortcuts
-nmap <silent>gt     :Git<CR>:resize 10<CR>
-nmap <silent>gb     :Git blame<CR>
+nmap <leader>g      :call ToggleGitStatus()<CR>
+nmap <silent>gb     :call ToggleGitBlame()<CR>
 
 " Lint commands
 nmap <silent>Lp     :compiler pylint<CR>:make %<CR>
