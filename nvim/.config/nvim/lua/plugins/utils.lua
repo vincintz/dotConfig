@@ -8,38 +8,6 @@ return {
   "vimwiki/vimwiki",
   "AndrewRadev/tagalong.vim",
   "mattn/emmet-vim",
-  -- {
-  --   "alexghergh/nvim-tmux-navigation",
-  --   config = function()
-  --     local nvim_tmux_nav = require('nvim-tmux-navigation')
-  --     nvim_tmux_nav.setup {
-  --       disable_when_zoomed = true
-  --     }
-  --     vim.keymap.set('n', "<C-h>", nvim_tmux_nav.NvimTmuxNavigateLeft)
-  --     vim.keymap.set('n', "<C-j>", nvim_tmux_nav.NvimTmuxNavigateDown)
-  --     vim.keymap.set('n', "<C-k>", nvim_tmux_nav.NvimTmuxNavigateUp)
-  --     vim.keymap.set('n', "<C-l>", nvim_tmux_nav.NvimTmuxNavigateRight)
-  --  end
-  -- },
-  -- {
-  --   "alexghergh/nvim-tmux-navigation",
-  --   event = "VeryLazy",
-  --   config = function()
-  --     local nvim_tmux_nav = require("nvim-tmux-navigation")
-  --     nvim_tmux_nav.setup({
-  --       disable_when_zoomed = true,
-  --       -- defaults to false
-  --       keybindings = {
-  --         left = "<C-h>",
-  --         down = "<C-j>",
-  --         up = "<C-k>",
-  --         right = "<C-l>",
-  --         last_active = "<C-\\>",
-  --         next = "<C-Space>",
-  --       },
-  --     })
-  --   end,
-  -- },
   {
     "christoomey/vim-tmux-navigator",
     cmd = {
@@ -93,6 +61,15 @@ return {
       end
       url_open.setup ({})
       vim.keymap.set("n", "gx", "<esc>:URLOpenUnderCursor<cr>")
+    end,
+  },
+  {
+    "ThePrimeagen/harpoon",
+    config = function()
+      vim.keymap.set("n", "<leader>hm", "<cmd>lua require('harpoon.mark').add_file()<cr>")
+      vim.keymap.set("n", "<leader>ho", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>")
+      vim.keymap.set("n", "gh", "<cmd>lua require('harpoon.ui').nav_next()<cr>")
+      vim.keymap.set("n", "gH", "<cmd>lua require('harpoon.ui').nav_prev()<cr>")
     end,
   },
 }
