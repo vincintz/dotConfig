@@ -8,7 +8,7 @@ return {
       "nvim-tree/nvim-web-devicons",
     },
     config = function()
-      require("telescope").setup {
+      require"telescope".setup {
         pickers = {
           live_grep = {
             additional_args = function()
@@ -18,12 +18,15 @@ return {
         },
       }
       -- keymaps
-      vim.keymap.set("n", "fg", "<cmd>Telescope git_files<cr>")
-      vim.keymap.set("n", "fs", "<cmd>Telescope live_grep hidden=true<cr>")
-      vim.keymap.set("n", "fb", "<cmd>Telescope buffers<cr>")
-      vim.keymap.set("n", "fh", "<cmd>Telescope help_tags<cr>")
-      vim.keymap.set("n", "fc", "<cmd>Telescope grep_string<cr>")
-      vim.keymap.set("n", "ff", "<cmd>Telescope find_files hidden=true<cr>")
+      vim.keymap.set("n", "fg", "<cmd>Telescope git_files theme=ivy<cr>")
+      vim.keymap.set("n", "fs", "<cmd>Telescope live_grep hidden=true theme=ivy<cr>")
+      vim.keymap.set("n", "fb", "<cmd>Telescope buffers theme=ivy<cr>")
+      vim.keymap.set("n", "fh", "<cmd>Telescope help_tags theme=ivy<cr>")
+      vim.keymap.set("n", "fc", "<cmd>Telescope grep_string theme=ivy<cr>")
+      vim.keymap.set("n", "ff", "<cmd>Telescope find_files hidden=true theme=ivy<cr>")
+      vim.keymap.set("n", "gh", "<cmd>Telescope harpoon marks theme=ivy<cr>")
+      vim.keymap.set("n", "<f1>", "<cmd>Telescope help_tags theme=ivy<cr>")
+      vim.keymap.set("n", "<leader>q", "<cmd>Telescope quickfix theme=ivy<cr>")
     end,
   },
 }

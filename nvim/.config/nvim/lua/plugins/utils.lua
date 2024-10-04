@@ -1,4 +1,4 @@
-vim.g.user_emmet_leader_key = "<C-n>"
+-- vim.g.user_emmet_leader_key = "<C-n>"
 
 return {
   "diepm/vim-rest-console",
@@ -61,15 +61,6 @@ return {
       end
       url_open.setup ({})
       vim.keymap.set("n", "gx", "<esc>:URLOpenUnderCursor<cr>")
-    end,
-  },
-  {
-    "ThePrimeagen/harpoon",
-    config = function()
-      vim.keymap.set("n", "<leader>hm", "<cmd>lua require('harpoon.mark').add_file()<cr>")
-      vim.keymap.set("n", "<leader>ho", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>")
-      vim.keymap.set("n", "gh", "<cmd>lua require('harpoon.ui').nav_next()<cr>")
-      vim.keymap.set("n", "gH", "<cmd>lua require('harpoon.ui').nav_prev()<cr>")
     end,
   },
 }
