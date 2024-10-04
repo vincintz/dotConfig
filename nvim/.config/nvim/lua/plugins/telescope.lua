@@ -24,8 +24,9 @@ return {
       vim.keymap.set("n", "fh", "<cmd>Telescope help_tags theme=ivy<cr>")
       vim.keymap.set("n", "fc", "<cmd>Telescope grep_string theme=ivy<cr>")
       vim.keymap.set("n", "ff", "<cmd>Telescope find_files hidden=true theme=ivy<cr>")
-      vim.keymap.set("n", "gh", "<cmd>Telescope harpoon marks theme=ivy<cr>")
       vim.keymap.set("n", "<f1>", "<cmd>Telescope help_tags theme=ivy<cr>")
+      vim.keymap.set("n", "<leader>h", "<cmd>Telescope harpoon marks theme=ivy<cr>")
+      vim.keymap.set("n", "<leader>m", "<cmd>Telescope marks theme=ivy<cr>")
       vim.keymap.set("n", "<leader>q", "<cmd>Telescope quickfix theme=ivy<cr>")
     end,
   },
