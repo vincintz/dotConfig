@@ -64,4 +64,5 @@ vim.keymap.set('n', 'LJ', "<cmd>compiler eslint<cr><cmd>make $(git ls-files '*.p
 vim.keymap.set('n', 'Ls', "<cmd>compiler shellcheck<cr><cmd>make %<cr><cmd>copen<cr>")
 
 -- visual mode mappings
-vim.keymap.set('v', '<leader>j', ":'<,'>!jq<cr>")
+vim.keymap.set('v', '<leader>j', "<cmd>'<,'>!jq<cr>")
+vim.keymap.set('v', '<leader>r', '"hy:%s/<C-r>h//gc<left><left><left>')
