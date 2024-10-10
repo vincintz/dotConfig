@@ -43,7 +43,7 @@ vim.opt.listchars = {
     precedes = '<',
 }
 
-vim.opt.wildignore:append{'.git', 'node_modules', 'dist'}
+vim.opt.wildignore:append{'**/.git/**', '**/node_modules/**', '**/dist/**', '**/dist-staging/**'}
 vim.opt.diffopt:append{'vertical'}
 
 -- keymaps for common mistyped commands
