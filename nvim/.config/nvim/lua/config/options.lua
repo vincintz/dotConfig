@@ -14,6 +14,7 @@ vim.opt.sidescrolloff = 10
 vim.opt.smartindent = true
 vim.opt.wrap = false
 vim.opt.colorcolumn = "120"
+vim.opt.cursorline = true
 
 -- line numbers
 vim.opt.number = true
