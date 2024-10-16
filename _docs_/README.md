@@ -78,6 +78,7 @@ ln -s $HOME/dotConfig/.vimrc $HOME/.vimrc
    git clone https://github.com/zsh-users/zsh-syntax-highlighting
    git clone https://github.com/zsh-users/zsh-autosuggestions
    git clone https://github.com/zsh-users/zsh-history-substring-search
+   git clone https://github.com/jeffreytse/zsh-vi-mode
    ```
 
 * tmux plugins
