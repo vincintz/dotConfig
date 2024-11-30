@@ -3,11 +3,13 @@ return {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
-      -- add any options here
+      timeout = 500,
     },
     dependencies = {
       "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
     },
+    init = function()
+      vim.keymap.set('n', '<leader>n', "<cmd>NoiceDismiss<cr>")
+    end,
   },
 }
