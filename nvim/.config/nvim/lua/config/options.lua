@@ -67,3 +67,6 @@ vim.keymap.set('n', 'Ls', "<cmd>compiler shellcheck<cr><cmd>make %<cr><cmd>copen
 -- visual mode mappings
 vim.keymap.set('v', '<leader>j', "<cmd>'<,'>!jq<cr>")
 vim.keymap.set('v', '<leader>r', '"hy:%s/<C-r>h//gc<left><left><left>')
+
+-- insert mode mappins
+vim.keymap.set('i', 'jj', '<esc>')
