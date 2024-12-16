@@ -1,4 +1,5 @@
-TERM=screen-256color
+export TERM=xterm-256color
 
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 
+export MANPAGER="less -isg"
