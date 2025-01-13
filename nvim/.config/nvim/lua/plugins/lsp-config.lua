@@ -33,6 +33,9 @@ return {
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
       local util = require 'lspconfig.util'
+      lspconfig.pyright.setup{
+        capabilites = capabilities,
+      }
       lspconfig.ts_ls.setup({
         capabilites = capabilities,
       })
@@ -86,6 +89,6 @@ return {
           source = 'always',
         },
       })
-    end
+    end,
   },
 }
