@@ -33,9 +33,16 @@ return {
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local lspconfig = require("lspconfig")
       local util = require 'lspconfig.util'
-      lspconfig.pyright.setup{
+      lspconfig.pyright.setup({
         capabilites = capabilities,
-      }
+        settings = {
+          python = {
+            analysis = {
+              typeCheckingMode = "off",
+            },
+          },
+        },
+      })
       lspconfig.ts_ls.setup({
         capabilites = capabilities,
       })
