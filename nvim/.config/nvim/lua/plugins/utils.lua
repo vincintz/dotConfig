@@ -8,6 +8,7 @@ return {
   "vimwiki/vimwiki",
   "AndrewRadev/tagalong.vim",
   "mattn/emmet-vim",
+  "mechatroner/rainbow_csv",
   {
     "christoomey/vim-tmux-navigator",
     cmd = {
