@@ -21,7 +21,6 @@ return {
           "lua_ls",
           "ts_ls",
           "html",
-          "pylsp",
         },
         automatic_installation = true,
       })
@@ -42,18 +41,6 @@ return {
             },
           },
         },
-      })
-      lspconfig.pylsp.setup({
-        capabilites = capabilities,
-        settings = {
-          pylsp = {
-            plugins = {
-              pycodestyle = {
-                maxLineLength = 120
-              }
-            }
-          }
-        }
       })
       lspconfig.ts_ls.setup({
         capabilites = capabilities,
