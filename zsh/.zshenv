@@ -1,4 +1,4 @@
-export TERM=xterm-256color
+export TERM=screen-256color
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=8"
 

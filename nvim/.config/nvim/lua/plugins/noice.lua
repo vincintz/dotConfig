@@ -7,6 +7,7 @@ return {
     },
     dependencies = {
       "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
     },
     init = function()
       vim.keymap.set('n', '<leader>n', "<cmd>NoiceDismiss<cr>")
