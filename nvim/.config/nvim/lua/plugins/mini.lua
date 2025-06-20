@@ -3,21 +3,21 @@ return {
     "echasnovski/mini.ai",
     version = "*",
     config = function()
-      require('mini.ai').setup()
+      require("mini.ai").setup()
     end,
   },
   {
     "echasnovski/mini.bracketed",
     version = "*",
     config = function()
-      require('mini.bracketed').setup()
+      require("mini.bracketed").setup()
     end,
   },
   {
     "echasnovski/mini.comment",
     version = "*",
     config = function()
-      require('mini.comment').setup()
+      require("mini.comment").setup()
     end,
   },
   {
@@ -27,11 +27,11 @@ return {
       local MiniFiles = require("mini.files")
       MiniFiles.setup({
         mappings = {
-          close = '-',
+          close = "-",
           go_in = "L",
           go_in_plus = "l",
-          reset = ',',
-          reveal_cwd = '.',
+          reset = ",",
+          reveal_cwd = ".",
         },
         windows = {
           preview = true,
@@ -49,7 +49,7 @@ return {
     "echasnovski/mini.notify",
     version = "*",
     config = function()
-      require('mini.notify').setup()
+      require("mini.notify").setup()
     end,
   },
 }
