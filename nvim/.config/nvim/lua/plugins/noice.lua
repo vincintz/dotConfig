@@ -6,8 +6,7 @@ return {
       timeout = 500,
     },
     dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
+      "echasnovski/mini.notify",
     },
     init = function()
       vim.keymap.set('n', '<leader>n', "<cmd>NoiceDismiss<cr>")
