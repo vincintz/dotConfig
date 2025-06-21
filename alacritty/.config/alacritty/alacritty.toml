@@ -43,10 +43,10 @@ save_to_clipboard = false
 
 [window]
 decorations = "None"
-opacity = 0.90
+opacity = 0.98
 startup_mode = "Maximized"
 title = "Terminal"
 
 [window.padding]
-x = 10
-y = 8
+x = 0
+y = 0
