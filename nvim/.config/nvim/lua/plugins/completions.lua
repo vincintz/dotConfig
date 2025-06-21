@@ -1,38 +1,25 @@
 return {
-    {
-        "hrsh7th/cmp-nvim-lsp",
-        lazy = false,
-        config = true,
+  {
+    "saghen/blink.cmp",
+    dependencies = { "rafamadriz/friendly-snippets" },
+
+    version = "1.*",
+
+    opts = {
+      keymap = {
+        preset = "default",
+        ["<Up>"] = { "select_prev", "fallback" },
+        ["<Down>"] = { "select_next", "fallback" },
+        ["<Tab>"] = { "accept", "fallback" },
+        ["<Cr>"] = { "accept", "fallback" },
+        ["<Esc>"] = { "hide", "fallback" },
+      },
+
+      appearance = {
+        nerd_font_variant = "mono"
+      },
+
     },
-    {
-        "hrsh7th/nvim-cmp",
-        lazy = false,
-        config = function()
-            local cmp = require("cmp")
-            cmp.setup({
-                window = {
-                    documentation = cmp.config.window.bordered(),
-                    completion = cmp.config.window.bordered(),
-                },
-                snippet = {
-                    expand = function(args)
-                        require("luasnip").lsp_expand(args.body)
-                    end,
-                },
-                mapping = cmp.mapping.preset.insert({
-                    ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-                    ["<C-f>"] = cmp.mapping.scroll_docs(4),
-                    ["<C-Space>"] = cmp.mapping.complete(),
-                    ["<C-e>"] = cmp.mapping.abort(),
-                    ["<CR>"] = cmp.mapping.confirm({ select = true }),
-                }),
-                sources = cmp.config.sources({
-                    { name = "nvim_lsp" },
-                    { name = "luasnip" },
-                }, {
-                        { name = "buffer" },
-                    }),
-            })
-        end,
-    },
+    opts_extend = { "sources.default" }
+  },
 }
