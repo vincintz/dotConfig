@@ -7,16 +7,17 @@ return {
 
     opts = {
       keymap = {
-        preset = "default",
+        preset = "enter",
         ["<Up>"] = { "select_prev", "fallback" },
         ["<Down>"] = { "select_next", "fallback" },
         ["<Tab>"] = { "accept", "fallback" },
-        ["<Cr>"] = { "accept", "fallback" },
         ["<Esc>"] = { "hide", "fallback" },
       },
-
       appearance = {
         nerd_font_variant = "mono"
+      },
+      completion = {
+        documentation = { auto_show = false }
       },
 
     },

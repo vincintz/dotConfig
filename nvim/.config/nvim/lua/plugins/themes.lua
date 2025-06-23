@@ -4,7 +4,7 @@ return {
     priority = 1000,
     config = function()
       vim.cmd.colorscheme "kanagawa"
-    end
+    end,
   },
   {
     "nvim-lualine/lualine.nvim",
