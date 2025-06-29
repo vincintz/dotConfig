@@ -37,7 +37,9 @@ return {
         settings = {
           python = {
             analysis = {
+              autoImportCompletions = "off",
               typeCheckingMode = "off",
+              diagnosticMode = "openFilesOnly",
             },
           },
         },
