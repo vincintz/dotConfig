@@ -85,6 +85,16 @@ if [ -z "$(git config --global --get user.email)" ]; then
 fi
 
 echo "=========================================
+      Add zsh plugins
+      =========================================" | xargs
+mkdir -p /home/theo/dotConfig/zsh/libs/ && cd $_
+git clone https://github.com/Tarrasch/zsh-autoenv
+git clone https://github.com/zsh-users/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-history-substring-search
+git clone https://github.com/jeffreytse/zsh-vi-mode
+
+echo "=========================================
       Create links to config
       =========================================" | xargs
 mkdir -p "$HOME/.config"
