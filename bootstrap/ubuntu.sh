@@ -3,8 +3,6 @@
 BOOTSTRAP_PATH=$(dirname -- "$0")
 cd "$BOOTSTRAP_PATH/.." || (echo -e "Invalid path to script\n"; exit)
 DOTCONFIG_PATH=$(pwd)
-FONTS_PATH=$HOME/.fonts
-FONTS_LIST="Hack JetBrainsMono ComicShannsMono"
 
 echo "=========================================
       Run system update/upgrade
@@ -14,7 +12,7 @@ sudo apt update && sudo apt upgrade -y
 echo "=========================================
       Install essential dev apps
       =========================================" | xargs
-sudo apt install -y tmux vim fzf nala
+sudo apt install -y zsh tmux vim fzf nala
 sudo apt install -y curl net-tools nmap
 sudo apt install -y zoxide
 
@@ -94,11 +92,15 @@ mkdir -p "$HOME/.vim"
 mkdir -p "$BOOTSTRAP_PATH/bak"
 if git remote > /dev/null; then
     mkdir -p "$BOOTSTRAP_PATH/bak"
+    mv "$HOME/.zshrc" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
+    mv "$HOME/.zshenv" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
     mv "$HOME/.bashrc" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
     mv "$HOME/.bash_profile" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
     mv "$HOME/.tmux.conf" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
     mv "$HOME/.vimrc" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
     mv "$HOME/.editorconfig" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
+    ln -s "$DOTCONFIG_PATH/zsh/.zshrc" "$HOME"
+    ln -s "$DOTCONFIG_PATH/zsh/.zshenv" "$HOME"
     ln -s "$DOTCONFIG_PATH/bash/.bashrc" "$HOME"
     cp "$DOTCONFIG_PATH/bash/.bash_profile" "$HOME"
     ln -s "$DOTCONFIG_PATH/tmux/.tmux.conf" "$HOME"
@@ -115,15 +117,3 @@ if git remote > /dev/null; then
         ln -s "$DOTCONFIG_PATH/mc/.config/mcy/ini" "$HOME/.config/mc/"
     fi
 fi
-
-echo "=========================================
-      Download fonts
-      =========================================" | xargs
-mkdir "$FONTS_PATH"
-
-cd "$FONTS_PATH" || (echo -e "Invalid path to script\n"; exit)
-for FONT in $FONTS_LIST; do
-    curl -OL "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$FONT.tar.xz"
-    tar xf "$FONT.tar.xz" --wildcards "*.?tf"
-    rm "$FONT.tar.xz"
-done

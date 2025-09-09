@@ -3,7 +3,7 @@
 # Ctrl+V, followed by the key combination desired to bind prints the code to the console.
 
 # Use vi mode
-bindkey -v
+bindkey -e
 
 # Home/End
 bindkey '^[[H'    beginning-of-line

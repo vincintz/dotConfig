@@ -24,3 +24,18 @@ echo "=========================================
     Instal uLauncher
     =========================================" | xargs
 sudo add-apt-repository universe -y && sudo add-apt-repository ppa:agornostal/ulauncher -y && sudo apt update && sudo apt install -y ulauncher
+
+echo "=========================================
+      Download fonts
+      =========================================" | xargs
+FONTS_PATH=$HOME/.fonts
+FONTS_LIST="Hack JetBrainsMono ComicShannsMono"
+
+mkdir "$FONTS_PATH"
+
+cd "$FONTS_PATH" || (echo -e "Invalid path to script\n"; exit)
+for FONT in $FONTS_LIST; do
+    curl -OL "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$FONT.tar.xz"
+    tar xf "$FONT.tar.xz" --wildcards "*.?tf"
+    rm "$FONT.tar.xz"
+done
