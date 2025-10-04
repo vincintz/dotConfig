@@ -12,7 +12,8 @@ sudo apt update && sudo apt upgrade -y
 echo "=========================================
       Install essential dev apps
       =========================================" | xargs
-sudo apt install -y zsh tmux vim fzf nala
+sudo apt install -y build-essential
+sudo apt install -y zsh tmux vim fzf git
 sudo apt install -y curl net-tools nmap
 sudo apt install -y zoxide
 
@@ -38,6 +39,13 @@ echo "=========================================
       Install Node Version Manager (nvm)
       =========================================" | xargs
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+
+echo "=========================================
+      Install Homebrew
+      =========================================" | xargs
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+ln -s "$DOTCONFIG_PATH/nvim/.config/nvim" "$HOME/.config"
 
 echo "=========================================
       Install starship (prompt)
@@ -92,7 +100,6 @@ git clone https://github.com/Tarrasch/zsh-autoenv
 git clone https://github.com/zsh-users/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-history-substring-search
-git clone https://github.com/jeffreytse/zsh-vi-mode
 
 echo "=========================================
       Create links to config

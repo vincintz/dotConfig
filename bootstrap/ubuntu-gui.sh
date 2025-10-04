@@ -16,14 +16,12 @@ sudo apt install -y cheese
 echo "=========================================
     Instal flatpaks
     =========================================" | xargs
+sudo apt install -y flatpak
+sudo apt install -y gnome-software-plugin-flatpak
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y flathub net.waterfox.waterfox
 flatpak install -y com.brave.Browser
-
-echo "=========================================
-    Instal uLauncher
-    =========================================" | xargs
-sudo add-apt-repository universe -y && sudo add-apt-repository ppa:agornostal/ulauncher -y && sudo apt update && sudo apt install -y ulauncher
+flatpak install -y org.ferdium.Ferdium
 
 echo "=========================================
       Download fonts
@@ -39,3 +37,9 @@ for FONT in $FONTS_LIST; do
     tar xf "$FONT.tar.xz" --wildcards "*.?tf"
     rm "$FONT.tar.xz"
 done
+
+
+echo "=========================================
+      Map config
+      =========================================" | xargs
+ln -s "$HOME/dotConfig/alacritty/.config/alacritty" "$HOME/.config"

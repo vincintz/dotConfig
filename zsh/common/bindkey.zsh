@@ -2,7 +2,7 @@
 # bindkey -d # deletes all bindings
 # Ctrl+V, followed by the key combination desired to bind prints the code to the console.
 
-# Use vi mode
+# Use edit mode emacs
 bindkey -e
 
 # Home/End
