@@ -13,20 +13,13 @@ source $HOME/dotConfig/zsh/common/options.zsh
 source $HOME/dotConfig/zsh/common/autocomplete.zsh
 source $HOME/dotConfig/zsh/common/nvm.zsh
 
-# Source cygwin configs
-if [[ $OSTYPE == "cygwin" ]]; then
-    source $HOME/dotConfig/zsh/cygwin/alias.zsh
-    source $HOME/dotConfig/zsh/cygwin/vars.zsh
-    source $HOME/dotConfig/zsh/cygwin/dircolors.zsh
 # Source OSX configs
-elif [[ $OSTYPE == darwin* ]]; then
-    source $HOME/dotConfig/zsh/osx/envs.zsh
-    source $HOME/dotConfig/zsh/osx/nvm.zsh
+if [[ $OSTYPE == darwin* ]]; then
+  source $HOME/dotConfig/zsh/osx/envs.zsh
     source $HOME/dotConfig/zsh/osx/rprompt.zsh
 # Source Linux configs
 elif [[ $OSTYPE == linux* ]]; then
     source $HOME/dotConfig/zsh/linux/envs.zsh
-    source $HOME/dotConfig/zsh/linux/bindkey.zsh
     source $HOME/dotConfig/zsh/linux/alias.zsh
 fi
 
