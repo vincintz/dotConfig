@@ -2,7 +2,7 @@
 
 BOOTSTRAP_PATH=$(dirname -- "$0")
 cd "$BOOTSTRAP_PATH/.." || (echo -e "Invalid path to script\n"; exit)
-DOTCONFIG_PATH=$(pwd)
+DOTCONFIG_PATH=$(pwd)ubuntus
 
 echo "=========================================
       Run system update/upgrade
@@ -16,6 +16,7 @@ sudo apt install -y build-essential
 sudo apt install -y zsh tmux vim fzf git
 sudo apt install -y curl net-tools nmap
 sudo apt install -y zoxide
+sudo apt install -y luarocks
 
 echo "=========================================
       Install more dev apps
@@ -38,7 +39,7 @@ sudo apt install -y isort black
 echo "=========================================
       Install Node Version Manager (nvm)
       =========================================" | xargs
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 
 echo "=========================================
       Install Homebrew

@@ -6,6 +6,7 @@ vim.g.maplocalleader = " "
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
 vim.opt.termguicolors = true
+vim.opt.winborder = "rounded"
 
 -- when scrolling, leave 10 rows
 vim.opt.scrolloff = 10
@@ -60,3 +61,12 @@ vim.opt.autowrite = false
 
 vim.opt.wildignore:append{'**/.git/**', '**/node_modules/**', '**/dist/**', '**/dist-staging/**'}
 vim.opt.diffopt:append{'vertical'}
+
+-- highlight when yanking
+vim.api.nvim_create_autocmd('TextYankPost', {
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+})
