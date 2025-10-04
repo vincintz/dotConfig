@@ -51,14 +51,6 @@ set ruler
 " set scroll offset
 set scrolloff=2
 
-" better backup, swap and undos storage for vim
-set directory=~/.vim/dirs/tmp       " directory to place swap files in
-set backup                          " make backup files
-set backupdir=~/.vim/dirs/backups   " where to put backup files
-set undofile                        " persistent undos - undo after you re-open the file
-set undodir=~/.vim/dirs/undos
-set viminfo+=n~/.vim/dirs/viminfo
-
 " misc settings
 set diffopt+=vertical               " diffsplit vertical
 set wildignore+=**/.git/**,**/node_modules/**   " exclude these dirs
@@ -125,7 +117,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'https://github.com/kristijanhusak/vim-dadbod-ui'
     Plug 'https://github.com/vimwiki/vimwiki'
     Plug 'https://github.com/voldikss/vim-floaterm'
-    " Plug 'https://github.com/Exafunction/codeium.vim'
 
 call plug#end()
 
@@ -301,7 +292,6 @@ xmap <leader>j      :!python3 -mjson.tool --indent=2<CR>
 nmap <leader>t      :FloatermNew --autoclose=2 --width=0.8 --height=0.8<CR>
 nmap <C-t>          :FloatermToggle<CR>
 tmap <C-t>          <C-\><C-n>:FloatermToggle<CR>
-tmap <C-x>          <C-\><C-n>:FloatermKill<CR>
 tmap <C-x>          <C-\><C-n>:FloatermKill<CR>
 tmap <C-w>          <C-\><C-n>:FloatermNext<CR>
 
