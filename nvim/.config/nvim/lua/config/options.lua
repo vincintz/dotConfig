@@ -5,6 +5,7 @@ vim.g.maplocalleader = " "
 -- system integration settings
 vim.opt.mouse = "a"
 vim.opt.clipboard = "unnamedplus"
+vim.opt.termguicolors = true
 
 -- when scrolling, leave 10 rows
 vim.opt.scrolloff = 10
@@ -13,6 +14,7 @@ vim.opt.sidescrolloff = 10
 -- line settings
 vim.opt.smartindent = true
 vim.opt.wrap = false
+vim.opt.signcolumn = "yes"
 vim.opt.colorcolumn = "120"
 vim.opt.cursorline = true
 
@@ -44,29 +46,17 @@ vim.opt.listchars = {
     precedes = '<',
 }
 
+-- file handling
+vim.opt.backup = false
+vim.opt.writebackup = false
+vim.opt.swapfile = false
+vim.opt.undofile = true
+vim.opt.undodir = vim.fn.expand("~/.vim/undodir")
+vim.opt.updatetime = 300
+vim.opt.timeoutlen = 500
+vim.opt.ttimeoutlen = 0
+vim.opt.autoread = true
+vim.opt.autowrite = false
+
 vim.opt.wildignore:append{'**/.git/**', '**/node_modules/**', '**/dist/**', '**/dist-staging/**'}
 vim.opt.diffopt:append{'vertical'}
-
--- keymaps for common mistyped commands
-vim.cmd [[
-    command! Q q
-    command! Qa qa
-    command! W w!
-    command! Wq wq
-]]
-
--- external linters
-vim.keymap.set('n', 'Lp', "<cmd>compiler pylint<cr><cmd>make %<cr><cmd>copen<cr>")
-vim.keymap.set('n', 'LP', "<cmd>compiler pylint<cr><cmd>make $(git diff --name-only '**/*.py')<cr><cmd>copen<cr>")
-vim.keymap.set('n', 'Lu', "<cmd>set makeprg=ruff<cr><cmd>make %<cr><cmd>copen<cr>")
-vim.keymap.set('n', 'LU', "<cmd>set makeprg=ruff<cr><cmd>make $(git diff --name-only '**/*.py')<cr><cmd>copen<cr>")
-vim.keymap.set('n', 'Lj', "<cmd>compiler eslint<cr><cmd>make %<cr><cmd>copen<cr>")
-vim.keymap.set('n', 'LJ', "<cmd>compiler eslint<cr><cmd>make $(git ls-files '*.py')<cr><cmd>copen<cr>")
-vim.keymap.set('n', 'Ls', "<cmd>compiler shellcheck<cr><cmd>make %<cr><cmd>copen<cr>")
-
--- visual mode mappings
-vim.keymap.set('v', '<leader>j', "<cmd>'<,'>!jq<cr>")
-vim.keymap.set('v', '<leader>r', '"hy:%s/<C-r>h//gc<left><left><left>')
-
--- insert mode mappins
-vim.keymap.set('i', 'jj', '<esc>')
