@@ -140,7 +140,10 @@ chsh -s $(which zsh)
 
 
 if [[ -z "$XDG_SESSION_TYPE" ]]; then
+  echo "========================================="
   echo "Setup complete"
+  echo "Logout to proceed"
+  echo "========================================="
   exit 0
 fi
 
@@ -182,3 +185,9 @@ echo "=========================================
       Map config
       =========================================" | xargs
 ln -s "$HOME/dotConfig/alacritty/.config/alacritty" "$HOME/.config"
+
+echo "========================================="
+echo "Setup complete"
+echo "Logout to proceed"
+echo "========================================="
+exit 0
