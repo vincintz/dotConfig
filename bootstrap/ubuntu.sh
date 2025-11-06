@@ -151,7 +151,6 @@ echo "=========================================
     Install gui tools (apt)
     =========================================" | xargs
 sudo apt install -y alacritty
-sudo apt install -y shell-extension-manager gnome-shell-extension-prefs gnome-tweaks
 
 echo "=========================================
     Instal flatpaks
