@@ -16,14 +16,20 @@ sudo apt install -y build-essential
 sudo apt install -y git
 sudo apt install -y zsh tmux vim
 sudo apt install -y curl net-tools nmap
+sudo apt install -y software-properties-common apt-transport-https
 
 echo "=========================================
 Install more dev apps
 =========================================" | xargs
 sudo apt install -y zoxide fzf
-sudo apt install -y ripgrep fd-find bat exuberant-ctags
+sudo apt install -y ripgrep exuberant-ctags
 sudo apt install -y ncdu mc pspg
+
+echo "=========================================
+      Install Linters
+      =========================================" | xargs
 sudo apt install -y luarocks
+sudo apt install -y shellcheck
 
 echo "=========================================
 Install Homebrew
@@ -33,23 +39,17 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 brew install starship
 brew install neovim
 brew install tldr
+brew install mise
+brew install uv
+brew install fd
+brew install bat
 
-# echo "=========================================
-#       Install Python Tools
-#       =========================================" | xargs
-# sudo apt install -y python3-poetry
-# sudo apt install -y python3-venv
-# sudo apt install -y isort black
+echo "=========================================
+      Install Python Tools
+      =========================================" | xargs
+sudo apt install -y python3-poetry
+sudo apt install -y python3-venv
 
-# echo "=========================================
-#       Install Node Version Manager (nvm)
-#       =========================================" | xargs
-# curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
-
-# echo "=========================================
-#       Install Linters
-#       =========================================" | xargs
-# sudo apt install -y shellcheck
 
 echo "=========================================
 Install TMux Plugin Manager (tpm)
@@ -64,25 +64,24 @@ echo "=========================================
       Set gitconfig
       =========================================" | xargs
 if [ -z "$(git config --global --get user.email)" ]; then
-    echo "Enter the following:"
-    while true; do
-        read -r -p "  * user.email: " USER_EMAIL
-        read -r -p "  * user.name : " USER_NAME
-        read -r -p "Is this correct '$USER_EMAIL'/'$USER_NAME' [y/N]?  " USER_CORRECT
-        case $USER_CORRECT in
-            [Yy]* ) break;;
-        esac
-    done
-    git config --global user.email "$USER_EMAIL"
-    git config --global user.name "$USER_NAME"
-    git config --global diff.tool vimdiff
-    git config --global difftool.prompt false
-    git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-    git config --global alias.df "diff --compact-summary"
-    git config --global alias.br "branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate"
-    git config --global alias.merges "log --oneline --decorate --color=auto --merges --first-parent"
-
+  echo "Enter the following:"
+  while true; do
+    read -r -p "  * user.email: " USER_EMAIL
+    read -r -p "  * user.name : " USER_NAME
+    read -r -p "Is this correct '$USER_EMAIL'/'$USER_NAME' [y/N]?  " USER_CORRECT
+    case $USER_CORRECT in
+      [Yy]* ) break;;
+    esac
+  done
+  git config --global user.email "$USER_EMAIL"
+  git config --global user.name "$USER_NAME"
 fi
+git config --global diff.tool vimdiff
+git config --global difftool.prompt false
+git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+git config --global alias.df "diff --compact-summary"
+git config --global alias.br "branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate"
+git config --global alias.merges "log --oneline --decorate --color=auto --merges --first-parent"
 
 echo "=========================================
 Add zsh plugins
@@ -113,11 +112,6 @@ if git remote > /dev/null; then
   ln -s "$DOTCONFIG_PATH/tmux/.tmux.conf" "$HOME"
   ln -s "$DOTCONFIG_PATH/vim/.vimrc" "$HOME"
   ln -s "$DOTCONFIG_PATH/vim/.editorconfig" "$HOME"
-  if command -v alacritty > /dev/null; then
-    mv "$HOME/.config/alacritty/alacritty.toml" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
-    mkdir -p "$HOME/.config/alacritty"
-    ln -s "$DOTCONFIG_PATH/alacritty/.config/alacritty/alacritty.toml" "$HOME/.config/alacritty/"
-  fi
   if command -v mc > /dev/null; then
     mv "$HOME/.config/mc/ini" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
     mkdir -p "$HOME/.config/mc"
@@ -151,18 +145,23 @@ echo "=========================================
     Install gui tools (apt)
     =========================================" | xargs
 sudo apt install -y alacritty
+sudo apt install -y gnome-shell-extension-manager
+sudo add-apt-repository -y universe
+sudo add-apt-repository -y ppa:agornostal/ulauncher
+sudo apt update && sudo apt install ulauncher
 
 echo "=========================================
-    Instal flatpaks
+    Install gui tools (apt)
     =========================================" | xargs
 sudo apt install -y flatpak
 sudo apt install -y gnome-software-plugin-flatpak
 flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 flatpak install -y flathub net.waterfox.waterfox
-flatpak install -y com.brave.Browser
-flatpak install -y org.ferdium.Ferdium
 
-# snap install brave ferdium
+echo "=========================================
+    Instal snap packages
+    =========================================" | xargs
+snap install brave ferdium
 
 echo "=========================================
       Download fonts
@@ -183,7 +182,9 @@ done
 echo "=========================================
       Map config
       =========================================" | xargs
-ln -s "$HOME/dotConfig/alacritty/.config/alacritty" "$HOME/.config"
+if command -v alacritty > /dev/null; then
+  ln -s "$DOTCONFIG_PATH/alacritty/.config/alacritty" "$HOME/.config/"
+fi
 
 echo "========================================="
 echo "Setup complete"
