@@ -29,15 +29,9 @@ echo "=========================================
 Install Homebrew
 =========================================" | xargs
 NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 brew install starship
 brew install tldr
-
-# echo "=========================================
-#       Install starship (prompt)
-#       =========================================" | xargs
-# if ! command -v starship > /dev/null; then
-#     curl -sS https://starship.rs/install.sh | sh
-# fi
 
 # echo "=========================================
 #       Install Python Tools
@@ -65,29 +59,29 @@ if [ ! -f ~/.tmux/plugins/tpm/tpm ]; then
   echo "Makes sure tmux plugins are installed by pressing <c-a>I"
 fi
 
-# echo "=========================================
-#       Set gitconfig
-#       =========================================" | xargs
-# if [ -z "$(git config --global --get user.email)" ]; then
-#     echo "Enter the following:"
-#     while true; do
-#         read -r -p "  * user.email: " USER_EMAIL
-#         read -r -p "  * user.name : " USER_NAME
-#         read -r -p "Is this correct '$USER_EMAIL'/'$USER_NAME' [y/N]?  " USER_CORRECT
-#         case $USER_CORRECT in
-#             [Yy]* ) break;;
-#         esac
-#     done
-#     git config --global user.email "$USER_EMAIL"
-#     git config --global user.name "$USER_NAME"
-#     git config --global diff.tool vimdiff
-#     git config --global difftool.prompt false
-#     git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
-#     git config --global alias.df "diff --compact-summary"
-#     git config --global alias.br "branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate"
-#     git config --global alias.merges "log --oneline --decorate --color=auto --merges --first-parent"
+echo "=========================================
+      Set gitconfig
+      =========================================" | xargs
+if [ -z "$(git config --global --get user.email)" ]; then
+    echo "Enter the following:"
+    while true; do
+        read -r -p "  * user.email: " USER_EMAIL
+        read -r -p "  * user.name : " USER_NAME
+        read -r -p "Is this correct '$USER_EMAIL'/'$USER_NAME' [y/N]?  " USER_CORRECT
+        case $USER_CORRECT in
+            [Yy]* ) break;;
+        esac
+    done
+    git config --global user.email "$USER_EMAIL"
+    git config --global user.name "$USER_NAME"
+    git config --global diff.tool vimdiff
+    git config --global difftool.prompt false
+    git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+    git config --global alias.df "diff --compact-summary"
+    git config --global alias.br "branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate"
+    git config --global alias.merges "log --oneline --decorate --color=auto --merges --first-parent"
 
-# fi
+fi
 
 echo "=========================================
 Add zsh plugins
