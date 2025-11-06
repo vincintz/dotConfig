@@ -31,6 +31,7 @@ Install Homebrew
 NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 brew install starship
+brew install neovim
 brew install tldr
 
 # echo "=========================================
@@ -136,3 +137,48 @@ echo "=========================================
 Change shell to zsh
 =========================================" | xargs
 chsh -s $(which zsh)
+
+
+if [[ -z "$XDG_SESSION_TYPE" ]]; then
+  echo "Setup complete"
+  exit 0
+fi
+
+echo "=========================================
+    Install gui tools (apt)
+    =========================================" | xargs
+sudo apt install -y alacritty
+sudo apt install -y shell-extension-manager gnome-shell-extension-prefs gnome-tweaks
+
+echo "=========================================
+    Instal flatpaks
+    =========================================" | xargs
+sudo apt install -y flatpak
+sudo apt install -y gnome-software-plugin-flatpak
+flatpak remote-add --user --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install -y flathub net.waterfox.waterfox
+flatpak install -y com.brave.Browser
+flatpak install -y org.ferdium.Ferdium
+
+# snap install brave ferdium
+
+echo "=========================================
+      Download fonts
+      =========================================" | xargs
+FONTS_PATH=$HOME/.fonts
+FONTS_LIST="Hack JetBrainsMono ComicShannsMono"
+
+mkdir "$FONTS_PATH"
+
+cd "$FONTS_PATH" || (echo -e "Invalid path to script\n"; exit)
+for FONT in $FONTS_LIST; do
+    curl -OL "https://github.com/ryanoasis/nerd-fonts/releases/latest/download/$FONT.tar.xz"
+    tar xf "$FONT.tar.xz" --wildcards "*.?tf"
+    rm "$FONT.tar.xz"
+done
+
+
+echo "=========================================
+      Map config
+      =========================================" | xargs
+ln -s "$HOME/dotConfig/alacritty/.config/alacritty" "$HOME/.config"
