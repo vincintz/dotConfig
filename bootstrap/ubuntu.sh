@@ -148,7 +148,8 @@ sudo apt install -y alacritty
 sudo apt install -y gnome-shell-extension-manager
 sudo add-apt-repository -y universe
 sudo add-apt-repository -y ppa:agornostal/ulauncher
-sudo apt update && sudo apt install ulauncher
+sudo apt update
+sudo apt install -y ulauncher
 
 echo "=========================================
     Install gui tools (apt)
