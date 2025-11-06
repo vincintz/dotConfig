@@ -126,4 +126,13 @@ if git remote > /dev/null; then
     mv "$HOME/.config/nvim/" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
     ln -s "$DOTCONFIG_PATH/nvim/.config/nvim" "$HOME/.config"
   fi
+  if command -v zsh > /dev/null; then
+    mv "$HOME/.config/zsh" "$BOOTSTRAP_PATH/bak/" 2>/dev/null
+    ln -s "$DOTCONFIG_PATH/zsh" "$HOME/.config"
+  fi
 fi
+
+echo "=========================================
+Change shell to zsh
+=========================================" | xargs
+chsh -s $(which zsh)
