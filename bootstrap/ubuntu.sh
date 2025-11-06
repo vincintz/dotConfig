@@ -28,7 +28,7 @@ sudo apt install -y luarocks
 echo "=========================================
 Install Homebrew
 =========================================" | xargs
-bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+NONINTERACTIVE=1 bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 brew install starship
 brew install tldr
 
@@ -92,7 +92,7 @@ fi
 echo "=========================================
 Add zsh plugins
 =========================================" | xargs
-mkdir -p /home/theo/dotConfig/zsh/libs/ && cd $_
+mkdir -p "$DOTCONFIG_PATH/zsh/libs/" && cd $_
 git clone https://github.com/Tarrasch/zsh-autoenv
 git clone https://github.com/zsh-users/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-autosuggestions
