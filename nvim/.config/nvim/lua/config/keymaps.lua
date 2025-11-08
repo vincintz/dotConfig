@@ -3,7 +3,9 @@ command = vim.api.nvim_create_user_command
 
 -- map common mistyped commands
 command('W', 'w', { nargs = 0 })
-command('Q', 'q', { nargs = 0 })
+command('Q', 'qa', { nargs = 0 })
+command('Wq', 'wq', { nargs = 0 })
+command('WQ', 'wq', { nargs = 0 })
 
 -- visual mode mappings
 kmap.set('v', '<leader>j', "<cmd>'<,'>!jq<cr>")

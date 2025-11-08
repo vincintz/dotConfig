@@ -18,6 +18,7 @@ o.colorcolumn = "120"
 -- os integration
 o.clipboard = "unnamedplus"
 o.termguicolors = true
+o.winborder = "rounded"
 
 -- when scrolling leave 10 rows/cols
 o.scrolloff = 10
@@ -73,3 +74,4 @@ o.wildignore:append {
 g.loaded_python3_provider = 0
 g.loaded_perl_provider = 0
 g.loaded_node_provider = 0
+g.loaded_ruby_provider = 0

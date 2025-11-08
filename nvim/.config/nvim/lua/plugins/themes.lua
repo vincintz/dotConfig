@@ -1,9 +1,9 @@
 return {
   {
-    "rebelot/kanagawa.nvim",
+    "vague-theme/vague.nvim",
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme "kanagawa"
+      vim.cmd.colorscheme "vague"
     end,
   },
   {
@@ -13,7 +13,7 @@ return {
     },
     config = function()
       require("lualine").setup({
-        options = { theme = "kanagawa" }
+        options = { theme = "codedark" }
       })
     end
   },
