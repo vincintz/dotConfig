@@ -9,6 +9,11 @@ return {
     },
     config = function()
       require"telescope".setup {
+        defaults = {
+          preview = {
+            treesitter = false,
+          },
+        },
         pickers = {
           live_grep = {
             additional_args = function()

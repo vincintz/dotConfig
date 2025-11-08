@@ -1,39 +1,29 @@
--- keymaps for common mistyped commands
-vim.cmd [[
-    command! Q q
-    command! Qa qa
-    command! W w!
-    command! Wq wq
-]]
+kmap = vim.keymap
+command = vim.api.nvim_create_user_command
+
+-- map common mistyped commands
+command('W', 'w', { nargs = 0 })
+command('Q', 'q', { nargs = 0 })
 
 -- visual mode mappings
-vim.keymap.set('v', '<leader>j', "<cmd>'<,'>!jq<cr>")
-vim.keymap.set('v', '<leader>r', '"hy:%s/<C-r>h//gc<left><left><left>')
+kmap.set('v', '<leader>j', "<cmd>'<,'>!jq<cr>")
+kmap.set('v', '<leader>r', '"hy:%s/<C-r>h//gc<left><left><left>')
 
 -- insert mode mappins
-vim.keymap.set('i', 'jj', '<esc>')
+kmap.set('i', 'jj', '<esc>')
 
 -- buffer navigation
-vim.keymap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
-vim.keymap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
+kmap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
+kmap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
 
 -- split and resize
-vim.keymap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Split window vertically" })
-vim.keymap.set("n", "<leader>sh", ":split<CR>", { desc = "Split window horizontally" })
-vim.keymap.set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })
-vim.keymap.set("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
-vim.keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
-vim.keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
+kmap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Split window vertically" })
+kmap.set("n", "<leader>sh", ":split<CR>", { desc = "Split window horizontally" })
+kmap.set("n", "<C-Up>", ":resize +2<CR>", { desc = "Increase window height" })
+kmap.set("n", "<C-Down>", ":resize -2<CR>", { desc = "Decrease window height" })
+kmap.set("n", "<C-Left>", ":vertical resize -2<CR>", { desc = "Decrease window width" })
+kmap.set("n", "<C-Right>", ":vertical resize +2<CR>", { desc = "Increase window width" })
 
 -- indenting in visual mode
-vim.keymap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
-vim.keymap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
-
--- external linters
-vim.keymap.set('n', 'Lp', "<cmd>compiler pylint<cr><cmd>make %<cr><cmd>copen<cr>")
-vim.keymap.set('n', 'LP', "<cmd>compiler pylint<cr><cmd>make $(git diff --name-only '**/*.py')<cr><cmd>copen<cr>")
-vim.keymap.set('n', 'Lu', "<cmd>set makeprg=ruff<cr><cmd>make %<cr><cmd>copen<cr>")
-vim.keymap.set('n', 'LU', "<cmd>set makeprg=ruff<cr><cmd>make $(git diff --name-only '**/*.py')<cr><cmd>copen<cr>")
-vim.keymap.set('n', 'Lj', "<cmd>compiler eslint<cr><cmd>make %<cr><cmd>copen<cr>")
-vim.keymap.set('n', 'LJ', "<cmd>compiler eslint<cr><cmd>make $(git ls-files '*.js')<cr><cmd>copen<cr>")
-vim.keymap.set('n', 'Ls', "<cmd>compiler shellcheck<cr><cmd>make %<cr><cmd>copen<cr>")
+kmap.set("v", "<", "<gv", { desc = "Indent left and reselect" })
+kmap.set("v", ">", ">gv", { desc = "Indent right and reselect" })
