@@ -24,6 +24,7 @@ Install more dev apps
 sudo apt install -y zoxide fzf
 sudo apt install -y ripgrep exuberant-ctags
 sudo apt install -y ncdu mc pspg
+sudo apt install -y tree nvtop
 
 echo "=========================================
       Install Linters
@@ -145,7 +146,7 @@ echo "=========================================
     Install gui tools (apt)
     =========================================" | xargs
 sudo apt install -y alacritty
-sudo apt install -y gnome-shell-extension-manager
+sudo apt install -y gnome-shell-extension-manager gnome-tweaks
 sudo add-apt-repository -y universe
 sudo add-apt-repository -y ppa:agornostal/ulauncher
 sudo apt update
