@@ -1,72 +1,77 @@
--- set leader key to space
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
+local g = vim.g
+local o = vim.opt
 
--- system integration settings
-vim.opt.mouse = "a"
-vim.opt.clipboard = "unnamedplus"
-vim.opt.termguicolors = true
-vim.opt.winborder = "rounded"
-
--- when scrolling, leave 10 rows
-vim.opt.scrolloff = 10
-vim.opt.sidescrolloff = 10
-
--- line settings
-vim.opt.smartindent = true
-vim.opt.wrap = false
-vim.opt.signcolumn = "yes"
-vim.opt.colorcolumn = "120"
-vim.opt.cursorline = true
+-- leader key
+g.mapleader = " "
+g.maplocalleader = " "
 
 -- line numbers
-vim.opt.number = true
-vim.opt.relativenumber = true
+o.number = true
+o.relativenumber = true
+
+-- line settings
+o.smartindent = true
+o.wrap = false
+o.signcolumn = "yes"
+o.colorcolumn = "120"
+
+-- os integration
+o.clipboard = "unnamedplus"
+o.termguicolors = true
+o.winborder = "rounded"
+
+-- when scrolling leave 10 rows/cols
+o.scrolloff = 10
+o.sidescrolloff = 10
 
 -- search options
-vim.opt.incsearch = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.hlsearch = false
+o.incsearch = true
+o.smartcase = true
+o.ignorecase = true
+o.hlsearch = false
 
 -- split options
-vim.opt.splitbelow = true
-vim.opt.splitright = true
+o.splitbelow = true
+o.splitright = true
+o.diffopt:append {"vertical"}
 
 -- tab settings
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.bo.softtabstop = 2
+o.tabstop = 2
+o.shiftwidth = 2
+o.expandtab = true
+o.softtabstop = 2
 
 -- show invisible characters
-vim.opt.list = true
-vim.opt.listchars = {
-    tab = '>-',
-    trail = '.',
-    precedes = '<',
+o.list = true
+o.listchars = {
+  tab = ">-",
+  trail = ".",
+  precedes = "<",
 }
 
--- file handling
-vim.opt.backup = false
-vim.opt.writebackup = false
-vim.opt.swapfile = false
-vim.opt.undofile = true
-vim.opt.undodir = vim.fn.expand("~/.vim/undodir")
-vim.opt.updatetime = 300
-vim.opt.timeoutlen = 500
-vim.opt.ttimeoutlen = 0
-vim.opt.autoread = true
-vim.opt.autowrite = false
+-- disable backup
+o.backup = false
+o.writebackup = false
+o.swapfile = false
 
-vim.opt.wildignore:append{'**/.git/**', '**/node_modules/**', '**/dist/**', '**/dist-staging/**'}
-vim.opt.diffopt:append{'vertical'}
+-- enhanced undo
+o.undofile = true
+o.undodir = vim.fn.expand("~/.vim/undodir")
 
--- highlight when yanking
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
+-- refresh file content
+o.autoread = true
+o.autowrite = false
+
+-- ignore patterns when expanding files
+o.wildignore:append {
+  "**/.git/**",
+  "**/node_modules/**",
+  "**/dist/**", 
+  "**/dist-staging/**"
+}
+
+-- fix checkhealth warnings
+g.loaded_python3_provider = 0
+g.loaded_perl_provider = 0
+g.loaded_node_provider = 0
+g.loaded_ruby_provider = 0

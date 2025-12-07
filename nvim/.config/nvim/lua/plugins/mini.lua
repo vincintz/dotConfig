@@ -1,27 +1,27 @@
 return {
   {
-    "echasnovski/mini.ai",
+    "nvim-mini/mini.ai",
     version = "*",
     config = function()
       require("mini.ai").setup()
     end,
   },
   {
-    "echasnovski/mini.bracketed",
+    "nvim-mini/mini.bracketed",
     version = "*",
     config = function()
       require("mini.bracketed").setup()
     end,
   },
   {
-    "echasnovski/mini.comment",
+    "nvim-mini/mini.comment",
     version = "*",
     config = function()
       require("mini.comment").setup()
     end,
   },
   {
-    "echasnovski/mini.nvim",
+    "nvim-mini/mini.files",
     version = "*",
     config = function()
       local MiniFiles = require("mini.files")
@@ -46,7 +46,7 @@ return {
     end,
   },
   {
-    "echasnovski/mini.notify",
+    "nvim-mini/mini.notify",
     version = "*",
     config = function()
       require("mini.notify").setup()

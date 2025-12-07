@@ -23,8 +23,8 @@ Install more dev apps
 =========================================" | xargs
 sudo apt install -y zoxide fzf
 sudo apt install -y ripgrep exuberant-ctags
+sudo apt install -y tree nvtop htop glances
 sudo apt install -y ncdu mc pspg
-sudo apt install -y tree nvtop
 
 echo "=========================================
       Install Linters
@@ -44,6 +44,7 @@ brew install mise
 brew install uv
 brew install fd
 brew install bat
+brew install tree-sitter-cli
 
 echo "=========================================
       Install Python Tools

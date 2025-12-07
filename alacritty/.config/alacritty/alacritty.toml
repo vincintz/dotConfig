@@ -7,8 +7,8 @@ TERM = "screen-256color"
 program = "tmux"
 
 [colors.primary]
-background = "#262626"
-foreground = "#AFAFAF"
+background = "#141415"
+foreground = "#CDCDCD"
 
 [font]
 size = 11.0
