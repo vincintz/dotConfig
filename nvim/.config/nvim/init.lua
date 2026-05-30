@@ -19,3 +19,6 @@ require "plugin-config.harpoon"
 require "plugin-config.trouble"
 require "plugin-config.vimwiki"
 require "plugin-config.tmux-navigator"
+
+-- Load vim.pack plugin manager commands
+require "plugin-config.pack-commands"

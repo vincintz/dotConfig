@@ -9,7 +9,7 @@ Build / Test / Lint commands
   - Shell scripts: shellcheck <file>
   - Python formatting: black <file_or_dir>
   - Python import sorting: isort <file_or_dir>
-  - Neovim plugins: managed with lazy.nvim — open nvim and run :Lazy sync or :Lazy update (or use nvim --headless to run Lazy commands interactively).
+  - Neovim plugins: managed with vim.pack — use `:PackUpdate`, `:PackInstall`, `:PackList` or shell/PowerShell scripts (see nvim/PACK_MANAGEMENT.md)
 
 High-level architecture
 - Top-level layout: one folder per tool. Examples:
@@ -30,22 +30,28 @@ High-level architecture
 Key conventions (repo-specific)
 - Tool-per-directory: modify config for a tool inside its folder; top-level dotfiles are intended to be symlinked into $HOME.
 - Symlink convention: README/_docs_ show examples (ln -s $HOME/dotConfig/.zshrc $HOME/.zshrc). Follow that rather than copying files.
-- Third-party plugin handling:
-  - libs/ is used for cloning external plugin repos (bootstrap scripts expect these locations).
-  - When adding/removing plugins for nvim, update lazy config and commit lazy-lock.json.
+- Neovim plugin management:
+  - Plugins are git submodules in `pack/theovim/{start,opt}/`
+  - When adding/removing plugins, use `git submodule add/deinit` and update `lua/plugin-config/` config files
+  - Run `git submodule update --init --recursive` when cloning or `:PackInstall` in nvim to install
+  - See nvim/PACK_MANAGEMENT.md for detailed instructions and cross-platform scripts
 - Bootstrapping: bootstrap/ubuntu.sh installs system packages and clones required libs/plugins; update this script when adding OS-level deps.
 - Small scripts and fragments are intentionally split (e.g., zsh/*.zsh) so that top-level .zshrc sources them — keep that split when editing.
 
 Files to update when changing behavior
 - _docs_/README.md and README.md for install instructions
 - bootstrap/ubuntu.sh when adding system packages or new cloned libs
-- nvim/.config/nvim/lua/* and lazy-lock.json when adding/updating plugins
+- nvim/.config/nvim/lua/plugin-config/* when updating plugin configs
+- nvim/PACK_MANAGEMENT.md when adding/removing plugins or changing plugin management approach
 
 Other AI assistant configs
 - No CLAUDE.md, .cursorrules, AGENTS.md, CONVENTIONS.md, AIDER_CONVENTIONS.md, .windsurfrules, .clinerules, or .github/copilot-instructions.md were present before this file. If any are added, consider integrating salient parts here.
 
 Notes for Copilot sessions
-- Prefer changes inside the per-tool folder and update the corresponding bootstrap/docs/lazy-lock.json files.
-- No CI/tests to run; verify shell scripts with shellcheck and manual bootstrap in a disposable VM/container if adding system-level changes.
+- Clone with `git clone --recurse-submodules` to get all plugins. If cloned without, run `git submodule update --init --recursive`
+- Plugin management: use `:PackUpdate`, `:PackInstall` commands in nvim, or scripts in nvim/ directory (pack-update.sh for Unix, pack-update.ps1 for Windows)
+- See nvim/PACK_MANAGEMENT.md for detailed plugin management and migration guide (if coming from lazy.nvim)
+- Prefer changes inside the per-tool folder and update the corresponding config/docs files
+- No CI/tests to run; verify shell scripts with shellcheck and manual bootstrap in a disposable VM/container if adding system-level changes
 
 If anything should be added (examples: how to manage secrets, platform-specific differences, or frequently edited snippets), say which area to expand.
