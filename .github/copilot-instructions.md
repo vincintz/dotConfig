@@ -21,7 +21,11 @@ High-level architecture
   - bootstrap/ -> OS bootstrap scripts (bootstrap/ubuntu.sh)
   - libs/ -> cloned third-party plugin repos (used by bootstrap to vendor plugins)
 - Workflow: clone repo into a chosen folder (often $HOME/dotConfig), then either run bootstrap/ubuntu.sh or create symlinks from repository files to $HOME as shown in README/_docs_.
-- Neovim uses lazy.nvim and keeps a lazy-lock.json to pin plugin versions — update that file when changing plugin specs.
+- Neovim uses vim.pack (native plugin system as of 0.12) with git submodules:
+  - `pack/theovim/start/` — plugins that load on startup (LSP, completion, treesitter, mini, themes, lualine)
+  - `pack/theovim/opt/` — plugins that lazy-load on-demand (telescope, git, flash, harpoon, trouble, vimwiki)
+  - Plugin configs live in `lua/plugin-config/` and are loaded from `init.lua`
+  - Lazy-loaders (in `lua/plugin-config/*.lua`) use `:packadd` to load on first keymap/command use
 
 Key conventions (repo-specific)
 - Tool-per-directory: modify config for a tool inside its folder; top-level dotfiles are intended to be symlinked into $HOME.
