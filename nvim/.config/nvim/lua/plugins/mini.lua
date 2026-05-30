@@ -27,7 +27,7 @@ return {
       local MiniFiles = require("mini.files")
       MiniFiles.setup({
         mappings = {
-          close = "-",
+          close = "q",
           go_in = "L",
           go_in_plus = "l",
           reset = ",",
@@ -35,6 +35,10 @@ return {
         },
         windows = {
           preview = true,
+          max_number = math.huge,
+          width_focus = 40,
+          width_nofocus = 20,
+          width_preview = 40,
         },
       })
       vim.keymap.set("n", "-", function()
