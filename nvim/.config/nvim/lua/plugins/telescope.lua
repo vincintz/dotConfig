@@ -4,7 +4,11 @@ return {
     branch = "0.1.x",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      {
+        "nvim-telescope/telescope-fzf-native.nvim",
+        -- On Windows, install make equivalent: winget install GnuWin32.Make or choco install make
+        build = vim.fn.has("win32") == 1 and nil or "make"
+      },
       "nvim-tree/nvim-web-devicons",
     },
     config = function()

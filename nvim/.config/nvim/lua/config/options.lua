@@ -56,7 +56,7 @@ o.swapfile = false
 
 -- enhanced undo
 o.undofile = true
-o.undodir = vim.fn.expand("~/.vim/undodir")
+o.undodir = vim.fn.stdpath("state") .. "/undo"
 
 -- refresh file content
 o.autoread = true

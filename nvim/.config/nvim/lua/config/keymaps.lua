@@ -8,7 +8,9 @@ command('Wq', 'wq', { nargs = 0 })
 command('WQ', 'wq', { nargs = 0 })
 
 -- visual mode mappings
-kmap.set('v', '<leader>j', "<cmd>'<,'>!jq<cr>")
+if vim.fn.executable("jq") == 1 then
+  kmap.set('v', '<leader>j', "<cmd>'<,'>!jq<cr>")
+end
 kmap.set('v', '<leader>r', '"hy:%s/<C-r>h//gc<left><left><left>')
 
 -- insert mode mappins

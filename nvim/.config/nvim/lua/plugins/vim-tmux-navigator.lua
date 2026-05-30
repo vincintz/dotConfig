@@ -1,6 +1,8 @@
 return {
   {
     "christoomey/vim-tmux-navigator",
+    -- tmux integration only works on Unix; disable on Windows
+    enabled = vim.fn.has("win32") == 0,
     cmd = {
       "TmuxNavigateLeft",
       "TmuxNavigateDown",
