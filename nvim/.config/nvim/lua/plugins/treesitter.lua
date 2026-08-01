@@ -9,6 +9,7 @@ return {
         "bash",
         "go",
         "html",
+        "java",
         "javascript",
         "lua",
         "python",

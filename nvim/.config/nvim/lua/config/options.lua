@@ -1,5 +1,6 @@
 local g = vim.g
 local o = vim.opt
+local c = vim.cmd
 
 -- leader key
 g.mapleader = " "
@@ -17,8 +18,10 @@ o.colorcolumn = "120"
 
 -- os integration
 o.clipboard = "unnamedplus"
+
+-- theme
 o.termguicolors = true
-o.winborder = "rounded"
+c.colorscheme("habamax")
 
 -- when scrolling leave 10 rows/cols
 o.scrolloff = 10

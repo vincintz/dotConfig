@@ -4,7 +4,7 @@ return {
     config = function()
       vim.lsp.enable {
         "basedpyright",
-        "jdtls",
+        -- "jdtls",
         "lua_ls",
         "ts_ls",
       }
