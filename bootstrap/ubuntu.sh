@@ -25,6 +25,7 @@ sudo apt install -y zoxide fzf
 sudo apt install -y ripgrep exuberant-ctags
 sudo apt install -y tree nvtop htop glances
 sudo apt install -y ncdu mc pspg
+sudo apt install -y fastfetch
 
 echo "=========================================
       Install Linters
