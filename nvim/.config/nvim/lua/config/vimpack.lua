@@ -11,6 +11,10 @@ pack.add({
 pack.add({
   'https://github.com/mrjones2014/smart-splits.nvim'
 })
+require('smart-splits').setup({
+  at_edge = 'stop',
+  multiplexer_integration = 'tmux',
+})
 kmap.set('n', '<C-h>', require('smart-splits').move_cursor_left)
 kmap.set('n', '<C-j>', require('smart-splits').move_cursor_down)
 kmap.set('n', '<C-k>', require('smart-splits').move_cursor_up)

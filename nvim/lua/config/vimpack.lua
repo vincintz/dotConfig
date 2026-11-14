@@ -10,6 +10,20 @@ pack.add({
 pack.add({
   'https://github.com/mrjones2014/smart-splits.nvim'
 })
+-- at a tmux edge, hand focus to the neighbouring tmux pane instead of wrapping
+local tmux_flags = { left = '-L', right = '-R', up = '-U', down = '-D' }
+require('smart-splits').setup({
+  move = {
+    at_edge = function(ctx)
+      local flag = tmux_flags[ctx.direction]
+      if vim.env.TMUX and flag then
+        vim.fn.system({ 'tmux', 'select-pane', flag })
+      else
+        ctx.wrap()
+      end
+    end,
+  },
+})
 kmap.set('n', '<A-h>', require('smart-splits').resize_left)
 kmap.set('n', '<A-j>', require('smart-splits').resize_down)
 kmap.set('n', '<A-k>', require('smart-splits').resize_up)
