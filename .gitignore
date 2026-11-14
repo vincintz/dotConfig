@@ -2,3 +2,7 @@ bak/
 zsh/libs/
 lazy-lock.json
 zsh/extra.zsh
+**/agent/auth.json
+**/agent/*.bak
+**/agent/*.bak.txt
+**/agent/sessions/
