@@ -21,7 +21,7 @@ o.clipboard = "unnamedplus"
 
 -- theme
 o.termguicolors = true
-c.colorscheme("unokai")
+c.colorscheme("catppuccin")
 
 -- when scrolling leave 10 rows/cols
 o.scrolloff = 10

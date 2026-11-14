@@ -48,6 +48,10 @@
       "rev": "6e9d953f0b82bccdb834cfde0e893f3119c22592",
       "src": "https://github.com/mfussenegger/nvim-jdtls"
     },
+    "pi-nvim": {
+      "rev": "b10a3cc94583cc232645f0e49533e282a3486c0d",
+      "src": "https://github.com/carderne/pi-nvim"
+    },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"

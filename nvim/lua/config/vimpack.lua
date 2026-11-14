@@ -158,6 +158,14 @@ end, { desc = "Open Mini Files" })
 
 mn_notify.setup()
 
+-- pi-nvim (bridge to pi coding agent)
+pack.add({
+  'https://github.com/carderne/pi-nvim',
+})
+require('pi-nvim').setup({
+  set_default_keymaps = true,
+})
+
 -- java
 pack.add({
   'https://github.com/mfussenegger/nvim-jdtls',
