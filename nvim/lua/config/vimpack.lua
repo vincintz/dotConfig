@@ -153,7 +153,8 @@ local mn_files = require('mini.files')
 local mn_notify = require('mini.notify')
 mn_files.setup({
   mappings = {
-    close = "-",
+    close = "<Esc>",
+    synchronize = "<CR>",
     go_in = "L",
     go_in_plus = "l",
     reset = ",",
@@ -163,14 +164,64 @@ mn_files.setup({
     preview = true,
   },
 })
-kmap.set("n", "-", function()
+local function open_mini_files()
+  -- toggle: close() returns true when an explorer was open
+  if mn_files.close() then
+    return
+  end
   local buf_name = vim.api.nvim_buf_get_name(0)
   local path = vim.fn.filereadable(buf_name) == 1 and buf_name or vim.fn.getcwd()
   mn_files.open(path)
   mn_files.reveal_cwd()
-end, { desc = "Open Mini Files" })
+end
+_G.open_mini_files = open_mini_files
+kmap.set("n", "-", open_mini_files, { desc = "Open Mini Files" })
+vim.api.nvim_create_autocmd("User", {
+  pattern = "MiniFilesBufferCreate",
+  callback = function(args)
+    kmap.set("n", "-", function() mn_files.close() end, { buffer = args.data.buf_id, desc = "Close Mini Files" })
+  end,
+})
 
 mn_notify.setup()
+
+-- language servers
+local function lsp_on_attach(_, bufnr)
+  local function map(lhs, rhs, desc)
+    vim.keymap.set("n", lhs, rhs, { buffer = bufnr, desc = desc })
+  end
+
+  map("gd", vim.lsp.buf.definition, "Go to definition")
+  map("gD", vim.lsp.buf.declaration, "Go to declaration")
+  map("gr", vim.lsp.buf.references, "Find references")
+  map("K", vim.lsp.buf.hover, "Hover")
+  map("<leader>rn", vim.lsp.buf.rename, "Rename")
+  map("<leader>ca", vim.lsp.buf.code_action, "Code action")
+end
+
+vim.lsp.config("pyright", {
+  cmd = { "pyright-langserver", "--stdio" },
+  filetypes = { "python" },
+  root_markers = { "pyproject.toml", "setup.py", "requirements.txt", "Pipfile", ".git" },
+  on_attach = lsp_on_attach,
+})
+
+vim.lsp.config("bashls", {
+  cmd = { "bash-language-server", "start" },
+  filetypes = { "sh", "bash", "zsh" },
+  root_markers = { ".git" },
+  on_attach = lsp_on_attach,
+})
+
+vim.lsp.config("powershell_es", {
+  -- Install the PowerShell Editor Services launcher and make it available on PATH.
+  cmd = { "powershell-editor-services", "--stdio" },
+  filetypes = { "ps1" },
+  root_markers = { ".git" },
+  on_attach = lsp_on_attach,
+})
+
+vim.lsp.enable({ "pyright", "bashls", "powershell_es" })
 
 -- pi-nvim (bridge to pi coding agent)
 pack.add({

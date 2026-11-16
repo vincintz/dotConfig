@@ -1,6 +1,17 @@
 local autocmd = vim.api.nvim_create_autocmd
 local autogroup = vim.api.nvim_create_augroup
 
+-- Vimwiki/markdown buffers map '-' themselves; override it with mini.files.
+autocmd("FileType", {
+  pattern = { "markdown", "mediawiki", "vimwiki" },
+  group = autogroup("markdown-keymaps", { clear = true }),
+  callback = function(args)
+    vim.keymap.set("n", "-", function()
+      _G.open_mini_files()
+    end, { buffer = args.buf, desc = "Open Mini Files" })
+  end,
+})
+
 -- highlight when yanking
 autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
