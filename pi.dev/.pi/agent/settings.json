@@ -1,9 +1,0 @@
-{
-  "lastChangelogVersion": "1.5.2",
-  "packages": [
-    "npm:pi-nvim"
-  ],
-  "defaultProvider": "github-copilot",
-  "defaultModel": "claude-sonnet-5.5",
-  "enabledModels": ["github-copilot/*"]
-}
