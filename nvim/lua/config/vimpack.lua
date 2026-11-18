@@ -231,6 +231,24 @@ require('pi-nvim').setup({
   set_default_keymaps = true,
 })
 
+vim.pack.add({
+    'https://github.com/nvim-treesitter/nvim-treesitter',
+    'https://github.com/nvim-mini/mini.icons',
+    'https://github.com/nvim-tree/nvim-web-devicons',
+    'https://github.com/MeanderingProgrammer/render-markdown.nvim',
+})
+require('render-markdown').setup({ file_types = { 'markdown', 'vimwiki' } })
+vim.treesitter.language.register('markdown', 'vimwiki')
+
+-- treesitter: auto-install markdown parsers (no-op once installed) and enable highlighting
+require('nvim-treesitter').install({ 'markdown', 'markdown_inline' })
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'markdown', 'vimwiki' },
+  callback = function(args)
+    pcall(vim.treesitter.start, args.buf)
+  end,
+})
+
 -- java
 pack.add({
   'https://github.com/mfussenegger/nvim-jdtls',

@@ -28,6 +28,10 @@
       "rev": "638b80cb985c89ca2a98eed72c552c8d485a3d5b",
       "src": "https://github.com/nvim-mini/mini.files"
     },
+    "mini.icons": {
+      "rev": "fc90b3925a2a68282be06e28cfe0cbb366c75dad",
+      "src": "https://github.com/nvim-mini/mini.icons"
+    },
     "mini.notify": {
       "rev": "04dae72c012de9db45c4250645170f78f826731e",
       "src": "https://github.com/nvim-mini/mini.notify"
@@ -48,6 +52,14 @@
       "rev": "6e9d953f0b82bccdb834cfde0e893f3119c22592",
       "src": "https://github.com/mfussenegger/nvim-jdtls"
     },
+    "nvim-treesitter": {
+      "rev": "b706d642dd20d0922e7e92365dc73617f0fdb4ea",
+      "src": "https://github.com/nvim-treesitter/nvim-treesitter"
+    },
+    "nvim-web-devicons": {
+      "rev": "0dc0cfb0c6858041174a53c7aa4adaf65e994b3c",
+      "src": "https://github.com/nvim-tree/nvim-web-devicons"
+    },
     "pi-nvim": {
       "rev": "b10a3cc94583cc232645f0e49533e282a3486c0d",
       "src": "https://github.com/carderne/pi-nvim"
@@ -55,6 +67,10 @@
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
       "src": "https://github.com/nvim-lua/plenary.nvim"
+    },
+    "render-markdown.nvim": {
+      "rev": "a67f826164c38c836fc6060f32b275c4c43317a7",
+      "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "smart-splits.nvim": {
       "rev": "dd40c3a03ef71bcdf77fb4b14668cc1320293f48",
