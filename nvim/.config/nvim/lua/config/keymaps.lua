@@ -19,6 +19,11 @@ kmap.set('i', 'jj', '<esc>')
 kmap.set("n", "<leader>bn", ":bnext<CR>", { desc = "Next buffer" })
 kmap.set("n", "<leader>bp", ":bprevious<CR>", { desc = "Previous buffer" })
 
+kmap.set('n', '<C-h>', '<C-w>h', { desc = 'Move to left pane' })
+kmap.set('n', '<C-j>', '<C-w>j', { desc = 'Move to lower pane' })
+kmap.set('n', '<C-k>', '<C-w>k', { desc = 'Move to upper pane' })
+kmap.set('n', '<C-l>', '<C-w>l', { desc = 'Move to right pane' })
+
 -- split and resize
 kmap.set("n", "<leader>sv", ":vsplit<CR>", { desc = "Split window vertically" })
 kmap.set("n", "<leader>sh", ":split<CR>", { desc = "Split window horizontally" })

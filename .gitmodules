@@ -1,0 +1,54 @@
+[submodule "nvim/.config/nvim/pack/theovim/start/nvim-lspconfig"]
+	path = nvim/.config/nvim/pack/theovim/start/nvim-lspconfig
+	url = https://github.com/neovim/nvim-lspconfig.git
+[submodule "nvim/.config/nvim/pack/theovim/start/nvim-treesitter"]
+	path = nvim/.config/nvim/pack/theovim/start/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule "nvim/.config/nvim/pack/theovim/start/blink.cmp"]
+	path = nvim/.config/nvim/pack/theovim/start/blink.cmp
+	url = https://github.com/saghen/blink.cmp.git
+[submodule "nvim/.config/nvim/pack/theovim/start/friendly-snippets"]
+	path = nvim/.config/nvim/pack/theovim/start/friendly-snippets
+	url = https://github.com/rafamadriz/friendly-snippets.git
+[submodule "nvim/.config/nvim/pack/theovim/start/plenary.nvim"]
+	path = nvim/.config/nvim/pack/theovim/start/plenary.nvim
+	url = https://github.com/nvim-lua/plenary.nvim.git
+[submodule "nvim/.config/nvim/pack/theovim/start/nvim-web-devicons"]
+	path = nvim/.config/nvim/pack/theovim/start/nvim-web-devicons
+	url = https://github.com/nvim-tree/nvim-web-devicons.git
+[submodule "nvim/.config/nvim/pack/theovim/start/lualine.nvim"]
+	path = nvim/.config/nvim/pack/theovim/start/lualine.nvim
+	url = https://github.com/nvim-lualine/lualine.nvim.git
+[submodule "nvim/.config/nvim/pack/theovim/start/mini.nvim"]
+	path = nvim/.config/nvim/pack/theovim/start/mini.nvim
+	url = https://github.com/echasnovski/mini.nvim.git
+[submodule "nvim/.config/nvim/pack/theovim/start/vague.nvim"]
+	path = nvim/.config/nvim/pack/theovim/start/vague.nvim
+	url = https://github.com/vague2k/vague.nvim.git
+[submodule "nvim/.config/nvim/pack/theovim/opt/flash.nvim"]
+	path = nvim/.config/nvim/pack/theovim/opt/flash.nvim
+	url = https://github.com/folke/flash.nvim.git
+[submodule "nvim/.config/nvim/pack/theovim/opt/gitsigns.nvim"]
+	path = nvim/.config/nvim/pack/theovim/opt/gitsigns.nvim
+	url = https://github.com/lewis6991/gitsigns.nvim.git
+[submodule "nvim/.config/nvim/pack/theovim/opt/harpoon"]
+	path = nvim/.config/nvim/pack/theovim/opt/harpoon
+	url = https://github.com/ThePrimeagen/harpoon.git
+[submodule "nvim/.config/nvim/pack/theovim/opt/telescope.nvim"]
+	path = nvim/.config/nvim/pack/theovim/opt/telescope.nvim
+	url = https://github.com/nvim-telescope/telescope.nvim.git
+[submodule "nvim/.config/nvim/pack/theovim/opt/telescope-fzf-native.nvim"]
+	path = nvim/.config/nvim/pack/theovim/opt/telescope-fzf-native.nvim
+	url = https://github.com/nvim-telescope/telescope-fzf-native.nvim.git
+[submodule "nvim/.config/nvim/pack/theovim/opt/trouble.nvim"]
+	path = nvim/.config/nvim/pack/theovim/opt/trouble.nvim
+	url = https://github.com/folke/trouble.nvim.git
+[submodule "nvim/.config/nvim/pack/theovim/opt/vim-fugitive"]
+	path = nvim/.config/nvim/pack/theovim/opt/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "nvim/.config/nvim/pack/theovim/opt/vimwiki"]
+	path = nvim/.config/nvim/pack/theovim/opt/vimwiki
+	url = https://github.com/vimwiki/vimwiki.git
+[submodule "nvim/.config/nvim/pack/theovim/opt/vim-tmux-navigator"]
+	path = nvim/.config/nvim/pack/theovim/opt/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator.git

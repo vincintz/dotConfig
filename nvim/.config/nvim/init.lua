@@ -1,5 +1,4 @@
 require "config.options"
 require "config.autocmds"
 require "config.keymaps"
-require "config.lazy"
--- require "config.pack"
+require "config.vimpack"
