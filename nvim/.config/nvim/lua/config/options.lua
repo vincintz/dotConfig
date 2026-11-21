@@ -1,5 +1,6 @@
 local g = vim.g
 local o = vim.opt
+local c = vim.cmd
 
 -- leader key
 g.mapleader = " "
@@ -17,8 +18,10 @@ o.colorcolumn = "120"
 
 -- os integration
 o.clipboard = "unnamedplus"
+
+-- theme
 o.termguicolors = true
-o.winborder = "rounded"
+c.colorscheme("catppuccin")
 
 -- when scrolling leave 10 rows/cols
 o.scrolloff = 10
@@ -56,7 +59,7 @@ o.swapfile = false
 
 -- enhanced undo
 o.undofile = true
-o.undodir = vim.fn.stdpath("state") .. "/undo"
+o.undodir = vim.fn.expand("~/.vim/undodir")
 
 -- refresh file content
 o.autoread = true
@@ -70,8 +73,3 @@ o.wildignore:append {
   "**/dist-staging/**"
 }
 
--- fix checkhealth warnings
-g.loaded_python3_provider = 0
-g.loaded_perl_provider = 0
-g.loaded_node_provider = 0
-g.loaded_ruby_provider = 0

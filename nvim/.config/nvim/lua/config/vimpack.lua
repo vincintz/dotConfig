@@ -4,27 +4,43 @@ local kmap = vim.keymap
 -- essentials
 pack.add({
   'https://github.com/vimwiki/vimwiki',
-  'https://github.com/github/copilot.vim',
 })
 
 -- navigate
 pack.add({
   'https://github.com/mrjones2014/smart-splits.nvim'
 })
+-- at a tmux edge, hand focus to the neighbouring tmux pane instead of wrapping
+local tmux_flags = { left = '-L', right = '-R', up = '-U', down = '-D' }
 require('smart-splits').setup({
-  at_edge = 'stop',
-  multiplexer_integration = 'tmux',
+  move = {
+    at_edge = function(ctx)
+      local flag = tmux_flags[ctx.direction]
+      if vim.env.TMUX and flag then
+        vim.fn.system({ 'tmux', 'select-pane', flag })
+      else
+        ctx.wrap()
+      end
+    end,
+  },
 })
+kmap.set('n', '<A-h>', require('smart-splits').resize_left)
+kmap.set('n', '<A-j>', require('smart-splits').resize_down)
+kmap.set('n', '<A-k>', require('smart-splits').resize_up)
+kmap.set('n', '<A-l>', require('smart-splits').resize_right)
 kmap.set('n', '<C-h>', require('smart-splits').move_cursor_left)
 kmap.set('n', '<C-j>', require('smart-splits').move_cursor_down)
 kmap.set('n', '<C-k>', require('smart-splits').move_cursor_up)
 kmap.set('n', '<C-l>', require('smart-splits').move_cursor_right)
-kmap.set('n', '<C-\\>', require('smart-splits').move_cursor_previous)
+kmap.set('n', '<C-\\>', '<cmd>wincmd p<cr>')
+
 
 -- git
 pack.add({
   'https://github.com/tpope/vim-fugitive',
   'https://github.com/lewis6991/gitsigns.nvim',
+  'https://github.com/github/copilot.vim',
+  'https://github.com/ducks/vimdeck.nvim',
 })
 vim.api.nvim_exec([[
   function! ToggleGitStatus()
@@ -45,8 +61,8 @@ vim.api.nvim_exec([[
     endif
   endfunction
 ]], false)
-kmap.set('n', '<leader>g', "<cmd>call ToggleGitStatus()<cr>")
-kmap.set('n', 'gb', "<cmd>call ToggleGitBlame()<CR>")
+kmap.set('n', '<leader>gg', "<cmd>call ToggleGitStatus()<cr>")
+kmap.set('n', '<leader>gb', "<cmd>call ToggleGitBlame()<CR>")
 
 require("gitsigns").setup {
   on_attach = function(bufnr)
@@ -83,8 +99,30 @@ require("gitsigns").setup {
 -- telescope
 vim.pack.add({
   'https://github.com/nvim-lua/plenary.nvim',
-  'https://github.com/nvim-telescope/telescope.nvim'
+  'https://github.com/nvim-telescope/telescope.nvim',
+  'https://github.com/CopilotC-Nvim/CopilotChat.nvim',
 })
+require('CopilotChat').setup({
+  trusted_tools = false,
+  window = {
+    layout = 'float',
+    width = 0.9,
+    height = 0.80,
+  },
+  show_help = false,
+})
+kmap.set('n', '<leader>1', '<cmd>CopilotChatModels<cr>', { desc = 'Select Copilot Model' })
+kmap.set('n', '<leader>2', '<cmd>CopilotChatToggle<cr>', { desc = 'Toggle Copilot Chat' })
+kmap.set('n', '<leader>3', function()
+  require('CopilotChat').ask('/Review', {
+    resources = { 'gitdiff:staged', 'gitdiff:unstaged' },
+  })
+end, { desc = 'Review code changes' })
+kmap.set('v', '<leader>zr', function()
+  require('CopilotChat').ask('/Review', {
+    resources = { 'selection' },
+  })
+end, { desc = 'Review selection' })
 require('telescope').setup({
   defaults = {
     preview = {
@@ -115,7 +153,8 @@ local mn_files = require('mini.files')
 local mn_notify = require('mini.notify')
 mn_files.setup({
   mappings = {
-    close = "-",
+    close = "<Esc>",
+    synchronize = "<CR>",
     go_in = "L",
     go_in_plus = "l",
     reset = ",",
@@ -125,14 +164,72 @@ mn_files.setup({
     preview = true,
   },
 })
-kmap.set("n", "-", function()
+local function open_mini_files()
+  -- toggle: close() returns true when an explorer was open
+  if mn_files.close() then
+    return
+  end
   local buf_name = vim.api.nvim_buf_get_name(0)
   local path = vim.fn.filereadable(buf_name) == 1 and buf_name or vim.fn.getcwd()
   mn_files.open(path)
   mn_files.reveal_cwd()
-end, { desc = "Open Mini Files" })
+end
+_G.open_mini_files = open_mini_files
+kmap.set("n", "-", open_mini_files, { desc = "Open Mini Files" })
+vim.api.nvim_create_autocmd("User", {
+  pattern = "MiniFilesBufferCreate",
+  callback = function(args)
+    kmap.set("n", "-", function() mn_files.close() end, { buffer = args.data.buf_id, desc = "Close Mini Files" })
+  end,
+})
 
 mn_notify.setup()
+
+-- language servers
+local function lsp_on_attach(_, bufnr)
+  local function map(lhs, rhs, desc)
+    vim.keymap.set("n", lhs, rhs, { buffer = bufnr, desc = desc })
+  end
+
+  map("gd", vim.lsp.buf.definition, "Go to definition")
+  map("gD", vim.lsp.buf.declaration, "Go to declaration")
+  map("gr", vim.lsp.buf.references, "Find references")
+  map("K", vim.lsp.buf.hover, "Hover")
+  map("<leader>rn", vim.lsp.buf.rename, "Rename")
+  map("<leader>ca", vim.lsp.buf.code_action, "Code action")
+end
+
+vim.lsp.config("pyright", {
+  cmd = { "pyright-langserver", "--stdio" },
+  filetypes = { "python" },
+  root_markers = { "pyproject.toml", "setup.py", "requirements.txt", "Pipfile", ".git" },
+  on_attach = lsp_on_attach,
+})
+
+vim.lsp.config("bashls", {
+  cmd = { "bash-language-server", "start" },
+  filetypes = { "sh", "bash", "zsh" },
+  root_markers = { ".git" },
+  on_attach = lsp_on_attach,
+})
+
+vim.lsp.config("powershell_es", {
+  -- Install the PowerShell Editor Services launcher and make it available on PATH.
+  cmd = { "powershell-editor-services", "--stdio" },
+  filetypes = { "ps1" },
+  root_markers = { ".git" },
+  on_attach = lsp_on_attach,
+})
+
+vim.lsp.enable({ "pyright", "bashls", "powershell_es" })
+
+-- pi-nvim (bridge to pi coding agent)
+pack.add({
+  'https://github.com/carderne/pi-nvim',
+})
+require('pi-nvim').setup({
+  set_default_keymaps = true,
+})
 
 vim.pack.add({
     'https://github.com/nvim-treesitter/nvim-treesitter',
@@ -140,19 +237,82 @@ vim.pack.add({
     'https://github.com/nvim-tree/nvim-web-devicons',
     'https://github.com/MeanderingProgrammer/render-markdown.nvim',
 })
-require('render-markdown').setup({})
+require('render-markdown').setup({ file_types = { 'markdown', 'vimwiki' } })
+vim.treesitter.language.register('markdown', 'vimwiki')
+
+-- treesitter: auto-install markdown parsers (no-op once installed) and enable highlighting
+require('nvim-treesitter').install({ 'markdown', 'markdown_inline' })
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'markdown', 'vimwiki' },
+  callback = function(args)
+    pcall(vim.treesitter.start, args.buf)
+  end,
+})
 
 -- java
 pack.add({
-  {
-    src = 'https://github.com/JavaHello/spring-boot.nvim',
-    version = '218c0c26c14d99feca778e4d13f5ec3e8b1b60f0',
-  },
-  'https://github.com/MunifTanjim/nui.nvim',
-  'https://github.com/mfussenegger/nvim-dap',
-
-  'https://github.com/nvim-java/nvim-java',
+  'https://github.com/mfussenegger/nvim-jdtls',
 })
 
-require('java').setup()
-vim.lsp.enable('jdtls')
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'java',
+  callback = function(args)
+    local root_dir = vim.fs.root(args.buf, { 'gradlew', 'mvnw', 'pom.xml', 'build.gradle', 'settings.gradle', '.git' })
+    if not root_dir then
+      return
+    end
+
+    require('jdtls').start_or_attach({
+      -- workspace keyed by project root, not cwd (the launcher's default)
+      cmd = { 'jdtls', '-data', vim.fn.stdpath('cache') .. '/jdtls/' .. vim.fn.sha256(root_dir):sub(1, 16) },
+      root_dir = root_dir,
+      init_options = { bundles = {} },
+      on_attach = function(_, bufnr)
+        local map = function(lhs, rhs, desc)
+          vim.keymap.set('n', lhs, rhs, { buffer = bufnr, desc = desc })
+        end
+
+        map('gd', vim.lsp.buf.definition, 'Go to definition')
+        map('gD', vim.lsp.buf.declaration, 'Go to declaration')
+        map('gr', vim.lsp.buf.references, 'Find references')
+        map('gi', vim.lsp.buf.implementation, 'Go to implementation')
+        map('gy', vim.lsp.buf.type_definition, 'Go to type definition')
+        map('gO', vim.lsp.buf.document_symbol, 'Document symbols')
+        map('<leader>ws', vim.lsp.buf.workspace_symbol, 'Workspace symbols')
+        map('<leader>ci', vim.lsp.buf.incoming_calls, 'Incoming calls')
+        map('<leader>co', vim.lsp.buf.outgoing_calls, 'Outgoing calls')
+        map('<leader>rn', vim.lsp.buf.rename, 'Rename')
+        map('<leader>ca', vim.lsp.buf.code_action, 'Code action')
+        map('K', vim.lsp.buf.hover, 'Hover')
+        map('<leader>oi', require('jdtls').organize_imports, 'Organize imports')
+      end,
+    })
+  end,
+})
+
+-- git-worktree
+pack.add({
+  'https://github.com/nvim-lua/plenary.nvim',
+  'https://github.com/nvim-telescope/telescope.nvim',
+  'https://github.com/ThePrimeagen/git-worktree.nvim'
+})
+require("git-worktree").setup({
+    change_directory_command = "cd",
+    update_on_change = true,
+    update_on_change_command = "e .",
+    clearjumps_on_change = true,
+    autopush = false,
+})
+-- telescope extension
+local status_ok, telescope = pcall(require, "telescope")
+if status_ok then
+    telescope.load_extension("git_worktree")
+end
+-- Toggle existing worktrees / Delete a worktree
+vim.keymap.set("n", "<leader>gw", function()
+    require('telescope').extensions.git_worktree.git_worktrees()
+end, { desc = "List/Switch Git Worktrees" })
+-- Create a new worktree
+-- vim.keymap.set("n", "<leader>gc", function()
+--     require('telescope').extensions.git_worktree.create_git_worktree()
+-- end, { desc = "Create Git Worktree" })
